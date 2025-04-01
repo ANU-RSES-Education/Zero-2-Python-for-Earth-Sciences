@@ -15,7 +15,7 @@ format:
 ::: {.callout-note icon="false"}
 # Summary
 
-In this section we introduce `collections` of data that keep related information within a single variable. 
+In this section we introduce `collections` of data that keep related information within a single variable.
 
 :::
 
@@ -33,16 +33,16 @@ a = [3, 4, 5]
 The individual entries do not need to have the same type. Also, we can have lists inside lists, e.g.,
 
 ```python
-a = [3.2, 'hello', [4, 8, 17.1]] 
+a = [3.2, 'hello', [4, 8, 17.1]]
 ```
 
-although in practice, list elements tend to be more homogenous than the example above. 
+although in practice, list elements tend to be more homogenous than the example above.
 
-We can access individual *entries* in the list by adding an *index* to the variable name. In Python, we have to remember a quirk: when counting objects, we start from 0 rather than from 1; this is because Python is a 0-based programming language. Thus, to access the first entry in the list `a`, we use `a[0]`; the second entry is `a[1]`. We can use these entries in calculations. 
+We can access individual *entries* in the list by adding an *index* to the variable name. In Python, we have to remember a quirk: when counting objects, we start from 0 rather than from 1; this is because Python is a 0-based programming language. Thus, to access the first entry in the list `a`, we use `a[0]`; the second entry is `a[1]`. We can use these entries in calculations.
 
 Thus:
 ```python
-a = [3.2, 'hello', [4, 8, 17.1]] 
+a = [3.2, 'hello', [4, 8, 17.1]]
 print(a[0])                  # Prints '3.2'
 print(a[1])                  # Prints 'hello'
 print(a[2])                  # Prints '[4, 8, 17.1]'
@@ -100,7 +100,7 @@ print(a) # Still prints '[1, 2, 3]'
 
 **Check the examples given above**
 
-```{pyodide-python}
+```{pyodide}
 
 
 
@@ -123,7 +123,7 @@ print(a)     # Prints '[1, 2, 3]'
 b[1] = 17
 print(a)     # Prints '[1, 17, 3]'
 ```
-Notice that the list referred to by `a` has changed, even though we have not explicitly altered it! This behaviour is different from 'normal' variables. 
+Notice that the list referred to by `a` has changed, even though we have not explicitly altered it! This behaviour is different from 'normal' variables.
 
 
 ::: {.callout-tip collapse="true" icon="false"}
@@ -131,7 +131,7 @@ Notice that the list referred to by `a` has changed, even though we have not exp
 
 Because lists are stored as references to data, changes to a list made in a function call are global. **Demonstrate that this is true**
 
-```{pyodide-python}
+```{pyodide}
 
 
 
@@ -164,7 +164,7 @@ a = [1, 2, 3]
 a += [4]
 print(a)     # Prints '[1, 2, 3, 4]'
 ```
-However, if you need to build a large list, this is a  *very inefficient* way of doing it, and your program will probably end up being very slow. 
+However, if you need to build a large list, this is a  *very inefficient* way of doing it, and your program will probably end up being very slow.
 
 Python provides a number of standard functions for working with lists. A few of the more important ones are detailed below, where we suppose `a` is a list:
 
@@ -198,7 +198,7 @@ Python provides a number of standard functions for working with lists. A few of 
 
 **Try these out!** Explore how each of the functions works. Remember, you can get information about any function by typing `help(function_name)`
 
-```{pyodide-python}
+```{pyodide}
 
 l = ["you", "are", "my", "sunshine", "!"]
 
@@ -208,7 +208,7 @@ l.reverse()
 
 Use this block to get help on the list methods
 
-```{pyodide-python}
+```{pyodide}
 
 help(list.append)
 
@@ -246,7 +246,7 @@ all of which are similar to their counterparts for lists.
 
 **Try these out!** Explore how each of the tuple functions and methods works. Remember, you can get information about any function by typing `help(function_name)`
 
-```{pyodide-python}
+```{pyodide}
 
 t = ("you", "are", "my, "sunshine", "!"")
 
@@ -256,7 +256,7 @@ len(t)
 
 Use this block to get help on the tuple methods
 
-```{pyodide-python}
+```{pyodide}
 
 help(tuple.index)
 
@@ -345,9 +345,9 @@ Some methods particular to dictionaries are:
 
 **Try these out!** Explore how each of the dictionary functions and methods works. Remember, you can get information about any function by typing `help(function_name)`
 
-**Try making a dictionary with keys that are not strings.** In particular, try a tuple, try a list, try a floating point number. 
+**Try making a dictionary with keys that are not strings.** In particular, try a tuple, try a list, try a floating point number.
 
-```{pyodide-python}
+```{pyodide}
 
 d = {
     "dogs": [
@@ -377,7 +377,7 @@ print(d.keys())
 
 Use this block to get help on the dictionary methods
 
-```{pyodide-python}
+```{pyodide}
 
 ## let's see what all the options are
 help(dict)
@@ -387,13 +387,13 @@ help(dict)
 
 :::
 
-Dictionaries provide a useful mechanism for storing miscellaneous, unstructured information, such as metadata. The use of human-readable labels makes it easy to remember what each entry represents. 
+Dictionaries provide a useful mechanism for storing miscellaneous, unstructured information, such as metadata. The use of human-readable labels makes it easy to remember what each entry represents.
 
 Some properties of the first few elements in the periodic table are given below. Melting and boiling points are determined at atmospheric pressure.
 
 | Element | Symbol | Atomic Number | Melting point (K) | Boiling point (K)
 |---|---|---|---|---|
-| Hydrogen | H | 1 | 14 | 20 | 
+| Hydrogen | H | 1 | 14 | 20 |
 | Helium | He | 2 | 1 | 4 |
 | Lithium | Li | 3 | 453 | 1603
 | Beryllium | Be |4 | 1560 | 2742
@@ -414,7 +414,7 @@ Some properties of the first few elements in the periodic table are given below.
 **Create a dictionary to store this information, indexed by the symbol. Then write a function which allows the user to specify an element (via its symbol) and a temperature, and which reports whether the element is solid, liquid or gas at that point.**
 
 
-```{pyodide-python}
+```{pyodide}
 
 data = {
     "Hydrogen": [
@@ -422,7 +422,7 @@ data = {
         "1",
         "14",
         "20",
-    ], 
+    ],
     ...
 }
 
@@ -448,13 +448,13 @@ In a previous exercise, you wrote code to calculate mortgage repayments. Differe
 **&#10148; Use a dictionary to store this information, and modify your function so that the user can specify which bank provides their mortgage.** You can assume that the monthly payment rate is simply one-twelfth of these annual total payment (i.e. the repayments do not account for the reduced principal over the year).
 
 
-```{pyodide-python}
+```{pyodide}
 
 rates = {
     "ANZ": [
         "2.3",
         "4.1",
-    ], 
+    ],
     ...
 }
 
@@ -492,7 +492,7 @@ set([3, 4, 5]) <= set([3, 4, 5]) # True
 We can find the union of two sets - the set of all elements in either set - using the `|` operator, and the intersection - all elements shared between the sets - using the `&` operator:
 
 ```python
-a = set([3, 4]) 
+a = set([3, 4])
 b = set([4, 5, 6])
 
 print(a | b) # prints {3, 4, 5, 6}
@@ -502,7 +502,7 @@ print(a & b) # prints {4}
 We can also use the operator `-` to remove the elements of one set from another set.
 
 ```python
-a = set([3, 4]) 
+a = set([3, 4])
 b = set([4, 5, 6])
 
 print(b - a) # prints {5, 6}
@@ -515,7 +515,7 @@ There is also a `^` operator, which is defined such that `a^b` is equivalent to 
 
 **Check the examples given above** to make sure you have some experience of what the `set` construct is within python.
 
-```{pyodide-python}
+```{pyodide}
 
 
 
@@ -534,7 +534,7 @@ There is also a `^` operator, which is defined such that `a^b` is equivalent to 
 ## Coding scratch space
 
 
-```{pyodide-python}
+```{pyodide}
 ## Scratch space / notepad
 
 

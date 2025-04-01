@@ -1,6 +1,6 @@
 ---
 title: Python on the web
-author: 
+author:
     - Louis Moresi
     - Andrew Valentine
 jupyter: python3
@@ -12,13 +12,13 @@ format:
 ::: {.callout-note icon=false}
 # Summary
 
-In this section we'll discover how to run a basic python script (in the web browser) and what to expect in terms of editing, reloading, printing output and saving our work. 
+In this section we'll discover how to run a basic python script (in the web browser) and what to expect in terms of editing, reloading, printing output and saving our work.
 
 :::
 
-There are many different ways to run python code. For the simplest tasks, a web browser is all you need to edit and run simple tasks. In this introductory session, we will use a python interpreter embedded in each web page to learn the basic language itself. 
+There are many different ways to run python code. For the simplest tasks, a web browser is all you need to edit and run simple tasks. In this introductory session, we will use a python interpreter embedded in each web page to learn the basic language itself.
 
-You will find examples of python code such as this one which contains some Python code which you can copy but which you can't run and you can't edit. Note that the code is highlighted (coloured) by meaning. 
+You will find examples of python code such as this one which contains some Python code which you can copy but which you can't run and you can't edit. Note that the code is highlighted (coloured) by meaning.
 
 ```{python}
 # A simple script (with a descriptive comment)
@@ -27,7 +27,7 @@ print("Welcome to python !")
 
 We use these blocks to give you examples and fragments of code that you can use later. Other code blocks have a `run` button and they can usually be edited (and, don't worry, they can be reset if you make a mistake). We use these **live** code blocks for you to try things out. Give it a go (you can't break anything).
 
-```{pyodide-python}
+```{pyodide}
 # A simple script (with a descriptive comment)
 print("Welcome to python !")
 ```
@@ -38,7 +38,7 @@ Generally, we'll use the live code blocks as part of an exercise for you to try 
 
 ## Exercise 1 - Run a script / edit a script
 
- The code box in this exercise **is** editable. If you click in this box, and then press <kbd>Shift</kbd>+<kbd>⏎</kbd> (i.e. hold down the <kbd>Shift</kbd> key on your keyboard and then hit the return key) the code will be run, and any output is displayed underneath. You can also use the run button if you prefer. 
+ The code box in this exercise **is** editable. If you click in this box, and then press <kbd>Shift</kbd>+<kbd>⏎</kbd> (i.e. hold down the <kbd>Shift</kbd> key on your keyboard and then hit the return key) the code will be run, and any output is displayed underneath. You can also use the run button if you prefer.
 
 Note there is a clipboard button to copy your answer and this is quite important because it is not saved anywhere. If you want to keep answers to your exercises, have a separate notebook / editor handy.
 
@@ -46,23 +46,25 @@ When you have finished, you can collapse this exercise:
 
 ![](Images/CollapseThisExercise.png){.lightbox width=50% fig-align=center}
 
-:::
 
-Usually we will collapse the exercises by default and you'll need to open them to access the instructions. 
+Usually we will collapse the exercises by default and you'll need to open them to access the instructions.
 
-```{pyodide-python}
+```{pyodide}
 # Exercise 1
 
 # Blank code cell (this line is a comment)
 print("Welcome to python !")
 ```
+:::
 
+
+
+We've already seen a couple of examples of Python code. Now let's try making something from scratch. One thing we can do is simply use Python like a calculator!
 
 ::: {.callout-tip collapse=true icon="false"}
 
 ## Exercise 2 - Calculations
 
-We've already seen a couple of examples of Python code. Now let's try making something from scratch. One thing we can do is simply use Python like a calculator!
 
 Try typing simple arithmetic into the code cell below and see what happens. For example, try entering
 
@@ -80,13 +82,14 @@ You can also use the operators `*`, `-`, `/` (for division), and the parentheses
 ```
 Can you think how to get both of the answers to (hint) print out ?
 
+```{pyodide}
+#| exercise: ex_2
+
+# Exercise 2 - display multiple values
+______
+```
 :::
 
-```{pyodide-python}
-# Exercise 2
-
-
-```
 
 
 
@@ -113,19 +116,80 @@ def readDataFile(fp):
 
 The first three lines of comments provide information recording some of the assumptions the programmer made when writing this function (don't worry if it doesn't make sense yet!). The fourth comment line is a piece of code that has been 'commented out': we don't want to routinely print the file header, but it is useful to be able to reinstate this easily in case we encounter problems and need to check what the function has read.
 
-In fact, 'commenting out' code is so common that most editors provide a straightforward way to do it. If you select a block of code and press <kbd>Ctrl</kbd>+<kbd>/</kbd> (or on a Mac, <kbd>⌘</kbd>+<kbd>/</kbd>), the selected lines will all be changed to begin with `#` comment characters. Pressing <kbd>Ctrl</kbd>+<kbd>/</kbd> again will restore the original version. Smart editors know how to do this for many different languages. 
+In fact, 'commenting out' code is so common that most editors provide a straightforward way to do it. If you select a block of code and press <kbd>Ctrl</kbd>+<kbd>/</kbd> (or on a Mac, <kbd>⌘</kbd>+<kbd>/</kbd>), the selected lines will all be changed to begin with `#` comment characters. Pressing <kbd>Ctrl</kbd>+<kbd>/</kbd> again will restore the original version. Smart editors know how to do this for many different languages.
 
 
 
-::: {.callout-warning icon="false"}
+
+## Exercises with Solutions
+
+In some cases, you can check your answers by running the code and comparing the output to the expected result. Here is a simple example in which you are asked to write some code to print the mean of the integers from 1 to 99.
+
+:::: {.callout-tip collapse=true icon="false"}
+# Exercise 3 - Checking your answers
+
+Complete the code below and ensure that the last line is the result of the computation
+
+```{pyodide}
+#| exercise: ex_3
+n = range(1, 100)
+______
+```
+
+::: { .hint exercise="ex_3"}
+::: { .callout-note collapse="false"}
+## Hint
+
+``` {python}
+total = 0
+for i in n:
+    total += i
+```
+:::
+:::
+
+::: { .solution exercise="ex_3"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+``` {python}
+total = 0
+for i in n:
+    total += i
+mean = total/len(n)
+mean
+```
+:::
+:::
+
+
+```{pyodide}
+#| exercise: ex_3
+#| check: true
+n = range(1, 100)
+mean = sum(n)/len(n)
+feedback = None
+if (result == mean):
+  feedback = { "correct": True, "message": "Nice work!" }
+else:
+  feedback = { "correct": False, "message": "That's incorrect, sorry." }
+feedback
+```
+
+::::
+
+
+
+::: {.callout-warning collapse=true icon="false"}
 
 ## Coding scratch space
 
-:::
-
-```{pyodide-python}
+```{pyodide}
 ## Scratch space / notepad
 
 print("Comment out this code with the keyboard shortcut !")
 
 ```
+
+
+:::

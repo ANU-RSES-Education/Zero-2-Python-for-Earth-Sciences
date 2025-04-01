@@ -1,6 +1,6 @@
 ---
 title: Variables
-author: 
+author:
     - Andrew Valentine
     - Louis Moresi
 jupyter: python3
@@ -33,7 +33,7 @@ We saw in the last exercise that Python can do simple calculations, such as
 
 On its own, this isn't terribly useful. However, we can store the results of calculations, by 'assigning' them to a 'variable'. To do this, we just need to type
 
-```{pyodide-python}
+```{pyodide}
 nameForThisQuantity = 3 + 5
 nameForThisQuantity
 ```
@@ -61,7 +61,7 @@ cost_after_tax = cost_before_tax * (1 + tax_rate / 100)
 
 Which one do you find easier to understand ?
 
-You may encounter code that looks more like (1) than (2). This is because early programming languages placed strict limits on the length of variable names (see this [wikipedia article](https://en.wikipedia.org/wiki/Hungarian_notation)). However, there is no longer any need for this and (we think) you should avoid it at all costs ! 
+You may encounter code that looks more like (1) than (2). This is because early programming languages placed strict limits on the length of variable names (see this [wikipedia article](https://en.wikipedia.org/wiki/Hungarian_notation)). However, there is no longer any need for this and (we think) you should avoid it at all costs !
 
 ## Using variables
 
@@ -73,7 +73,7 @@ y = 2
 print(x * y)
 ```
 
-will perform the calculation $(3\times 2) = 6$, and display the answer on the screen. 
+will perform the calculation $(3\times 2) = 6$, and display the answer on the screen.
 If we wish, we can choose to assign the result to another variable, e.g.
 
 ``` python
@@ -99,10 +99,10 @@ Notice that `x` appears on both sides of the equals sign here. This should be re
 Try creating some variables, and using them in simple calculations. Start with the examples above.
 Be sure to check that the results match what you expect.
 
-Constructs such as `x = x + y` are so common that Python has a special shorthand notation for this. 
+Constructs such as `x = x + y` are so common that Python has a special shorthand notation for this.
 We can express the same equation by entering `x += y`. There are similar versions for other operators: `-=`, `*=` and `/=`.
 
-Try out these shorthand operators. Is `x += 3` the same as `3 += x`? 
+Try out these shorthand operators. Is `x += 3` the same as `3 += x`?
 Why / why not ?
 
 There is no particular advantage to using these short forms, except convenience and readibility.
@@ -110,7 +110,7 @@ There is no particular advantage to using these short forms, except convenience 
 :::
 
 
-```{pyodide-python}
+```{pyodide}
 # Exercise 1
 
 
@@ -135,7 +135,7 @@ Some other tips:
 
 -   If your code is connected to another document (e.g. you are trying to plot some equation from a paper) then use clearly-related names in both. For example, if your paper has the equation $y = \alpha x +3\gamma$, then use the variable names `x`, `y`, `alpha` and `gamma` in your code. You can even use unicode.
 -   Make your variable names long enough to be clearly understood, but not *too* long. At most, you probably want it to be based on two or three words.
--   Do not give your variable a name that has a special meaning in Python (e.g. `int` or `sum`). Doing so will not *always* cause problems, but it is a common source of grief.  
+-   Do not give your variable a name that has a special meaning in Python (e.g. `int` or `sum`). Doing so will not *always* cause problems, but it is a common source of grief.
 
 Above all, try and develop a consistent style, and name similar quantities in similar ways. For example, the following are individually all reasonable choices for variable names:
 
@@ -147,13 +147,13 @@ mKrypton = 83.798
 mXe = 131.293
 ```
 
-However, mixing the different styles within one program is guaranteed to cause you confusion and lead to errors. 
+However, mixing the different styles within one program is guaranteed to cause you confusion and lead to errors.
 Pick one format that makes sense to you, and stick with it.
 
 ### Types
 
-Any and every variable has a **type**. 
-We can ask Python to report on the type of a given variable by using the command `type(variable_name)`. 
+Any and every variable has a **type**.
+We can ask Python to report on the type of a given variable by using the command `type(variable_name)`.
 For example,
 
 ``` python
@@ -177,7 +177,7 @@ will print `float` (i.e., floating-point). We will encounter other types in due 
 
 Try creating some variables, and using them in simple calculations. Start with the examples above. Be sure to check that the results match what you expect.
 
-What happens if you mix different types,  ? 
+What happens if you mix different types,  ?
 
 ``` python
 i = 2
@@ -191,7 +191,7 @@ print(i / 3)
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 # Exercise 2
 
 
@@ -214,7 +214,7 @@ What if you happened to be a famous musician in 1960s London, where the tax rate
 **Calculate your fortnightly pay as a non-musical researcher** Remember, break the problem down into individual steps, and create variables for each of the quantities involved! You should find the answer is \$ 4110.06.
 
 
-Now repeat the calculation for the higher-income scenario. Wait, isn't that the same ? 
+Now repeat the calculation for the higher-income scenario. Wait, isn't that the same ?
 
 
 |   Let me tell you how it will be
@@ -226,11 +226,11 @@ Now repeat the calculation for the higher-income scenario. Wait, isn't that the 
 |   'Cause I'm the taxman
 |   Yeah, I'm the taxman
 |
-|   [Taxman](https://en.wikipedia.org/wiki/Taxman) George Harrison, Revolver 
+|   [Taxman](https://en.wikipedia.org/wiki/Taxman) George Harrison, Revolver
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 # Exercise 3
 
 
@@ -269,7 +269,7 @@ Similarly, any floating-point number, `v`, comes with a `v.as_integer_ratio()` f
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 ## Free play ...
 
 a = 9.4344

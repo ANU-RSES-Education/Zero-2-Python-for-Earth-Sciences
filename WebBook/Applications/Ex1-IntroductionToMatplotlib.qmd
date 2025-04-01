@@ -1,0 +1,429 @@
+---
+title: Plotting graphs with Matplotlib
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.10.3
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
+::: {.callout-note icon=false}
+
+# Summary
+
+Matplotlib is a plotting library for Python and the numerical mathematics extension NumPy. It is handy, ubiquitous, and simple to use for basic tasks. On the other hand, it can be quite difficult to use for consistently producing publication quality figures, and the interface lacks consistency.
+
+:::
+
+## Introduction to matplotlib
+
+Matplotlib will help you to plot graphs from your data, and is a great starting point when you need to see if something is working or not. It can be used for complicated plots and figures for publication of your results. The default interface makes simple tasks trivial but is hard to extend when you need a more refined graph.
+
+   - [Online gallery / cookbook](http://matplotlib.org/gallery.html)
+
+Matplotlib fully embraces the python object-oriented model, but for some tasks the design of the object hierarchy is a little bit counter-intuitive. It's best to find a common pattern for building plots and stick to it.
+
+```{pyodide}
+#| autorun: true
+import matplotlib.pyplot as plt
+import numpy as np
+```
+
+```{pyodide}
+fig = plt.figure(figsize=(6, 4), facecolor="none")
+
+ax = plt.subplot(111) # 1x1 array of plots, ax refers to the 1st of them
+
+# Content is added to the blank axes instance
+# ...
+
+fig.savefig("test-figure.png", dpi=150)
+plt.show()
+```
+
+To look at the rendered image we can either browse with the jupyterlab file browser or, if we are running in the browser, we can use the `display` function from the `IPython.display` module to display the image.
+
+```{pyodide}
+from IPython.display import Image, FileLink
+
+# A link that opens in a new browser window / tab:
+FileLink("test-figure.png")
+
+# Embed the image in the output cell
+display(Image("test-figure.png"))
+
+
+```
+
+### Examples
+
+```{pyodide}
+fig = plt.figure(figsize=(6,6), facecolor="none")
+
+ax = plt.subplot(321)   # 3x2 array of plots, ax refers to the 1st of them
+ax2 = plt.subplot(322)
+
+ax3 = plt.subplot(323)
+ax4 = plt.subplot(324)
+
+ax5 = plt.subplot(325)
+ax6 = plt.subplot(326) # 3x2 array of plots, ax6 refers to the last of them
+
+
+# Content is added to the blank axes instance
+# ...
+
+fig.savefig("test-figure2.png", dpi=150)
+plt.show()  # happens anyway !
+```
+
+```{pyodide}
+# Demo example
+
+x1 = np.linspace(0.0, 5.0)
+x2 = np.linspace(0.0, 2.0)
+
+y1 = np.cos(2 * np.pi * x1) * np.exp(-x1)
+y2 = np.cos(2 * np.pi * x2)
+
+plt.subplot(2, 1, 1)
+plt.plot(x1, y1, 'o-')
+plt.title('A tale of 2 subplots')
+plt.ylabel('Damped oscillation')
+
+plt.subplot(2, 1, 2)
+plt.plot(x2, y2, '.-')
+plt.xlabel('time (s)')
+plt.ylabel('Undamped')
+
+plt.show()
+```
+
+
+```{pyodide}
+# My preference
+
+x1 = np.linspace(0.0, 5.0)
+x2 = np.linspace(0.0, 2.0)
+
+y1 = np.cos(2 * np.pi * x1) * np.exp(-x1)
+y2 = np.cos(2 * np.pi * x2)
+
+# Now set up the plot
+
+fig = plt.figure(figsize=(6,6), facecolor="none")
+
+ax1  = plt.subplot(411)   # 2x1 array of plots, ax refers to the 1st of them
+ax2  = plt.subplot(412)
+ax3  = plt.subplot(413)
+ax4  = plt.subplot(414)
+
+ax1.plot(x1, y1, 'o-')
+ax1.set_title('A tale of 2 subplots')
+ax1.set_ylabel('Damped oscillation')
+ax2.plot(x2, y2, '.-')
+ax2.set_xlabel('time (s)')
+ax2.set_ylabel('Not Damped')
+
+fig.set_size_inches((6,6))
+
+# scatter plot (Note: `plt.scatter` doesn't use default colors)
+x, y = np.random.normal(size=(2, 200))
+ax1.plot(x, y, 'o')
+
+# sinusoidal lines with colors from default color cycle
+L = 2*np.pi
+x = np.linspace(0, L)
+ncolors = len(plt.rcParams['axes.prop_cycle'])
+shift = np.linspace(0, L, ncolors, endpoint=False)
+for s in shift:
+    ax2.plot(x, np.sin(x + s), '-')
+ax2.margins(0)
+
+# bar graphs
+x = np.arange(5)
+y1, y2 = np.random.randint(1, 25, size=(2, 5))
+width = 0.25
+ax3.bar(x, y1, width)
+ax3.bar(x + width, y2, width,
+        color=list(plt.rcParams['axes.prop_cycle'])[2]['color'])
+ax3.set_xticks(x + width)
+ax3.set_xticklabels(['a', 'b', 'c', 'd', 'e'])
+
+# circles with colors from default color cycle
+for i, color in enumerate(plt.rcParams['axes.prop_cycle']):
+    xy = np.random.normal(size=2)
+    ax4.add_patch(plt.Circle(xy, radius=0.3, color=color['color']))
+ax4.axis('equal')
+ax4.margins(0)
+
+plt.show()
+```
+
+### Matplotlib Gallery
+
+The [gallery](https://matplotlib.org/stable/gallery/index.html) is a collection of examples that demonstrate the range ofcapabilities of matplotlib. Source code is provided for each example and they should all work here.
+
+::: {.callout-warning collapse=true icon="false"}
+# Gallery 1 - Line plots with Error Bars
+
+```{pyodide}
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig = plt.figure()
+x = np.arange(10)
+y = 2.5 * np.sin(x / 20 * np.pi)
+yerr = np.linspace(0.05, 0.2, 10)
+
+plt.errorbar(x, y + 3, yerr=yerr, label='both limits (default)')
+
+plt.errorbar(x, y + 2, yerr=yerr, uplims=True, label='uplims=True')
+
+plt.errorbar(x, y + 1, yerr=yerr, uplims=True, lolims=True,
+             label='uplims=True, lolims=True')
+
+upperlimits = [True, False] * 5
+lowerlimits = [False, True] * 5
+plt.errorbar(x, y, yerr=yerr, uplims=upperlimits, lolims=lowerlimits,
+             label='subsets of uplims and lolims')
+
+plt.legend(loc='lower right')
+plt.show()
+```
+
+:::
+
+::: {.callout-warning collapse=true icon="false"}
+
+# Gallery 2 - Triangulation, Contours
+
+```{pyodide}
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+from matplotlib.tri import TriAnalyzer, Triangulation, UniformTriRefiner
+
+
+# ----------------------------------------------------------------------------
+# Analytical test function
+# ----------------------------------------------------------------------------
+def experiment_res(x, y):
+    """An analytic function representing experiment results."""
+    x = 2 * x
+    r1 = np.sqrt((0.5 - x)**2 + (0.5 - y)**2)
+    theta1 = np.arctan2(0.5 - x, 0.5 - y)
+    r2 = np.sqrt((-x - 0.2)**2 + (-y - 0.2)**2)
+    theta2 = np.arctan2(-x - 0.2, -y - 0.2)
+    z = (4 * (np.exp((r1/10)**2) - 1) * 30 * np.cos(3 * theta1) +
+         (np.exp((r2/10)**2) - 1) * 30 * np.cos(5 * theta2) +
+         2 * (x**2 + y**2))
+    return (np.max(z) - z) / (np.max(z) - np.min(z))
+
+# ----------------------------------------------------------------------------
+# Generating the initial data test points and triangulation for the demo
+# ----------------------------------------------------------------------------
+# User parameters for data test points
+
+# Number of test data points, tested from 3 to 5000 for subdiv=3
+n_test = 200
+
+# Number of recursive subdivisions of the initial mesh for smooth plots.
+# Values >3 might result in a very high number of triangles for the refine
+# mesh: new triangles numbering = (4**subdiv)*ntri
+subdiv = 3
+
+# Float > 0. adjusting the proportion of (invalid) initial triangles which will
+# be masked out. Enter 0 for no mask.
+init_mask_frac = 0.0
+
+# Minimum circle ratio - border triangles with circle ratio below this will be
+# masked if they touch a border. Suggested value 0.01; use -1 to keep all
+# triangles.
+min_circle_ratio = .01
+
+# Random points
+random_gen = np.random.RandomState(seed=19680801)
+x_test = random_gen.uniform(-1., 1., size=n_test)
+y_test = random_gen.uniform(-1., 1., size=n_test)
+z_test = experiment_res(x_test, y_test)
+
+# meshing with Delaunay triangulation
+tri = Triangulation(x_test, y_test)
+ntri = tri.triangles.shape[0]
+
+# Some invalid data are masked out
+mask_init = np.zeros(ntri, dtype=bool)
+masked_tri = random_gen.randint(0, ntri, int(ntri * init_mask_frac))
+mask_init[masked_tri] = True
+tri.set_mask(mask_init)
+
+
+# ----------------------------------------------------------------------------
+# Improving the triangulation before high-res plots: removing flat triangles
+# ----------------------------------------------------------------------------
+# masking badly shaped triangles at the border of the triangular mesh.
+mask = TriAnalyzer(tri).get_flat_tri_mask(min_circle_ratio)
+tri.set_mask(mask)
+
+# refining the data
+refiner = UniformTriRefiner(tri)
+tri_refi, z_test_refi = refiner.refine_field(z_test, subdiv=subdiv)
+
+# analytical 'results' for comparison
+z_expected = experiment_res(tri_refi.x, tri_refi.y)
+
+# for the demo: loading the 'flat' triangles for plot
+flat_tri = Triangulation(x_test, y_test)
+flat_tri.set_mask(~mask)
+
+
+# ----------------------------------------------------------------------------
+# Now the plots
+# ----------------------------------------------------------------------------
+# User options for plots
+plot_tri = True          # plot of base triangulation
+plot_masked_tri = True   # plot of excessively flat excluded triangles
+plot_refi_tri = False    # plot of refined triangulation
+plot_expected = False    # plot of analytical function values for comparison
+
+
+# Graphical options for tricontouring
+levels = np.arange(0., 1., 0.025)
+
+fig, ax = plt.subplots()
+ax.set_aspect('equal')
+ax.set_title("Filtering a Delaunay mesh\n"
+             "(application to high-resolution tricontouring)")
+
+# 1) plot of the refined (computed) data contours:
+ax.tricontour(tri_refi, z_test_refi, levels=levels, cmap='Blues',
+              linewidths=[2.0, 0.5, 1.0, 0.5])
+# 2) plot of the expected (analytical) data contours (dashed):
+if plot_expected:
+    ax.tricontour(tri_refi, z_expected, levels=levels, cmap='Blues',
+                  linestyles='--')
+# 3) plot of the fine mesh on which interpolation was done:
+if plot_refi_tri:
+    ax.triplot(tri_refi, color='0.97')
+# 4) plot of the initial 'coarse' mesh:
+if plot_tri:
+    ax.triplot(tri, color='0.7')
+# 4) plot of the unvalidated triangles from naive Delaunay Triangulation:
+if plot_masked_tri:
+    ax.triplot(flat_tri, color='red')
+
+plt.show()
+```
+:::
+
+::: {.callout-warning collapse=true icon="false"}
+
+# Gallery 3 - Hillshading
+
+```{pyodide}
+import matplotlib.pyplot as plt
+import numpy as np
+
+from matplotlib.cbook import get_sample_data
+from matplotlib.colors import LightSource
+
+dem = get_sample_data('jacksboro_fault_dem.npz')
+z = dem['elevation']
+# -- Optional dx and dy for accurate vertical exaggeration --------------------
+# If you need topographically accurate vertical exaggeration, or you don't want
+# to guess at what *vert_exag* should be, you'll need to specify the cellsize
+# of the grid (i.e. the *dx* and *dy* parameters).  Otherwise, any *vert_exag*
+# value you specify will be relative to the grid spacing of your input data
+# (in other words, *dx* and *dy* default to 1.0, and *vert_exag* is calculated
+# relative to those parameters).  Similarly, *dx* and *dy* are assumed to be in
+# the same units as your input z-values.  Therefore, we'll need to convert the
+# given dx and dy from decimal degrees to meters.
+dx, dy = dem['dx'], dem['dy']
+dy = 111200 * dy
+dx = 111200 * dx * np.cos(np.radians(dem['ymin']))
+# -----------------------------------------------------------------------------
+
+# Shade from the northwest, with the sun 45 degrees from horizontal
+ls = LightSource(azdeg=315, altdeg=45)
+cmap = plt.cm.gist_earth
+
+fig, axs = plt.subplots(nrows=4, ncols=3, figsize=(8, 9))
+plt.setp(axs.flat, xticks=[], yticks=[])
+
+# Vary vertical exaggeration and blend mode and plot all combinations
+for col, ve in zip(axs.T, [0.1, 1, 10]):
+    # Show the hillshade intensity image in the first row
+    col[0].imshow(ls.hillshade(z, vert_exag=ve, dx=dx, dy=dy), cmap='gray')
+
+    # Place hillshaded plots with different blend modes in the rest of the rows
+    for ax, mode in zip(col[1:], ['hsv', 'overlay', 'soft']):
+        rgb = ls.shade(z, cmap=cmap, blend_mode=mode,
+                       vert_exag=ve, dx=dx, dy=dy)
+        ax.imshow(rgb)
+
+# Label rows and columns
+for ax, ve in zip(axs[0], [0.1, 1, 10]):
+    ax.set_title(f'{ve}', size=18)
+for ax, mode in zip(axs[:, 0], ['Hillshade', 'hsv', 'overlay', 'soft']):
+    ax.set_ylabel(mode, size=18)
+
+# Group labels...
+axs[0, 1].annotate('Vertical Exaggeration', (0.5, 1), xytext=(0, 30),
+                   textcoords='offset points', xycoords='axes fraction',
+                   ha='center', va='bottom', size=20)
+axs[2, 0].annotate('Blend Mode', (0, 0.5), xytext=(-30, 0),
+                   textcoords='offset points', xycoords='axes fraction',
+                   ha='right', va='center', size=20, rotation=90)
+fig.subplots_adjust(bottom=0.05, right=0.95)
+
+plt.show()
+```
+:::
+
+
+::: {.callout-warning collapse=true icon="false"}
+# Gallery 4 - Statistical Plots
+
+```{pyodide}
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(9, 4))
+
+# Fixing random state for reproducibility
+np.random.seed(19680801)
+
+
+# generate some random test data
+all_data = [np.random.normal(0, std, 100) for std in range(6, 10)]
+
+# plot violin plot
+axs[0].violinplot(all_data,
+                  showmeans=False,
+                  showmedians=True)
+axs[0].set_title('Violin plot')
+
+# plot box plot
+axs[1].boxplot(all_data)
+axs[1].set_title('Box plot')
+
+# adding horizontal grid lines
+for ax in axs:
+    ax.yaxis.grid(True)
+    ax.set_xticks([y + 1 for y in range(len(all_data))],
+                  labels=['x1', 'x2', 'x3', 'x4'])
+    ax.set_xlabel('Four separate samples')
+    ax.set_ylabel('Observed values')
+
+plt.show()
+```
+
+:::

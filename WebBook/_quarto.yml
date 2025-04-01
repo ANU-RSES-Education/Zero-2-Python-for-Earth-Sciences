@@ -1,14 +1,13 @@
 project:
   type: book
-  output-dir: ../_build/book
-
+  output-dir: _build/book
 
 book:
-  title: "EMSC - Get Going with Python "
-  author: 
+  title: "Zero 2 Python for Earth Sciences"
+  author:
     - "Louis Moresi"
     - "Andrew Valentine"
-  date: "06/03/2024"
+  date: "06/04/2025"
   bread-crumbs: True
   chapters:
     - part: "**Introduction**"
@@ -19,6 +18,7 @@ book:
 
     - part: "**Basic Language Skills**"
       chapters:
+        # - Basics/Intro.qmd
         - Basics/Ex1-IntroWebPython.qmd
         - Basics/Ex2-Variables.qmd
         - Basics/Ex2a-Functions.qmd
@@ -29,21 +29,30 @@ book:
         - Basics/Ex7-Strings.qmd
         - Basics/Ex8-ReadWriteFiles.qmd
 
-    - part: "**Version Control**"
-      chapters:
-        - Introduction2VersionControl/1-GettingStartedWithGit.qmd
-        - Introduction2VersionControl/2-NextStepsWithGit.qmd
-        - Introduction2VersionControl/3-YourOwnRepositories.qmd
+    # - part: "**Version Control**"
+    #   chapters:
+    #     - Introduction2VersionControl/1-GettingStartedWithGit.qmd
+    #     - Introduction2VersionControl/2-NextStepsWithGit.qmd
+    #     - Introduction2VersionControl/3-YourOwnRepositories.qmd
 
+    # - part: "**Advanced Language Skills**"
+    #   chapters:
+    #     - Advanced/Intro.qmd
+    #  Classes / Objects
+    #  Modules
+    #  Exceptions
+    #  Decorators
+    #
 
-    - part: "**Advanced Language Skills**"
+    - part: "**Applications for Earth Sciences**"
       chapters:
-        - Advanced/Intro.qmd
+        - Applications/Ex1-IntroductionToMatplotlib.qmd
+        - Applications/Ex1-IntroductingCartopy.qmd
 
     # - part: "Next steps: Becoming a Code Developer"
     #   chapters:
     #     - DevSkills/Intro.qmd
-    
+
     # - part: "Notebooks"
     #   chapters:
     #   - Notebooks/Introduction.qmd
@@ -53,9 +62,9 @@ book:
     #   chapters:
     #     - LectureSlides/Lecture1.qmd
 
-    - part: "Work in Progress"
-      chapters:
-      - _WIP/Test_Pyodide.qmd
+    # - part: "Work in Progress"
+    #   chapters:
+    #     - _WIP/Test_Pyodide.qmd
 
   # appendices:
   #   - Notebooks/BinderLandingPage.qmd
@@ -74,23 +83,22 @@ book:
     background: "white"
     # foreground: "#C58812" # ANU honey colour
 
-
 bibliography: references.bib
 
-execute: 
+execute:
   enabled: false
-  
+
 format:
-  html:
-    theme:  [united, "assets/theme.scss"] # united / simplex / flatly
+  live-html:
+    theme: [united, "assets/theme.scss"] # united / simplex / flatly
     mainfont: "Jost"
     fontsize: 0.9em
     linestretch: 1.7
     linkcolor: "#C58812"
     number-sections: false
     number-depth: 1
-    filters:
-      - pyodide
+    # filters:
+    #   - pyodide
 
     code-links:
       - text: Open in Binder
@@ -100,9 +108,6 @@ format:
       - text: Github Repository
         icon: github
         href: https://github.com/ANU-RSES-Education/EMSC-getting-going-with-python
-  
+
   # pdf:
   #   documentclass: scrreprt
-
-
-

@@ -72,7 +72,7 @@ for i in range(istart, istop, istep):
 This will print `istart`, `istart + istep`, `istart + 2*istep` etc, but not any value equal to or greater than `istep`.
 
 ::: {.callout-tip collapse="true" icon="false"}
-## Exercise 1 - Try out the for loop 
+## Exercise 1 - Try out the for loop
 
 **Rewrite our previous while loop test-case as a for loop**. Note that the full syntax of the `range` function is `range(start, end, step)` which allows you to skip by 5 as we previously did. You may need to read the help and try the examples above.
 
@@ -80,16 +80,16 @@ This will print `istart`, `istart + istep`, `istart + 2*istep` etc, but not any 
 x = 1
 while x < 100:
     x+=5
-    if x == 71: 
+    if x == 71:
         break
-    if x%2 == 0: 
+    if x%2 == 0:
         continue # Skip even values of x
     print("In loop: x=", x)
 
 print("After loop: x=", x)
 ```
 
-```{pyodide-python}
+```{pyodide}
 
 for x in range(100):
     ...
@@ -102,7 +102,7 @@ for x in range(100):
 ### A loop to calculate $\pi$
 
 The value of $\pi$ can be found via an infinite sum
-$\pi = 2 \sum_{k=0}^\infty 2^k (k!)^2 / (2k+1)!$, 
+$\pi = 2 \sum_{k=0}^\infty 2^k (k!)^2 / (2k+1)!$,
 where $n!$ denotes the factorial of $n$, i.e., $n! = n(n-1)(n-2)\ldots 1$. This can be computed by initialising a variable to contain the value `1`, and then looping through the integers up to `n` multiplying the variable by each.
 
 ::: {.callout-tip collapse="true" icon="false"}
@@ -151,7 +151,7 @@ The iterable created by `enumerate` returns a tuple of `(index, object)` pairs, 
 
 :::
 
-### zip 
+### zip
 
 Another common circumstance is that we have two (or more) collections, and we want to access the $i$-th element of each simultaneously. Again, this could be achieved using something like:
 ```python
@@ -160,7 +160,7 @@ b = ['a', 'b', 'c']
 for i in range(len(a)):
     print("The letter associated with ", a[i], " is ", b[i])
 ```
-but Python also provides the `zip` function for this purpose: 
+but Python also provides the `zip` function for this purpose:
 ```python
 a = [3, 5, 7]
 b = ['a', 'b', 'c']
@@ -207,10 +207,10 @@ can be used to construct a dictionary.
 ::: {.callout-tip collapse="true" icon="false"}
 ## Exercise 4 - list comprehension loop
 
-**Try the examples above** ... they really do work even if they look quite hard to follow. Maybe you don't feel confident writing code like this (in which case - don't, it's not important to do fancy things) but it is important to be able to understand what is done if you come across this idiomatic code.   
+**Try the examples above** ... they really do work even if they look quite hard to follow. Maybe you don't feel confident writing code like this (in which case - don't, it's not important to do fancy things) but it is important to be able to understand what is done if you come across this idiomatic code.
 
 
-```{pyodide-python}
+```{pyodide}
 
 a = {x: y for x, y in zip(["a", "b", "c"], [1, 2, 3])}
 
@@ -265,7 +265,7 @@ If we continue this procedure, we will find that we do not cross out any more nu
 
 **Write a function that takes a single input, $N$, and returns the list of all prime numbers less than $N$.** *Hint: use the 'sieve of Eratosthenes' that we just told you about ! Also: use a `for` loop !*
 
-```{pyodide-python}
+```{pyodide}
 # The sieve of Eratosthenes
 
 ...
@@ -287,7 +287,7 @@ If we continue this procedure, we will find that we do not cross out any more nu
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 ## Scratch space / notepad
 
 

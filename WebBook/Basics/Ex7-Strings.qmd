@@ -21,7 +21,7 @@ In this section we look at the way we can manipulatre character strings so that 
 
 Until now, we have mainly been dealing with numeric data (numbers). However, it is often necessary to process text sequences, referred to as 'character strings'. In this section, we will see some of the mechanisms Python provides for text processing. Even when we are not processing lots of text, we do need to be able to read and write the results of our work and the starting point for that is text manipulation.
 
-As we have already seen, any literal text sequence can be entered between a pair of inverted commas (" " or ' '), and stored to a variable. Python allows both single and double quotes to be used (not all languages do, so be careful if translating this sort of thinking to another language in the future). 
+As we have already seen, any literal text sequence can be entered between a pair of inverted commas (" " or ' '), and stored to a variable. Python allows both single and double quotes to be used (not all languages do, so be careful if translating this sort of thinking to another language in the future).
 
 ```python
 name = "Hamlet"
@@ -69,11 +69,11 @@ However, most other 'mathematical' operators (such as subtraction and division) 
 
 
 ::: {.callout-tip collapse="true" icon="false"}
-## Exercise 1 - familiarisation 
+## Exercise 1 - familiarisation
 
 **Try the string manipulation examples above to make sure you understand them**
 
-```{pyodide-python}
+```{pyodide}
 
 name = "Hamlet"
 quote = "To be or not to be: that is the question."
@@ -99,7 +99,7 @@ However, we can obtain an integer or float variable by using the `int` and `floa
 print(int(x) + int(y)) # prints '9'
 print(float(x) + float(y)) # prints '9.0'
 ```
-This only works if the string is a plausible representation of a single number.  `int('3 6')` is assumed to correspond to two distinct numbers, and so they cannot be converted to a single integer and python does not automatically return a tuple such as `(3,6)`. Similarly, while numbers containing a decimal point can be converted to floating-point form, they cannot be interpreted as an integer. 
+This only works if the string is a plausible representation of a single number.  `int('3 6')` is assumed to correspond to two distinct numbers, and so they cannot be converted to a single integer and python does not automatically return a tuple such as `(3,6)`. Similarly, while numbers containing a decimal point can be converted to floating-point form, they cannot be interpreted as an integer.
 
 ### Substrings
 
@@ -141,11 +141,11 @@ for letter in quote:
     print(letter)
 ```
 ::: {.callout-tip collapse="true" icon="false"}
-## Exercise 2 - string iterations 
+## Exercise 2 - string iterations
 
 **Try the string sampling examples above to make sure you understand them**. We will encounter this syntax again when we look at handling large data arrays and matrices, so your effort will not be wasted,
 
-```{pyodide-python}
+```{pyodide}
 
 quote = "To be or not to be: that is the question."
 print(quote[2:35:3])
@@ -181,7 +181,7 @@ As with other data types, Python provides a number of functions to work with a s
   - `s.swapcase()` - Return a version of `s` where all UPPER CASE characters are converted to lower case and vice versa.
   - `s.center(n)` - Create a string of length `n` containing a copy of `s` centered within this. By default, this is achived by padding with spaces (' ') before and after `s`; optionally, you can specify a different charater. For example, `'hello'.center(11, '_')` returns `'___hello___'`.
   - `s.ljust(n)` - Create a string of length `n` containing a copy of `s` at its left. Optionally, specify a character to use for padding. Similarly, `s.rjust(n)` places `s` at the right of the `n`-character string.
-  - `s.strip()` - Return a copy of `s` with all whitespace removed. `s.lstrip()` and `s.rstrip()` are variants removing whitespace only at the start or end of the string, respectively. For example, `'elephant'.strip('e')` returns `'lephant'`. 
+  - `s.strip()` - Return a copy of `s` with all whitespace removed. `s.lstrip()` and `s.rstrip()` are variants removing whitespace only at the start or end of the string, respectively. For example, `'elephant'.strip('e')` returns `'lephant'`.
 
 
 ::: {.callout-tip collapse="true" icon="false"}
@@ -191,7 +191,7 @@ As with other data types, Python provides a number of functions to work with a s
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 
 
 
@@ -201,7 +201,7 @@ As with other data types, Python provides a number of functions to work with a s
 
 Use this block to get help on the string methods
 
-```{pyodide-python}
+```{pyodide}
 
 help(string.capitalize)
 
@@ -238,7 +238,7 @@ Pay attention to producing uniform formatting of the text !
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 
 
 
@@ -250,11 +250,11 @@ As you may have noticed, Python's `print` function often displays information to
 
 Python 3 provides three different frameworks for string formatting. In each, you create a string containing placeholders for the contents of each variable you want to output, then insert the data into these. The different methods for formatting are evolutions of an original idea and the older ones are retained so that older code does not have to be rewritten. There is a [discussion](https://realpython.com/python-f-strings/) about this on the Real Python website that is a worthwhile read.
 
-Literal strings like `"this string"` are common in python and we often see them in `print` statements and variable assignments. We saw that there are some special characters that can be inserted into strings using the `\` character and that these are used to build strings with (for example) line endings, tabs and so on. We can over-ride this behaviour by adding another `\` character but this can get pretty cumbersome pretty quickly. 
+Literal strings like `"this string"` are common in python and we often see them in `print` statements and variable assignments. We saw that there are some special characters that can be inserted into strings using the `\` character and that these are used to build strings with (for example) line endings, tabs and so on. We can over-ride this behaviour by adding another `\` character but this can get pretty cumbersome pretty quickly.
 
 To get around this, we can write strings like this:
 
-```{pyodide-python}
+```{pyodide}
 # | read-only: true
 
 # Compare this
@@ -265,15 +265,15 @@ print("To add newlines and tabs to astring use \n and a \t character")
 print(r"To add newlines and tabs to astring use \n and a \t  character")
 ```
 
-The last example has a 'raw' string - the `r"...` tells python to ingest this particular string without processing any of the special character sequences. 
+The last example has a 'raw' string - the `r"...` tells python to ingest this particular string without processing any of the special character sequences.
 
-An 'f-string' is a similar idea but works in the opposite direction (don't ignore, do more !). It tells python to parse this particular string by **executing code** that it finds enclosed in `{ }` pairs. 
+An 'f-string' is a similar idea but works in the opposite direction (don't ignore, do more !). It tells python to parse this particular string by **executing code** that it finds enclosed in `{ }` pairs.
 
-There is an f-string [*mini-language*](https://docs.python.org/3/library/string.html#format-specification-mini-language) that allows 
+There is an f-string [*mini-language*](https://docs.python.org/3/library/string.html#format-specification-mini-language) that allows
 
 Here are some examples
 
-```{pyodide-python}
+```{pyodide}
 
 x = 3.0
 y = -2
@@ -299,13 +299,13 @@ print(f"{string} is the value of x: {x}")
 print("{} is the value of x: {}".format(string, x))
 ```
 
-The first way to write things in clearly less prone to error because you write the subsitution in place and don't have to take care to match the arguments of the substitution with the placeholders in the string one by one. 
+The first way to write things in clearly less prone to error because you write the subsitution in place and don't have to take care to match the arguments of the substitution with the placeholders in the string one by one.
 
 Remember this pattern: look for ways people can make mistakes and write code that makes the mistakes less likely. It's always a good idea, not just for string formatting.
 
-The official python docuementation has a [tutorial](https://docs.python.org/3/tutorial/inputoutput.html) on formatting strings. 
+The official python docuementation has a [tutorial](https://docs.python.org/3/tutorial/inputoutput.html) on formatting strings.
 
-```{pyodide-python}
+```{pyodide}
 
 num = 87
 print(f"Is num even? {True if num%2==0 else False}")
@@ -323,13 +323,13 @@ $$\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).$$
 
 
 ::: {.callout-tip collapse="true" icon="false"}
-## Exercise 5 - Tables using f-strings 
+## Exercise 5 - Tables using f-strings
 
 **Repeat the table-formatting example, making use of the string formatting capabilities**. Pay particular attention to using the string formatting to size the columns and align the contents. Can you fill  the empty space with dashes instead of space ?
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 
 # Exercise 5
 
@@ -339,19 +339,19 @@ We will encounter many more text-formatting examples in later exercises and cert
 
 ## Worked Example: 'Caesar' cipher
 
-As we have already discussed, every piece of information within a computer must be organised and represented in binary form. This implies that the sequence of letters in the alphabet can be mapped onto the set of integers, and this is usually done via the 'ASCII' code sequence. 
+As we have already discussed, every piece of information within a computer must be organised and represented in binary form. This implies that the sequence of letters in the alphabet can be mapped onto the set of integers, and this is usually done via the 'ASCII' code sequence.
 
 Python provides the function `chr(integer)` to convert integers into their ASCII alphanumeric equivalent.
 
 ::: {.callout-tip collapse="true" icon="false"}
-## Exercise 6 - Character manipulation 
+## Exercise 6 - Character manipulation
 
 **Write a loop to print the integers from 33 up to 128, and their ASCII equivalents.** (The first 32 ASCII codes are special control characters, and do not have alphanumeric equivalents).
 
 :::
 
 
-```{pyodide-python}
+```{pyodide}
 # Exercise 6
 ```
 
@@ -369,7 +369,7 @@ because 'J' is one letter after 'I', 'm' is one after 'l', and so on.
 
 
 ::: {.callout-tip collapse="true" icon="false"}
-## Exercise 7 - Hail Caesar ! 
+## Exercise 7 - Hail Caesar !
 
 **Write a function to encode messages using Caesar ciphers (for any choice of $N$).** Note that the 'decoder' is simply the 'encoder', but instead using $-N$.
 
@@ -381,12 +381,12 @@ Pfl yrmv wzezjyvu kyzj vovitzjv
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 # Exercise 7
 ```
 
 
-### Older approaches to string formatting {#sec-older-strings} 
+### Older approaches to string formatting {#sec-older-strings}
 
 ::: {.callout-warning collapse="true" icon="true"}
 
@@ -437,7 +437,7 @@ def print_result(result,number_of_decimal_places):
 However, this is best avoided if possible.
 
 
-```{pyodide-python}
+```{pyodide}
 # Try the % format for string formatting
 
 ...
@@ -453,7 +453,7 @@ s = "One eleventh is approximately {:.2f}"
 print(s)
 print(s.format(x))
 ```
-Similarly, 
+Similarly,
 ```python
 phrase = '{} litres of {} at ${:.2f}/L costs a total of ${:.2f}'
 print(phrase.format(2, 'milk', 1.29, 2*1.29))
@@ -477,7 +477,7 @@ print(phrase.format('cat', 'dog'))
 :::
 
 
-```{pyodide-python}
+```{pyodide}
 # Try the {} format for string formatting
 
 ...
@@ -491,7 +491,7 @@ print(phrase.format('cat', 'dog'))
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 ## Scratch space / notepad
 
 print("Comment out this code with the keyboard shortcut !")

@@ -1,16 +1,19 @@
 ---
 title: Reading and writing files
-author: 
+author:
     - Andrew Valentine
     - Louis Moresi
-jupyter: python3
-format:
-  html:
-    code-links: false
-#       - text: Run it here !
-#         icon: rocket-takeoff
-#         ref: https://mybinder.org/v2/gh/ANU-RSES-Education/EMSC-getting-going-with-python/HEAD?labpath=WebBook/Notebooks%2FBinderLandingPage.qmd
-
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.6
+kernelspec:
+  display_name: Python (Pixi)
+  language: python
+  name: pixi-kernel-python3
 ---
 
 ::: {.callout-note icon=false}
@@ -29,13 +32,13 @@ The simplest file format for storing and transferring scientific data is a plain
 Reading ascii files in Python is a four-step process: 1. Open the file; 2. Read each line from the file; 3. Parse each line (i.e., extract the required information from it); 4. Close the file.
 
 ::: {.callout-important collapse=true icon="true"}
-## Setup Code (run this first !)
+## Setup Code (runs first)
 
-We need to make sure the data file we are going to use is saved on your computer so we first have to make a copy into the sandbox file system we are using (this area is deleted whenever we reload this page)
+We need to make sure the data file we are going to use is saved on your computer so we first have to make a copy into the sandbox file system we are using (this area is deleted whenever we reload this page). The code below should have run as the page loads. Check that the file is in the correct location, and re-run the setup code if it is not there.
 
-```{pyodide-python}
-#| context: interactive
-#| read-only: true
+```{pyodide}
+#| autorun: true
+
 
 # This downloads the sample.dat file we need for the examples
 # Please run this cell first
@@ -50,13 +53,16 @@ if response.status_code == 200:
         file.write(response.content)
 ```
 
-We can check to see if the file is available 
+We can check to see if the file is available
 
-```{pyodide-python}
+```{pyodide}
 import os
 
 if os.path.exists("sample.dat"):
     print("File 'sample.dat' downloaded correctly")
+else:
+    print("File 'sample.dat' was not found")
+
 
 ```
 
@@ -116,7 +122,7 @@ Here is a hint that you might see in python code elsewhere. If you precede a str
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 
 
 
@@ -129,9 +135,9 @@ Here is a hint that you might see in python code elsewhere. If you precede a str
 
 Opening and closing files explicitly is useful to illustrate how Python handles reading and writing files. However, doing this in practice can get quite messy because these 'connections' to files stay open until you explicitly close them. With single files, this can lead to data corruption and data loss, with more complex scripts you might open 10,000 files and not close any of them - you may then run into some limit on the system that will block your script or may block some other work that you are trying to do.
 
-Python has a really handy construct for dealing with this issue automatically and you will doubtless see code that uses '[context managers](https://jeffknupp.com/blog/2016/03/07/python-with-context-managers/)' aka `with` statements. 
+Python has a really handy construct for dealing with this issue automatically and you will doubtless see code that uses '[context managers](https://jeffknupp.com/blog/2016/03/07/python-with-context-managers/)' aka `with` statements.
 
-This is not a very intuitive choice of language but, once you recognise what is happening, you will be able to understand python programs more easily. Any time you have an action which needs some clearing-up to be done afterwards, the context manager handles everything behind the scenes. 
+This is not a very intuitive choice of language but, once you recognise what is happening, you will be able to understand python programs more easily. Any time you have an action which needs some clearing-up to be done afterwards, the context manager handles everything behind the scenes.
 
 In the case of reading/writing files, you create a 'context' that contains a connection to a file, which is automatically closed when the code within the context is finished. This is a bit complicated to follow, but file-management is a very clear example of how it works.
 
@@ -156,7 +162,7 @@ Can you test to see if the `fp` was closed / deleted after the statement complet
 :::
 
 
-```{pyodide-python}
+```{pyodide}
 # Exercise 2
 # Did the fp get closed / deleted ?
 
@@ -174,14 +180,14 @@ Read the data from this file, compute the density of each sample and hence the a
 
  - *You will need to parse the individual strings and store the information for your calculations.*
 
- - Output the information to the screen with print statements so that you can validate your results. 
+ - Output the information to the screen with print statements so that you can validate your results.
 
- :::
-
-
-```{pyodide-python}
+:::
 
 
+```{pyodide}
+
+...
 
 
 
@@ -191,7 +197,7 @@ Read the data from this file, compute the density of each sample and hence the a
 
 ### Writing data to a file
 
-We don't want to have to repeat this work once the processing is done, so we would like to write out the new information to a file. 
+We don't want to have to repeat this work once the processing is done, so we would like to write out the new information to a file.
 
 To write data to file, we need to first open the file for writing. This can be done by using 'w' instead of 'r' when opening the file. Note that if a file already exists with the specified name, it will be immediately overwritten and lost. To avoid this, you can instead use 'x' when opening the file. This will throw an error if there is an existing file, rather than overwrite it. Again, when opening the file it is important to assign the result of open() to a variable, so we can write to it.
 
@@ -222,15 +228,15 @@ Create a new file, based on the data you read earlier. It should contain three c
 :::
 
 
-```{pyodide-python}
-# Exercise 4
+```{pyodide}
 
-
+# Exercise 4 - write data to a new file
+#
+#
 
 ```
 
 From the examples above, we just saw how to read and write data using Python built-in methods. These are good for simple files, but not for more complex information such as an Excel spreadsheet. Later in the course, we will encounter a number of more sophisticated tools that can help us with these kinds of files.
-
 
 
 
@@ -240,12 +246,13 @@ From the examples above, we just saw how to read and write data using Python bui
 
 ## Coding scratch space
 
-:::
- 
-```{pyodide-python}
+
+```{pyodide}
 ## Scratch space / notepad
 
 print("Comment out this code with the keyboard shortcut !")
 
 
 ```
+
+:::

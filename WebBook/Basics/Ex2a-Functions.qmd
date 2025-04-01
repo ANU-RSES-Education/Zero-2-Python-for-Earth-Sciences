@@ -1,6 +1,6 @@
 ---
 title: Functions
-author: 
+author:
     - Andrew Valentine
     - Louis Moresi
 jupyter: python3
@@ -67,7 +67,7 @@ Create the `addThreeNumbers` function and try it out
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 # Exercise 1 - A function to add three numbers
 
 
@@ -115,7 +115,7 @@ sgn, val = signAndValue(x)
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 # Exercise 2 - What does signAndValue() do ?
 
 
@@ -202,7 +202,7 @@ def printArgs(a, b, c=17, d=4.3):
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 # Exercise 4
 def sumIntegers(N, n0):
     result = 0
@@ -263,8 +263,8 @@ If you leave out the `global x` then `x` will be undefined in the function as it
 
 :::
 
-```{pyodide-python}
-# Exercise 4 
+```{pyodide}
+# Exercise 4
 
 ```
 
@@ -281,10 +281,10 @@ def setup():
         # Do system setup tasks
         ...
     else:
-        # check system is ok    
+        # check system is ok
         ...
-    
-    return 
+
+    return
 ```
 
 Generally speaking, functions using `global` variables in this way is a poor choice of implementation because some hidden code is modifying the global state without us, as users, being in control or even aware. We do often define variables of this nature when we use python objects that have a special internal (private) state. We will learn about this later.
@@ -300,9 +300,9 @@ help(print)
 ```{text}
     Help on built-in function print in module builtins:
 
-    print(\*args, sep=' ', end='\n', file=None, flush=False) 
+    print(\*args, sep=' ', end='\n', file=None, flush=False)
         Prints the values to a stream, or to sys.stdout by default.
-        
+
     sep
         string inserted between values, default a space.
     end
@@ -325,12 +325,12 @@ In scientific Python, docstrings usually follow a certain style, e.g.:
 ``` python
 def increment(x):
     """increment x.
-    
+
     Parameters
     ----------
     x : integer
         the number you want to increament
-    
+
     Returns
     -------
     x : integer
@@ -353,7 +353,7 @@ def increment(x):
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 # Exercise 4
 
 
@@ -375,7 +375,7 @@ help(increment)
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 ## Scratch space / notepad
 
 print("Comment out this code with the keyboard shortcut !")

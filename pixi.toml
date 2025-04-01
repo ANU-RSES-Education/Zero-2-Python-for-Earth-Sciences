@@ -1,0 +1,11 @@
+[workspace]
+authors = ["Louis Moresi <louis.moresi@anu.edu.au>"]
+channels = ["conda-forge"]
+name = "Zero-2-Python-for-Earth-Sciences"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+quarto = ">=1.6.42,<2"

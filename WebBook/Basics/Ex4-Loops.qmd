@@ -1,6 +1,6 @@
 ---
-title: Loops 
-author: 
+title: Loops
+author:
     - Louis Moresi
     - Andrew Valentine
 jupyter: python3
@@ -15,7 +15,7 @@ format:
 ::: {.callout-note icon="false"}
 # Summary
 
-In this section we introduce loops that allow repeated execution of an algorithm with a defined series of input values. 
+In this section we introduce loops that allow repeated execution of an algorithm with a defined series of input values.
 
 :::
 
@@ -23,7 +23,7 @@ In this section we introduce loops that allow repeated execution of an algorithm
 Much of the power in programming comes from being able to repeat calculations, and change how our program works depending on the values of certain variables along the way. To achieve this, we need to employ 'loop expressions' and build on our use of 'conditional expressions'.
 
 
-Loops allow you to repeat a series of calculations a number of times, or until certain conditions are met. In Python, there are two main loop formats. 
+Loops allow you to repeat a series of calculations a number of times, or until certain conditions are met. In Python, there are two main loop formats.
 
 ### The `while` loop
 
@@ -54,9 +54,9 @@ For example:
 x = 1
 while x < 100:
     x+=5
-    if x == 71: 
+    if x == 71:
         break
-    if x%2 == 0: 
+    if x%2 == 0:
         continue # Skip even values of x
     print("In loop: x=", x)
 
@@ -66,23 +66,22 @@ If you run this code, you will see that it never prints an even number (since th
 
 
 ::: {.callout-tip collapse="true" icon="false"}
-## Exercise 1 - While loop 
+## Exercise 1 - While loop
 
 **Try the while loop example above and modify to see how it works**
 
 When you run the while loop code above, you will see that it never prints an even number (since the print statement is after the `continue` in this case, and so doesn't get executed); moreover, the loop terminates at `x=71`, due to the `break` statement.
 
-:::
-
-
-```{pyodide-python}
+```{pyodide}
 # Exercise 1 - while loops
 
 x = 1
 ...
 
-
 ```
+
+:::
+
 
 
 ::: {.callout-important  collapse=none icon="false"}
@@ -118,10 +117,7 @@ You start by picking 2 apples at a time, but after doing this 50 times you get b
 
 **Write a function containing a loop to return the number of apples in your basket after each pick**
 
-:::
-
-
-```{pyodide-python}
+```{pyodide}
 
 # Exercise 2 - apples
 number_of_apples = 0
@@ -129,30 +125,72 @@ number_of_apples = 0
 
 ```
 
+:::
+
 
 ::: {.callout-tip collapse="true" icon="false"}
 ## Exercise 3 - problem solving (ii)
 
-Suppose you take out a $\$$500,000 mortgage to buy a house. You make a repayment of \$2,000 each month. However, each month the bank charges interest at a rate of 0.3% of the outstanding balance. How many months will it take you to pay off the debt? How much does it cost you?
+Suppose you take out a \$500,000 mortgage to buy a house. You make a repayment of \$2,000 each month. However, each month the bank charges interest at a rate of 0.3% of the outstanding balance. How many months will it take you to pay off the debt? How much does it cost you?
 
-**Write a function to calculate this information for any loan amount, interest rate and monthly repayment. Print the amount outstanding each month** 
+**Write a function to calculate this information for any loan amount, interest rate and monthly repayment. Print the amount outstanding each month**
 
-:::
+```{python}
+# Exercise 3 - template answer for the function
 
-```{pyodide-python}
-# Exercise 3 - $$$
+loan_amount = 500000.00
 
-i_owe_the_bank = 500000.00
+def function_repayments(loan_amount, monthly_interest_rate, monthly_replayment):
+    """This function ..."""
+    ...
 
+    return total_number_of_months
+
+# Test it based on your
+
+if function_repayments(500000, 0.3, 2000) != 460:
+    print("There is a problem ... ")
+
+help(function_repayments)
 ...
 
 ```
 
+```{pyodide}
+# Exercise 3 - $ d
 
-Note: there are other loops that we can use in python (e.g. the `for` loop) and we will see these later. 
+loan_amount = 500000
+
+______
+
+```
+:::
 
 
+Note: there are other loops that we can use in python (e.g. the `for` loop) and we will see these later.
 
+
+<!--
+# Exercise 3 - template answer
+
+loan_amount = 500000.00
+
+def function_repayments(loan_amount, monthly_interest_rate, monthly_replayment):
+    ''' This function ...
+
+    '''
+    ...
+
+    return total_number_of_months
+
+
+# Test
+
+if function_repayments(500000, 0.3, 2000) != 460:
+    print( "There is a problem ... " )
+
+help(function_repayments)
+-->
 
 ::: {.callout-warning icon="false"}
 
@@ -160,7 +198,7 @@ Note: there are other loops that we can use in python (e.g. the `for` loop) and 
 
 :::
 
-```{pyodide-python}
+```{pyodide}
 ## Scratch space / notepad
 
 

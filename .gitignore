@@ -14,3 +14,6 @@ WebSlides/.quarto/*
 
 ## Generated folder
 Basics4Binder
+# pixi environments
+.pixi
+*.egg-info

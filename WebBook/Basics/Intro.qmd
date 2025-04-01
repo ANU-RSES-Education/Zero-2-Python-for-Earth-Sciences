@@ -1,16 +1,9 @@
 ---
-title: Introduction
-author: 
+title: Introduction (Basics)
+author:
     - Louis Moresi
 jupyter: python3
-format:
-  html:
-    code-links: false
-#       - text: Run it here !
-#         icon: rocket-takeoff
-#         ref: https://mybinder.org/v2/gh/ANU-RSES-Education/EMSC-getting-going-with-python/HEAD?labpath=WebBook/Notebooks%2FBinderLandingPage.qmd
-
 ---
 
-In this section ... 
 
+In this section there are some basic Python concepts.
