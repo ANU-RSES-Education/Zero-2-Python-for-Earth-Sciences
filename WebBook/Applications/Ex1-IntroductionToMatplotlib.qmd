@@ -34,13 +34,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 ```
 
+In matplotlib, the figure is the top-level container for all the plot elements but it does little more than hold onto sets of *axes* which are the primary objects you will interact with.
+
+
 ```{pyodide}
 fig = plt.figure(figsize=(6, 4), facecolor="none")
 
 ax = plt.subplot(111) # 1x1 array of plots, ax refers to the 1st of them
 
 # Content is added to the blank axes instance
-# ...
+
+ax.plot(np.linspace(0, 10, 100), np.sin(np.linspace(0, 10, 100)))
 
 fig.savefig("test-figure.png", dpi=150)
 plt.show()
@@ -67,18 +71,18 @@ fig = plt.figure(figsize=(6,6), facecolor="none")
 
 ax = plt.subplot(321)   # 3x2 array of plots, ax refers to the 1st of them
 ax2 = plt.subplot(322)
-
 ax3 = plt.subplot(323)
 ax4 = plt.subplot(324)
-
 ax5 = plt.subplot(325)
 ax6 = plt.subplot(326) # 3x2 array of plots, ax6 refers to the last of them
 
+ax.plot(np.linspace(0, 10, 100), np.sin(1*np.linspace(0, 10, 100)))
+ax2.plot(np.linspace(0, 10, 100), np.sin(2*np.linspace(0, 10, 100)))
+ax3.plot(np.linspace(0, 10, 100), np.sin(3*np.linspace(0, 10, 100)))
+ax4.plot(np.linspace(0, 10, 100), np.sin(4*np.linspace(0, 10, 100)))
+ax5.plot(np.linspace(0, 10, 100), np.sin(5*np.linspace(0, 10, 100)))
+ax6.plot(np.linspace(0, 10, 100), np.sin(6*np.linspace(0, 10, 100)))
 
-# Content is added to the blank axes instance
-# ...
-
-fig.savefig("test-figure2.png", dpi=150)
 plt.show()  # happens anyway !
 ```
 

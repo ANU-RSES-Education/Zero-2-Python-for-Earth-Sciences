@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: _build/book
+  output-dir: ../_build/book
 
 book:
   title: "Zero 2 Python for Earth Sciences"
