@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Plotting graphs with Matplotlib – Zero 2 Python for Earth Sciences</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Applications/Ex1-IntroductingCartopy.html" rel="next">
+<link href="../Basics/Ex8-ReadWriteFiles.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-9122fe7c0a823d2833bb4c67751560f8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/ANU-logo.jpg" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Zero 2 Python for Earth Sciences</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Applications/Ex1-IntroductionToMatplotlib.html"><strong>Applications for Earth Sciences</strong></a></li><li class="breadcrumb-item"><a href="../Applications/Ex1-IntroductionToMatplotlib.html"><span class="chapter-title">Plotting graphs with Matplotlib</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../assets/AuWorldEQ.jpg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>Introduction</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">EMSC e-Course template</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What kind of Language is Python ?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../TLDR.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">TLDR - Python Phrase Book</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>Basic Language Skills</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Basics/Ex1-IntroWebPython.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python on the web</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Basics/Ex2-Variables.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Basics/Ex2a-Functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Basics/Ex3-Conditionals.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conditional expressions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Basics/Ex4-Loops.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Basics/Ex5-ListsEtc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lists, tuples and dictionaries</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Basics/Ex6-MoreLoops.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">More about loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Basics/Ex7-Strings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Strings</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Basics/Ex8-ReadWriteFiles.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Reading and writing files</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>Applications for Earth Sciences</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Applications/Ex1-IntroductionToMatplotlib.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Plotting graphs with Matplotlib</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Applications/Ex1-IntroductingCartopy.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction to Cartopy for Map-making</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-matplotlib" id="toc-introduction-to-matplotlib" class="nav-link active" data-scroll-target="#introduction-to-matplotlib">Introduction to matplotlib</a>
+  <ul class="collapse">
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#matplotlib-gallery" id="toc-matplotlib-gallery" class="nav-link" data-scroll-target="#matplotlib-gallery">Matplotlib Gallery</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://github.com/ANU-RSES-Education/EMSC-getting-going-with-python"><i class="bi bi-github"></i>Github Repository</a></li></ul></div><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://mybinder.org/v2/gh/ANU-RSES-Education/EMSC-getting-going-with-python/HEAD?labpath=WebBook/BinderLandingPage.qmd"><i class="bi bi-rocket-takeoff"></i>Open in Binder</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Applications/Ex1-IntroductionToMatplotlib.html"><strong>Applications for Earth Sciences</strong></a></li><li class="breadcrumb-item"><a href="../Applications/Ex1-IntroductionToMatplotlib.html"><span class="chapter-title">Plotting graphs with Matplotlib</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Plotting graphs with Matplotlib</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Summary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Matplotlib is a plotting library for Python and the numerical mathematics extension NumPy. It is handy, ubiquitous, and simple to use for basic tasks. On the other hand, it can be quite difficult to use for consistently producing publication quality figures, and the interface lacks consistency.</p>
+</div>
+</div>
+<section id="introduction-to-matplotlib" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-matplotlib">Introduction to matplotlib</h2>
+<p>Matplotlib will help you to plot graphs from your data, and is a great starting point when you need to see if something is working or not. It can be used for complicated plots and figures for publication of your results. The default interface makes simple tasks trivial but is hard to extend when you need a more refined graph.</p>
+<ul>
+<li><a href="http://matplotlib.org/gallery.html">Online gallery / cookbook</a></li>
+</ul>
+<p>Matplotlib fully embraces the python object-oriented model, but for some tasks the design of the object hierarchy is a little bit counter-intuitive. It’s best to find a common pattern for building plots and stick to it.</p>
+<div>
+<div id="pyodide-1" class="exercise-cell">
+
+</div>
+<script type="pyodide-1-contents">
+eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuaW1wb3J0IG51bXB5IGFzIG5wIn0=
+</script>
+</div>
+<p>In matplotlib, the figure is the top-level container for all the plot elements but it does little more than hold onto sets of <em>axes</em> which are the primary objects you will interact with.</p>
+<div>
+<div id="pyodide-2" class="exercise-cell">
+
+</div>
+<script type="pyodide-2-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZmlnID0gcGx0LmZpZ3VyZShmaWdzaXplPSg2LCA0KSwgZmFjZWNvbG9yPVwibm9uZVwiKVxuXG5heCA9IHBsdC5zdWJwbG90KDExMSkgIyAxeDEgYXJyYXkgb2YgcGxvdHMsIGF4IHJlZmVycyB0byB0aGUgMXN0IG9mIHRoZW1cblxuIyBDb250ZW50IGlzIGFkZGVkIHRvIHRoZSBibGFuayBheGVzIGluc3RhbmNlXG5cbmF4LnBsb3QobnAubGluc3BhY2UoMCwgMTAsIDEwMCksIG5wLnNpbihucC5saW5zcGFjZSgwLCAxMCwgMTAwKSkpXG5cbmZpZy5zYXZlZmlnKFwidGVzdC1maWd1cmUucG5nXCIsIGRwaT0xNTApXG5wbHQuc2hvdygpIn0=
+</script>
+</div>
+<p>To look at the rendered image we can either browse with the jupyterlab file browser or, if we are running in the browser, we can use the <code>display</code> function from the <code>IPython.display</code> module to display the image.</p>
+<div>
+<div id="pyodide-3" class="exercise-cell">
+
+</div>
+<script type="pyodide-3-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZnJvbSBJUHl0aG9uLmRpc3BsYXkgaW1wb3J0IEltYWdlLCBGaWxlTGlua1xuXG4jIEEgbGluayB0aGF0IG9wZW5zIGluIGEgbmV3IGJyb3dzZXIgd2luZG93IC8gdGFiOlxuRmlsZUxpbmsoXCJ0ZXN0LWZpZ3VyZS5wbmdcIilcblxuIyBFbWJlZCB0aGUgaW1hZ2UgaW4gdGhlIG91dHB1dCBjZWxsXG5kaXNwbGF5KEltYWdlKFwidGVzdC1maWd1cmUucG5nXCIpKVxuIn0=
+</script>
+</div>
+<section id="examples" class="level3">
+<h3 class="anchored" data-anchor-id="examples">Examples</h3>
+<div>
+<div id="pyodide-4" class="exercise-cell">
+
+</div>
+<script type="pyodide-4-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZmlnID0gcGx0LmZpZ3VyZShmaWdzaXplPSg2LDYpLCBmYWNlY29sb3I9XCJub25lXCIpXG5cbmF4ID0gcGx0LnN1YnBsb3QoMzIxKSAgICMgM3gyIGFycmF5IG9mIHBsb3RzLCBheCByZWZlcnMgdG8gdGhlIDFzdCBvZiB0aGVtXG5heDIgPSBwbHQuc3VicGxvdCgzMjIpXG5heDMgPSBwbHQuc3VicGxvdCgzMjMpXG5heDQgPSBwbHQuc3VicGxvdCgzMjQpXG5heDUgPSBwbHQuc3VicGxvdCgzMjUpXG5heDYgPSBwbHQuc3VicGxvdCgzMjYpICMgM3gyIGFycmF5IG9mIHBsb3RzLCBheDYgcmVmZXJzIHRvIHRoZSBsYXN0IG9mIHRoZW1cblxuYXgucGxvdChucC5saW5zcGFjZSgwLCAxMCwgMTAwKSwgbnAuc2luKDEqbnAubGluc3BhY2UoMCwgMTAsIDEwMCkpKVxuYXgyLnBsb3QobnAubGluc3BhY2UoMCwgMTAsIDEwMCksIG5wLnNpbigyKm5wLmxpbnNwYWNlKDAsIDEwLCAxMDApKSlcbmF4My5wbG90KG5wLmxpbnNwYWNlKDAsIDEwLCAxMDApLCBucC5zaW4oMypucC5saW5zcGFjZSgwLCAxMCwgMTAwKSkpXG5heDQucGxvdChucC5saW5zcGFjZSgwLCAxMCwgMTAwKSwgbnAuc2luKDQqbnAubGluc3BhY2UoMCwgMTAsIDEwMCkpKVxuYXg1LnBsb3QobnAubGluc3BhY2UoMCwgMTAsIDEwMCksIG5wLnNpbig1Km5wLmxpbnNwYWNlKDAsIDEwLCAxMDApKSlcbmF4Ni5wbG90KG5wLmxpbnNwYWNlKDAsIDEwLCAxMDApLCBucC5zaW4oNipucC5saW5zcGFjZSgwLCAxMCwgMTAwKSkpXG5cbnBsdC5zaG93KCkgICMgaGFwcGVucyBhbnl3YXkgISJ9
+</script>
+</div>
+<div>
+<div id="pyodide-5" class="exercise-cell">
+
+</div>
+<script type="pyodide-5-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBEZW1vIGV4YW1wbGVcblxueDEgPSBucC5saW5zcGFjZSgwLjAsIDUuMClcbngyID0gbnAubGluc3BhY2UoMC4wLCAyLjApXG5cbnkxID0gbnAuY29zKDIgKiBucC5waSAqIHgxKSAqIG5wLmV4cCgteDEpXG55MiA9IG5wLmNvcygyICogbnAucGkgKiB4MilcblxucGx0LnN1YnBsb3QoMiwgMSwgMSlcbnBsdC5wbG90KHgxLCB5MSwgJ28tJylcbnBsdC50aXRsZSgnQSB0YWxlIG9mIDIgc3VicGxvdHMnKVxucGx0LnlsYWJlbCgnRGFtcGVkIG9zY2lsbGF0aW9uJylcblxucGx0LnN1YnBsb3QoMiwgMSwgMilcbnBsdC5wbG90KHgyLCB5MiwgJy4tJylcbnBsdC54bGFiZWwoJ3RpbWUgKHMpJylcbnBsdC55bGFiZWwoJ1VuZGFtcGVkJylcblxucGx0LnNob3coKSJ9
+</script>
+</div>
+<div>
+<div id="pyodide-6" class="exercise-cell">
+
+</div>
+<script type="pyodide-6-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBNeSBwcmVmZXJlbmNlXG5cbngxID0gbnAubGluc3BhY2UoMC4wLCA1LjApXG54MiA9IG5wLmxpbnNwYWNlKDAuMCwgMi4wKVxuXG55MSA9IG5wLmNvcygyICogbnAucGkgKiB4MSkgKiBucC5leHAoLXgxKVxueTIgPSBucC5jb3MoMiAqIG5wLnBpICogeDIpXG5cbiMgTm93IHNldCB1cCB0aGUgcGxvdFxuXG5maWcgPSBwbHQuZmlndXJlKGZpZ3NpemU9KDYsNiksIGZhY2Vjb2xvcj1cIm5vbmVcIilcblxuYXgxICA9IHBsdC5zdWJwbG90KDQxMSkgICAjIDJ4MSBhcnJheSBvZiBwbG90cywgYXggcmVmZXJzIHRvIHRoZSAxc3Qgb2YgdGhlbVxuYXgyICA9IHBsdC5zdWJwbG90KDQxMilcbmF4MyAgPSBwbHQuc3VicGxvdCg0MTMpXG5heDQgID0gcGx0LnN1YnBsb3QoNDE0KVxuXG5heDEucGxvdCh4MSwgeTEsICdvLScpXG5heDEuc2V0X3RpdGxlKCdBIHRhbGUgb2YgMiBzdWJwbG90cycpXG5heDEuc2V0X3lsYWJlbCgnRGFtcGVkIG9zY2lsbGF0aW9uJylcbmF4Mi5wbG90KHgyLCB5MiwgJy4tJylcbmF4Mi5zZXRfeGxhYmVsKCd0aW1lIChzKScpXG5heDIuc2V0X3lsYWJlbCgnTm90IERhbXBlZCcpXG5cbmZpZy5zZXRfc2l6ZV9pbmNoZXMoKDYsNikpXG5cbiMgc2NhdHRlciBwbG90IChOb3RlOiBgcGx0LnNjYXR0ZXJgIGRvZXNuJ3QgdXNlIGRlZmF1bHQgY29sb3JzKVxueCwgeSA9IG5wLnJhbmRvbS5ub3JtYWwoc2l6ZT0oMiwgMjAwKSlcbmF4MS5wbG90KHgsIHksICdvJylcblxuIyBzaW51c29pZGFsIGxpbmVzIHdpdGggY29sb3JzIGZyb20gZGVmYXVsdCBjb2xvciBjeWNsZVxuTCA9IDIqbnAucGlcbnggPSBucC5saW5zcGFjZSgwLCBMKVxubmNvbG9ycyA9IGxlbihwbHQucmNQYXJhbXNbJ2F4ZXMucHJvcF9jeWNsZSddKVxuc2hpZnQgPSBucC5saW5zcGFjZSgwLCBMLCBuY29sb3JzLCBlbmRwb2ludD1GYWxzZSlcbmZvciBzIGluIHNoaWZ0OlxuICAgIGF4Mi5wbG90KHgsIG5wLnNpbih4ICsgcyksICctJylcbmF4Mi5tYXJnaW5zKDApXG5cbiMgYmFyIGdyYXBoc1xueCA9IG5wLmFyYW5nZSg1KVxueTEsIHkyID0gbnAucmFuZG9tLnJhbmRpbnQoMSwgMjUsIHNpemU9KDIsIDUpKVxud2lkdGggPSAwLjI1XG5heDMuYmFyKHgsIHkxLCB3aWR0aClcbmF4My5iYXIoeCArIHdpZHRoLCB5Miwgd2lkdGgsXG4gICAgICAgIGNvbG9yPWxpc3QocGx0LnJjUGFyYW1zWydheGVzLnByb3BfY3ljbGUnXSlbMl1bJ2NvbG9yJ10pXG5heDMuc2V0X3h0aWNrcyh4ICsgd2lkdGgpXG5heDMuc2V0X3h0aWNrbGFiZWxzKFsnYScsICdiJywgJ2MnLCAnZCcsICdlJ10pXG5cbiMgY2lyY2xlcyB3aXRoIGNvbG9ycyBmcm9tIGRlZmF1bHQgY29sb3IgY3ljbGVcbmZvciBpLCBjb2xvciBpbiBlbnVtZXJhdGUocGx0LnJjUGFyYW1zWydheGVzLnByb3BfY3ljbGUnXSk6XG4gICAgeHkgPSBucC5yYW5kb20ubm9ybWFsKHNpemU9MilcbiAgICBheDQuYWRkX3BhdGNoKHBsdC5DaXJjbGUoeHksIHJhZGl1cz0wLjMsIGNvbG9yPWNvbG9yWydjb2xvciddKSlcbmF4NC5heGlzKCdlcXVhbCcpXG5heDQubWFyZ2lucygwKVxuXG5wbHQuc2hvdygpIn0=
+</script>
+</div>
+</section>
+<section id="matplotlib-gallery" class="level3">
+<h3 class="anchored" data-anchor-id="matplotlib-gallery">Matplotlib Gallery</h3>
+<p>The <a href="https://matplotlib.org/stable/gallery/index.html">gallery</a> is a collection of examples that demonstrate the range ofcapabilities of matplotlib. Source code is provided for each example and they should all work here.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Gallery 1 - Line plots with Error Bars
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div id="pyodide-7" class="exercise-cell">
+
+</div>
+<script type="pyodide-7-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuaW1wb3J0IG51bXB5IGFzIG5wXG5cbmZpZyA9IHBsdC5maWd1cmUoKVxueCA9IG5wLmFyYW5nZSgxMClcbnkgPSAyLjUgKiBucC5zaW4oeCAvIDIwICogbnAucGkpXG55ZXJyID0gbnAubGluc3BhY2UoMC4wNSwgMC4yLCAxMClcblxucGx0LmVycm9yYmFyKHgsIHkgKyAzLCB5ZXJyPXllcnIsIGxhYmVsPSdib3RoIGxpbWl0cyAoZGVmYXVsdCknKVxuXG5wbHQuZXJyb3JiYXIoeCwgeSArIDIsIHllcnI9eWVyciwgdXBsaW1zPVRydWUsIGxhYmVsPSd1cGxpbXM9VHJ1ZScpXG5cbnBsdC5lcnJvcmJhcih4LCB5ICsgMSwgeWVycj15ZXJyLCB1cGxpbXM9VHJ1ZSwgbG9saW1zPVRydWUsXG4gICAgICAgICAgICAgbGFiZWw9J3VwbGltcz1UcnVlLCBsb2xpbXM9VHJ1ZScpXG5cbnVwcGVybGltaXRzID0gW1RydWUsIEZhbHNlXSAqIDVcbmxvd2VybGltaXRzID0gW0ZhbHNlLCBUcnVlXSAqIDVcbnBsdC5lcnJvcmJhcih4LCB5LCB5ZXJyPXllcnIsIHVwbGltcz11cHBlcmxpbWl0cywgbG9saW1zPWxvd2VybGltaXRzLFxuICAgICAgICAgICAgIGxhYmVsPSdzdWJzZXRzIG9mIHVwbGltcyBhbmQgbG9saW1zJylcblxucGx0LmxlZ2VuZChsb2M9J2xvd2VyIHJpZ2h0JylcbnBsdC5zaG93KCkifQ==
+</script>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Gallery 2 - Triangulation, Contours
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div id="pyodide-8" class="exercise-cell">
+
+</div>
+<script type="pyodide-8-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiXG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5pbXBvcnQgbnVtcHkgYXMgbnBcblxuZnJvbSBtYXRwbG90bGliLnRyaSBpbXBvcnQgVHJpQW5hbHl6ZXIsIFRyaWFuZ3VsYXRpb24sIFVuaWZvcm1UcmlSZWZpbmVyXG5cblxuIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXG4jIEFuYWx5dGljYWwgdGVzdCBmdW5jdGlvblxuIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXG5kZWYgZXhwZXJpbWVudF9yZXMoeCwgeSk6XG4gICAgXCJcIlwiQW4gYW5hbHl0aWMgZnVuY3Rpb24gcmVwcmVzZW50aW5nIGV4cGVyaW1lbnQgcmVzdWx0cy5cIlwiXCJcbiAgICB4ID0gMiAqIHhcbiAgICByMSA9IG5wLnNxcnQoKDAuNSAtIHgpKioyICsgKDAuNSAtIHkpKioyKVxuICAgIHRoZXRhMSA9IG5wLmFyY3RhbjIoMC41IC0geCwgMC41IC0geSlcbiAgICByMiA9IG5wLnNxcnQoKC14IC0gMC4yKSoqMiArICgteSAtIDAuMikqKjIpXG4gICAgdGhldGEyID0gbnAuYXJjdGFuMigteCAtIDAuMiwgLXkgLSAwLjIpXG4gICAgeiA9ICg0ICogKG5wLmV4cCgocjEvMTApKioyKSAtIDEpICogMzAgKiBucC5jb3MoMyAqIHRoZXRhMSkgK1xuICAgICAgICAgKG5wLmV4cCgocjIvMTApKioyKSAtIDEpICogMzAgKiBucC5jb3MoNSAqIHRoZXRhMikgK1xuICAgICAgICAgMiAqICh4KioyICsgeSoqMikpXG4gICAgcmV0dXJuIChucC5tYXgoeikgLSB6KSAvIChucC5tYXgoeikgLSBucC5taW4oeikpXG5cbiMgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLVxuIyBHZW5lcmF0aW5nIHRoZSBpbml0aWFsIGRhdGEgdGVzdCBwb2ludHMgYW5kIHRyaWFuZ3VsYXRpb24gZm9yIHRoZSBkZW1vXG4jIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cbiMgVXNlciBwYXJhbWV0ZXJzIGZvciBkYXRhIHRlc3QgcG9pbnRzXG5cbiMgTnVtYmVyIG9mIHRlc3QgZGF0YSBwb2ludHMsIHRlc3RlZCBmcm9tIDMgdG8gNTAwMCBmb3Igc3ViZGl2PTNcbm5fdGVzdCA9IDIwMFxuXG4jIE51bWJlciBvZiByZWN1cnNpdmUgc3ViZGl2aXNpb25zIG9mIHRoZSBpbml0aWFsIG1lc2ggZm9yIHNtb290aCBwbG90cy5cbiMgVmFsdWVzID4zIG1pZ2h0IHJlc3VsdCBpbiBhIHZlcnkgaGlnaCBudW1iZXIgb2YgdHJpYW5nbGVzIGZvciB0aGUgcmVmaW5lXG4jIG1lc2g6IG5ldyB0cmlhbmdsZXMgbnVtYmVyaW5nID0gKDQqKnN1YmRpdikqbnRyaVxuc3ViZGl2ID0gM1xuXG4jIEZsb2F0ID4gMC4gYWRqdXN0aW5nIHRoZSBwcm9wb3J0aW9uIG9mIChpbnZhbGlkKSBpbml0aWFsIHRyaWFuZ2xlcyB3aGljaCB3aWxsXG4jIGJlIG1hc2tlZCBvdXQuIEVudGVyIDAgZm9yIG5vIG1hc2suXG5pbml0X21hc2tfZnJhYyA9IDAuMFxuXG4jIE1pbmltdW0gY2lyY2xlIHJhdGlvIC0gYm9yZGVyIHRyaWFuZ2xlcyB3aXRoIGNpcmNsZSByYXRpbyBiZWxvdyB0aGlzIHdpbGwgYmVcbiMgbWFza2VkIGlmIHRoZXkgdG91Y2ggYSBib3JkZXIuIFN1Z2dlc3RlZCB2YWx1ZSAwLjAxOyB1c2UgLTEgdG8ga2VlcCBhbGxcbiMgdHJpYW5nbGVzLlxubWluX2NpcmNsZV9yYXRpbyA9IC4wMVxuXG4jIFJhbmRvbSBwb2ludHNcbnJhbmRvbV9nZW4gPSBucC5yYW5kb20uUmFuZG9tU3RhdGUoc2VlZD0xOTY4MDgwMSlcbnhfdGVzdCA9IHJhbmRvbV9nZW4udW5pZm9ybSgtMS4sIDEuLCBzaXplPW5fdGVzdClcbnlfdGVzdCA9IHJhbmRvbV9nZW4udW5pZm9ybSgtMS4sIDEuLCBzaXplPW5fdGVzdClcbnpfdGVzdCA9IGV4cGVyaW1lbnRfcmVzKHhfdGVzdCwgeV90ZXN0KVxuXG4jIG1lc2hpbmcgd2l0aCBEZWxhdW5heSB0cmlhbmd1bGF0aW9uXG50cmkgPSBUcmlhbmd1bGF0aW9uKHhfdGVzdCwgeV90ZXN0KVxubnRyaSA9IHRyaS50cmlhbmdsZXMuc2hhcGVbMF1cblxuIyBTb21lIGludmFsaWQgZGF0YSBhcmUgbWFza2VkIG91dFxubWFza19pbml0ID0gbnAuemVyb3MobnRyaSwgZHR5cGU9Ym9vbClcbm1hc2tlZF90cmkgPSByYW5kb21fZ2VuLnJhbmRpbnQoMCwgbnRyaSwgaW50KG50cmkgKiBpbml0X21hc2tfZnJhYykpXG5tYXNrX2luaXRbbWFza2VkX3RyaV0gPSBUcnVlXG50cmkuc2V0X21hc2sobWFza19pbml0KVxuXG5cbiMgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLVxuIyBJbXByb3ZpbmcgdGhlIHRyaWFuZ3VsYXRpb24gYmVmb3JlIGhpZ2gtcmVzIHBsb3RzOiByZW1vdmluZyBmbGF0IHRyaWFuZ2xlc1xuIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXG4jIG1hc2tpbmcgYmFkbHkgc2hhcGVkIHRyaWFuZ2xlcyBhdCB0aGUgYm9yZGVyIG9mIHRoZSB0cmlhbmd1bGFyIG1lc2guXG5tYXNrID0gVHJpQW5hbHl6ZXIodHJpKS5nZXRfZmxhdF90cmlfbWFzayhtaW5fY2lyY2xlX3JhdGlvKVxudHJpLnNldF9tYXNrKG1hc2spXG5cbiMgcmVmaW5pbmcgdGhlIGRhdGFcbnJlZmluZXIgPSBVbmlmb3JtVHJpUmVmaW5lcih0cmkpXG50cmlfcmVmaSwgel90ZXN0X3JlZmkgPSByZWZpbmVyLnJlZmluZV9maWVsZCh6X3Rlc3QsIHN1YmRpdj1zdWJkaXYpXG5cbiMgYW5hbHl0aWNhbCAncmVzdWx0cycgZm9yIGNvbXBhcmlzb25cbnpfZXhwZWN0ZWQgPSBleHBlcmltZW50X3Jlcyh0cmlfcmVmaS54LCB0cmlfcmVmaS55KVxuXG4jIGZvciB0aGUgZGVtbzogbG9hZGluZyB0aGUgJ2ZsYXQnIHRyaWFuZ2xlcyBmb3IgcGxvdFxuZmxhdF90cmkgPSBUcmlhbmd1bGF0aW9uKHhfdGVzdCwgeV90ZXN0KVxuZmxhdF90cmkuc2V0X21hc2sofm1hc2spXG5cblxuIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXG4jIE5vdyB0aGUgcGxvdHNcbiMgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLVxuIyBVc2VyIG9wdGlvbnMgZm9yIHBsb3RzXG5wbG90X3RyaSA9IFRydWUgICAgICAgICAgIyBwbG90IG9mIGJhc2UgdHJpYW5ndWxhdGlvblxucGxvdF9tYXNrZWRfdHJpID0gVHJ1ZSAgICMgcGxvdCBvZiBleGNlc3NpdmVseSBmbGF0IGV4Y2x1ZGVkIHRyaWFuZ2xlc1xucGxvdF9yZWZpX3RyaSA9IEZhbHNlICAgICMgcGxvdCBvZiByZWZpbmVkIHRyaWFuZ3VsYXRpb25cbnBsb3RfZXhwZWN0ZWQgPSBGYWxzZSAgICAjIHBsb3Qgb2YgYW5hbHl0aWNhbCBmdW5jdGlvbiB2YWx1ZXMgZm9yIGNvbXBhcmlzb25cblxuXG4jIEdyYXBoaWNhbCBvcHRpb25zIGZvciB0cmljb250b3VyaW5nXG5sZXZlbHMgPSBucC5hcmFuZ2UoMC4sIDEuLCAwLjAyNSlcblxuZmlnLCBheCA9IHBsdC5zdWJwbG90cygpXG5heC5zZXRfYXNwZWN0KCdlcXVhbCcpXG5heC5zZXRfdGl0bGUoXCJGaWx0ZXJpbmcgYSBEZWxhdW5heSBtZXNoXFxuXCJcbiAgICAgICAgICAgICBcIihhcHBsaWNhdGlvbiB0byBoaWdoLXJlc29sdXRpb24gdHJpY29udG91cmluZylcIilcblxuIyAxKSBwbG90IG9mIHRoZSByZWZpbmVkIChjb21wdXRlZCkgZGF0YSBjb250b3VyczpcbmF4LnRyaWNvbnRvdXIodHJpX3JlZmksIHpfdGVzdF9yZWZpLCBsZXZlbHM9bGV2ZWxzLCBjbWFwPSdCbHVlcycsXG4gICAgICAgICAgICAgIGxpbmV3aWR0aHM9WzIuMCwgMC41LCAxLjAsIDAuNV0pXG4jIDIpIHBsb3Qgb2YgdGhlIGV4cGVjdGVkIChhbmFseXRpY2FsKSBkYXRhIGNvbnRvdXJzIChkYXNoZWQpOlxuaWYgcGxvdF9leHBlY3RlZDpcbiAgICBheC50cmljb250b3VyKHRyaV9yZWZpLCB6X2V4cGVjdGVkLCBsZXZlbHM9bGV2ZWxzLCBjbWFwPSdCbHVlcycsXG4gICAgICAgICAgICAgICAgICBsaW5lc3R5bGVzPSctLScpXG4jIDMpIHBsb3Qgb2YgdGhlIGZpbmUgbWVzaCBvbiB3aGljaCBpbnRlcnBvbGF0aW9uIHdhcyBkb25lOlxuaWYgcGxvdF9yZWZpX3RyaTpcbiAgICBheC50cmlwbG90KHRyaV9yZWZpLCBjb2xvcj0nMC45NycpXG4jIDQpIHBsb3Qgb2YgdGhlIGluaXRpYWwgJ2NvYXJzZScgbWVzaDpcbmlmIHBsb3RfdHJpOlxuICAgIGF4LnRyaXBsb3QodHJpLCBjb2xvcj0nMC43JylcbiMgNCkgcGxvdCBvZiB0aGUgdW52YWxpZGF0ZWQgdHJpYW5nbGVzIGZyb20gbmFpdmUgRGVsYXVuYXkgVHJpYW5ndWxhdGlvbjpcbmlmIHBsb3RfbWFza2VkX3RyaTpcbiAgICBheC50cmlwbG90KGZsYXRfdHJpLCBjb2xvcj0ncmVkJylcblxucGx0LnNob3coKSJ9
+</script>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Gallery 3 - Hillshading
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div id="pyodide-9" class="exercise-cell">
+
+</div>
+<script type="pyodide-9-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuaW1wb3J0IG51bXB5IGFzIG5wXG5cbmZyb20gbWF0cGxvdGxpYi5jYm9vayBpbXBvcnQgZ2V0X3NhbXBsZV9kYXRhXG5mcm9tIG1hdHBsb3RsaWIuY29sb3JzIGltcG9ydCBMaWdodFNvdXJjZVxuXG5kZW0gPSBnZXRfc2FtcGxlX2RhdGEoJ2phY2tzYm9yb19mYXVsdF9kZW0ubnB6JylcbnogPSBkZW1bJ2VsZXZhdGlvbiddXG4jIC0tIE9wdGlvbmFsIGR4IGFuZCBkeSBmb3IgYWNjdXJhdGUgdmVydGljYWwgZXhhZ2dlcmF0aW9uIC0tLS0tLS0tLS0tLS0tLS0tLS0tXG4jIElmIHlvdSBuZWVkIHRvcG9ncmFwaGljYWxseSBhY2N1cmF0ZSB2ZXJ0aWNhbCBleGFnZ2VyYXRpb24sIG9yIHlvdSBkb24ndCB3YW50XG4jIHRvIGd1ZXNzIGF0IHdoYXQgKnZlcnRfZXhhZyogc2hvdWxkIGJlLCB5b3UnbGwgbmVlZCB0byBzcGVjaWZ5IHRoZSBjZWxsc2l6ZVxuIyBvZiB0aGUgZ3JpZCAoaS5lLiB0aGUgKmR4KiBhbmQgKmR5KiBwYXJhbWV0ZXJzKS4gIE90aGVyd2lzZSwgYW55ICp2ZXJ0X2V4YWcqXG4jIHZhbHVlIHlvdSBzcGVjaWZ5IHdpbGwgYmUgcmVsYXRpdmUgdG8gdGhlIGdyaWQgc3BhY2luZyBvZiB5b3VyIGlucHV0IGRhdGFcbiMgKGluIG90aGVyIHdvcmRzLCAqZHgqIGFuZCAqZHkqIGRlZmF1bHQgdG8gMS4wLCBhbmQgKnZlcnRfZXhhZyogaXMgY2FsY3VsYXRlZFxuIyByZWxhdGl2ZSB0byB0aG9zZSBwYXJhbWV0ZXJzKS4gIFNpbWlsYXJseSwgKmR4KiBhbmQgKmR5KiBhcmUgYXNzdW1lZCB0byBiZSBpblxuIyB0aGUgc2FtZSB1bml0cyBhcyB5b3VyIGlucHV0IHotdmFsdWVzLiAgVGhlcmVmb3JlLCB3ZSdsbCBuZWVkIHRvIGNvbnZlcnQgdGhlXG4jIGdpdmVuIGR4IGFuZCBkeSBmcm9tIGRlY2ltYWwgZGVncmVlcyB0byBtZXRlcnMuXG5keCwgZHkgPSBkZW1bJ2R4J10sIGRlbVsnZHknXVxuZHkgPSAxMTEyMDAgKiBkeVxuZHggPSAxMTEyMDAgKiBkeCAqIG5wLmNvcyhucC5yYWRpYW5zKGRlbVsneW1pbiddKSlcbiMgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cblxuIyBTaGFkZSBmcm9tIHRoZSBub3J0aHdlc3QsIHdpdGggdGhlIHN1biA0NSBkZWdyZWVzIGZyb20gaG9yaXpvbnRhbFxubHMgPSBMaWdodFNvdXJjZShhemRlZz0zMTUsIGFsdGRlZz00NSlcbmNtYXAgPSBwbHQuY20uZ2lzdF9lYXJ0aFxuXG5maWcsIGF4cyA9IHBsdC5zdWJwbG90cyhucm93cz00LCBuY29scz0zLCBmaWdzaXplPSg4LCA5KSlcbnBsdC5zZXRwKGF4cy5mbGF0LCB4dGlja3M9W10sIHl0aWNrcz1bXSlcblxuIyBWYXJ5IHZlcnRpY2FsIGV4YWdnZXJhdGlvbiBhbmQgYmxlbmQgbW9kZSBhbmQgcGxvdCBhbGwgY29tYmluYXRpb25zXG5mb3IgY29sLCB2ZSBpbiB6aXAoYXhzLlQsIFswLjEsIDEsIDEwXSk6XG4gICAgIyBTaG93IHRoZSBoaWxsc2hhZGUgaW50ZW5zaXR5IGltYWdlIGluIHRoZSBmaXJzdCByb3dcbiAgICBjb2xbMF0uaW1zaG93KGxzLmhpbGxzaGFkZSh6LCB2ZXJ0X2V4YWc9dmUsIGR4PWR4LCBkeT1keSksIGNtYXA9J2dyYXknKVxuXG4gICAgIyBQbGFjZSBoaWxsc2hhZGVkIHBsb3RzIHdpdGggZGlmZmVyZW50IGJsZW5kIG1vZGVzIGluIHRoZSByZXN0IG9mIHRoZSByb3dzXG4gICAgZm9yIGF4LCBtb2RlIGluIHppcChjb2xbMTpdLCBbJ2hzdicsICdvdmVybGF5JywgJ3NvZnQnXSk6XG4gICAgICAgIHJnYiA9IGxzLnNoYWRlKHosIGNtYXA9Y21hcCwgYmxlbmRfbW9kZT1tb2RlLFxuICAgICAgICAgICAgICAgICAgICAgICB2ZXJ0X2V4YWc9dmUsIGR4PWR4LCBkeT1keSlcbiAgICAgICAgYXguaW1zaG93KHJnYilcblxuIyBMYWJlbCByb3dzIGFuZCBjb2x1bW5zXG5mb3IgYXgsIHZlIGluIHppcChheHNbMF0sIFswLjEsIDEsIDEwXSk6XG4gICAgYXguc2V0X3RpdGxlKGYne3ZlfScsIHNpemU9MTgpXG5mb3IgYXgsIG1vZGUgaW4gemlwKGF4c1s6LCAwXSwgWydIaWxsc2hhZGUnLCAnaHN2JywgJ292ZXJsYXknLCAnc29mdCddKTpcbiAgICBheC5zZXRfeWxhYmVsKG1vZGUsIHNpemU9MTgpXG5cbiMgR3JvdXAgbGFiZWxzLi4uXG5heHNbMCwgMV0uYW5ub3RhdGUoJ1ZlcnRpY2FsIEV4YWdnZXJhdGlvbicsICgwLjUsIDEpLCB4eXRleHQ9KDAsIDMwKSxcbiAgICAgICAgICAgICAgICAgICB0ZXh0Y29vcmRzPSdvZmZzZXQgcG9pbnRzJywgeHljb29yZHM9J2F4ZXMgZnJhY3Rpb24nLFxuICAgICAgICAgICAgICAgICAgIGhhPSdjZW50ZXInLCB2YT0nYm90dG9tJywgc2l6ZT0yMClcbmF4c1syLCAwXS5hbm5vdGF0ZSgnQmxlbmQgTW9kZScsICgwLCAwLjUpLCB4eXRleHQ9KC0zMCwgMCksXG4gICAgICAgICAgICAgICAgICAgdGV4dGNvb3Jkcz0nb2Zmc2V0IHBvaW50cycsIHh5Y29vcmRzPSdheGVzIGZyYWN0aW9uJyxcbiAgICAgICAgICAgICAgICAgICBoYT0ncmlnaHQnLCB2YT0nY2VudGVyJywgc2l6ZT0yMCwgcm90YXRpb249OTApXG5maWcuc3VicGxvdHNfYWRqdXN0KGJvdHRvbT0wLjA1LCByaWdodD0wLjk1KVxuXG5wbHQuc2hvdygpIn0=
+</script>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Gallery 4 - Statistical Plots
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div id="pyodide-10" class="exercise-cell">
+
+</div>
+<script type="pyodide-10-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiXG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5pbXBvcnQgbnVtcHkgYXMgbnBcblxuZmlnLCBheHMgPSBwbHQuc3VicGxvdHMobnJvd3M9MSwgbmNvbHM9MiwgZmlnc2l6ZT0oOSwgNCkpXG5cbiMgRml4aW5nIHJhbmRvbSBzdGF0ZSBmb3IgcmVwcm9kdWNpYmlsaXR5XG5ucC5yYW5kb20uc2VlZCgxOTY4MDgwMSlcblxuXG4jIGdlbmVyYXRlIHNvbWUgcmFuZG9tIHRlc3QgZGF0YVxuYWxsX2RhdGEgPSBbbnAucmFuZG9tLm5vcm1hbCgwLCBzdGQsIDEwMCkgZm9yIHN0ZCBpbiByYW5nZSg2LCAxMCldXG5cbiMgcGxvdCB2aW9saW4gcGxvdFxuYXhzWzBdLnZpb2xpbnBsb3QoYWxsX2RhdGEsXG4gICAgICAgICAgICAgICAgICBzaG93bWVhbnM9RmFsc2UsXG4gICAgICAgICAgICAgICAgICBzaG93bWVkaWFucz1UcnVlKVxuYXhzWzBdLnNldF90aXRsZSgnVmlvbGluIHBsb3QnKVxuXG4jIHBsb3QgYm94IHBsb3RcbmF4c1sxXS5ib3hwbG90KGFsbF9kYXRhKVxuYXhzWzFdLnNldF90aXRsZSgnQm94IHBsb3QnKVxuXG4jIGFkZGluZyBob3Jpem9udGFsIGdyaWQgbGluZXNcbmZvciBheCBpbiBheHM6XG4gICAgYXgueWF4aXMuZ3JpZChUcnVlKVxuICAgIGF4LnNldF94dGlja3MoW3kgKyAxIGZvciB5IGluIHJhbmdlKGxlbihhbGxfZGF0YSkpXSxcbiAgICAgICAgICAgICAgICAgIGxhYmVscz1bJ3gxJywgJ3gyJywgJ3gzJywgJ3g0J10pXG4gICAgYXguc2V0X3hsYWJlbCgnRm91ciBzZXBhcmF0ZSBzYW1wbGVzJylcbiAgICBheC5zZXRfeWxhYmVsKCdPYnNlcnZlZCB2YWx1ZXMnKVxuXG5wbHQuc2hvdygpIn0=
+</script>
+</div>
+</div>
+</div>
+</div>
+
+
+<script type="pyodide-data">
+eyJvcHRpb25zIjp7ImVudiI6eyJQTE9UTFlfUkVOREVSRVIiOiJwbG90bHlfbWltZXR5cGUifSwiaW5kZXhVUkwiOiJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvcHlvZGlkZS92MC4yNy4wL2Z1bGwvIn0sInBhY2thZ2VzIjp7InBrZ3MiOlsicHlvZGlkZV9odHRwIiwibWljcm9waXAiLCJpcHl0aG9uIl19fQ==
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTEwIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTAgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEwLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTAtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTAsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTkiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl85ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzkgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzksIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS04LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzggPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzgsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTciLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl83ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS03LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzcgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTYiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl82ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzYgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzYsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS01LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzUgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl80ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS00LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzQgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzMgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0yLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzIgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8xID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzEgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLXByZWx1ZGUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJweW9kaWRlT2pzID0ge1xuICBjb25zdCB7XG4gICAgUHlvZGlkZUV2YWx1YXRvcixcbiAgICBQeW9kaWRlRW52aXJvbm1lbnRNYW5hZ2VyLFxuICAgIHNldHVwUHl0aG9uLFxuICAgIHN0YXJ0UHlvZGlkZVdvcmtlcixcbiAgICBiNjREZWNvZGUsXG4gICAgY29sbGFwc2VQYXRoLFxuICB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzdGF0dXNDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctc3RhdHVzXCIpO1xuICBjb25zdCBpbmRpY2F0b3JDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpbmRpY2F0b3JDb250YWluZXIuY2xhc3NMaXN0LnJlbW92ZShcImQtbm9uZVwiKTtcblxuICBsZXQgc3RhdHVzVGV4dCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIilcbiAgc3RhdHVzVGV4dC5jbGFzc0xpc3QgPSBcImV4ZXJjaXNlLWxvYWRpbmctZGV0YWlsc1wiO1xuICBzdGF0dXNUZXh0ID0gc3RhdHVzQ29udGFpbmVyLmFwcGVuZENoaWxkKHN0YXR1c1RleHQpO1xuICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluaXRpYWxpc2VgO1xuXG4gIC8vIEhvaXN0IGluZGljYXRvciBvdXQgZnJvbSBmaW5hbCBzbGlkZSB3aGVuIHJ1bm5pbmcgdW5kZXIgcmV2ZWFsXG4gIGNvbnN0IHJldmVhbFN0YXR1cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsIC5leGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaWYgKHJldmVhbFN0YXR1cykge1xuICAgIHJldmVhbFN0YXR1cy5yZW1vdmUoKTtcbiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCA+IC5zbGlkZXNcIikuYXBwZW5kQ2hpbGQocmV2ZWFsU3RhdHVzKTtcbiAgfVxuXG4gIC8vIE1ha2UgYW55IHJldmVhbCBzbGlkZXMgd2l0aCBsaXZlIGNlbGxzIHNjcm9sbGFibGVcbiAgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbChcIi5yZXZlYWwgLmV4ZXJjaXNlLWNlbGxcIikuZm9yRWFjaCgoZWwpID0+IHtcbiAgICBlbC5jbG9zZXN0KCdzZWN0aW9uLnNsaWRlJykuY2xhc3NMaXN0LmFkZChcInNjcm9sbGFibGVcIik7XG4gIH0pXG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../Applications";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../Basics/Ex8-ReadWriteFiles.html" class="pagination-link" aria-label="Reading and writing files">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Reading and writing files</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Applications/Ex1-IntroductingCartopy.html" class="pagination-link" aria-label="Introduction to Cartopy for Map-making">
+        <span class="nav-page-text"><span class="chapter-title">Introduction to Cartopy for Map-making</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
