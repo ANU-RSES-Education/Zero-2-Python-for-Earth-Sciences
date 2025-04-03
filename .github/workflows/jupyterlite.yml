@@ -23,19 +23,20 @@ jobs:
           python -m pip install -r jupyterlite/requirements.txt
       - name: Build the JupyterLite site
         run: |
-          cp jupyterlite/README.md jupyterlite/content
-          jupyter lite build --contents jupyterlite/content --output-dir jupyterlite/dist
+          cd jupyterlite
+          cp README.md content
+          jupyter lite build --contents content --output-dir dist
       # - name: Upload artifact
       #   uses: actions/upload-pages-artifact@v3
       #   with:
-      #     path: jupyterlite/dist
+      #     path: dist
 
   upload:
     needs: build
     runs-on: ubuntu-latest
     steps:
       ## Always deploy to version directory
-      - name: Deploy quarto book
+      - name: Deploy jupyterlite directory
         uses: peaceiris/actions-gh-pages@v3
 
         with:
