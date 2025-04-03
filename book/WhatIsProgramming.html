@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Louis Moresi">
 
-<title>What kind of Language is Python ? – Zero 2 Python for Earth Sciences</title>
+<title>Modern approaches to programming – Zero 2 Programmer for Earth Scientists</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./TLDR.html" rel="next">
+<link href="./Intro2PythonLanguage.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -88,7 +87,7 @@ ul.task-list li input[type="checkbox"] {
     <img src="./assets/ANU-logo.jpg" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Zero 2 Python for Earth Sciences</span>
+    <span class="navbar-title">Zero 2 Programmer for Earth Scientists</span>
     </a>
   </div>
         <div class="quarto-navbar-tools tools-end">
@@ -101,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><strong>Introduction</strong></a></li><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-title">What kind of Language is Python ?</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><strong>Introduction</strong></a></li><li class="breadcrumb-item"><a href="./WhatIsProgramming.html"><span class="chapter-title">Modern approaches to programming</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -129,12 +128,17 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">EMSC e-Course template</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">About This Course</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">What kind of Language is Python ?</span></a>
+  <a href="./WhatIsProgramming.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Modern approaches to programming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Intro2PythonLanguage.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What kind of Language is Python ?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -216,7 +220,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Applications/Ex1-IntroductingCartopy.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction to Cartopy for Map-making</span></a>
+  <a href="./Applications/Ex2-IntroductingCartopy.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction to Cartopy for Map-making</span></a>
   </div>
 </li>
       </ul>
@@ -231,31 +235,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-kind-of-language-is-python" id="toc-what-kind-of-language-is-python" class="nav-link active" data-scroll-target="#what-kind-of-language-is-python">What kind of Language is Python ?</a>
-  <ul class="collapse">
-  <li><a href="#background-reading" id="toc-background-reading" class="nav-link" data-scroll-target="#background-reading">Background reading</a></li>
-  </ul></li>
+  <li><a href="#what-is-a-computer" id="toc-what-is-a-computer" class="nav-link active" data-scroll-target="#what-is-a-computer">What is a computer ?</a></li>
+  <li><a href="#what-is-a-programming-language" id="toc-what-is-a-programming-language" class="nav-link" data-scroll-target="#what-is-a-programming-language">What is a programming language ?</a></li>
+  <li><a href="#what-does-a-well-written-program-or-library-look-like" id="toc-what-does-a-well-written-program-or-library-look-like" class="nav-link" data-scroll-target="#what-does-a-well-written-program-or-library-look-like">What does a well-written program or library look like ?</a></li>
+  <li><a href="#how-do-we-take-advantage-of-re-usable-computing" id="toc-how-do-we-take-advantage-of-re-usable-computing" class="nav-link" data-scroll-target="#how-do-we-take-advantage-of-re-usable-computing">How do we take advantage of re-usable computing ?</a></li>
+  <li><a href="#what-is-the-role-of-a-human-programmer-in-a-world-of-ai" id="toc-what-is-the-role-of-a-human-programmer-in-a-world-of-ai" class="nav-link" data-scroll-target="#what-is-the-role-of-a-human-programmer-in-a-world-of-ai">What is the role of a human programmer in a world of AI ?</a></li>
   </ul>
 <div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://github.com/ANU-RSES-Education/EMSC-getting-going-with-python"><i class="bi bi-github"></i>Github Repository</a></li></ul></div><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://mybinder.org/v2/gh/ANU-RSES-Education/EMSC-getting-going-with-python/HEAD?labpath=WebBook/BinderLandingPage.qmd"><i class="bi bi-rocket-takeoff"></i>Open in Binder</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><strong>Introduction</strong></a></li><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-title">What kind of Language is Python ?</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><strong>Introduction</strong></a></li><li class="breadcrumb-item"><a href="./WhatIsProgramming.html"><span class="chapter-title">Modern approaches to programming</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">What kind of Language is Python ?</span></h1>
+<h1 class="title"><span class="chapter-title">Modern approaches to programming</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Louis Moresi </p>
-          </div>
-  </div>
     
   
     
@@ -266,18 +265,110 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="what-kind-of-language-is-python" class="level1">
-<h1>What kind of Language is Python ?</h1>
-<p>There are some things worth knowing about the python language before diving in. Perhaps the most important thing to be aware of is that python is an <em>interpreted</em> language rather than a <em>compiled</em> language so there is no translation to fast, machine-executable, binary code. This firmly places efficient coding ahead of fast execution and says a great deal about the philosophy of python as a language: applicable to a very broad class of problems, easy to read and high-level so that it is straightforward to re-use and build upon existing software.</p>
-<p>Python is supposed to be easy to use: it does not require you to specify (“declare”) the type of your variables or data before using them and it is happy to convert automatically from one type to another when it makes sense to do so. For example, a floating point <code>1.0</code> and an integer <code>1</code> are mostly interchangeable in python as they are in everyday life. When you have finished using a variable, there is no need to explicitly delete it though you can if you wish. Python is generally very permissive: there are usually many different ways to write something in python and the one that is easiest to follow is usually the best option to choose.</p>
-<p>Python has extensive <em>exception handling</em> which simply means that errors can be handled by the running program not always resulting in a crash that is deal with by the operating system. In general, it is a good idea to write code that understands what might go wrong and provides an elegant landing if something does. Exceptions also lead to a <em>try it and see</em> approach to programming. It can be easier to write code to catch an error than to try to write code that accounts for every situation without fail (at some point it will fail anyway !).</p>
-<p>Python is also an object oriented language and it is impossible to read python without understanding how it describes its objects and then refers to them. The principle of object-oriented languages is to encapsulate data and operations on that data into “objects” that can be passed around as a single entity and which you then can use without having to know all the internal structure of the object. This is a key part of our earlier discussion about the importance of being able to create abstractions in programming. In object-oriented languages, we typically describe a class of objects that have certain properties (data, operations, structure) without necessarily knowing the details of how those objects are implemented. We can be handed classes and told how to use them, copy them, extend them and so on without having to pull them apart first.</p>
-<p>Python is based around libraries in the form of modules that we <code>import</code> when we need to use them. There are very many modules in the standard python library for doing nearly everything from the operating-system level (make a directory, open a file) to high-level access to internet resources, string manipulations, regular expression parsing, mathematical functions … [links would be helpful]. Once a module is imported, the functions and classes that it defines become available to the program and to make life simpler, the names of all those functions and classes are prefaced by the module name when they are used. That means <code>math.sin</code> is not confused with <code>religion.sin</code> which might take a bit more typing for a programmer but does improve readability and makes life much, much easier for anyone developing a library.</p>
-<p>If you write some useful code, it is common to bundle it into the form of a <em>module</em> and then to distribute it by uploading a package to a standard location. These packages are then distributed to users via a package manager which is smart enough to make sure that you are installing a version that works on your machine and (more complicated) is consistent with all the other packages you have installed.</p>
-<p>The two main package managers for python are <code>pip</code> and <code>conda</code>. <code>pip</code> is a little bit more simple and really just worries about installing python packages and their python dependencies. <code>pip</code> is usually used in conjunction with other package managers to handle other dependencies that are distributed as binary libraries (things not derived from python - for example visualisation packages, compilers, language parsers, numerical libraries written in fortran). <code>conda</code> is a great deal more ambitious than <code>pip</code>- it manages entire environments that also include non-python libraries that packages might need. <code>conda</code> is more powerful than pip and tries to replace many other package managers that exist in the non-python world. If you do opt for conda, you really should go the whole nine-yards and try to use it to manage everything. <code>conda</code> creates virtual environments which allow you to have multiple set-ups on a single machine - handy if you have packages that need different versions of python or which have incompatible dependencies. <code>conda</code> is very handy for cloud computing because it a simple text file is (usually) enough to specify how to set up a cloud machine to run the environment you need.</p>
-<section id="background-reading" class="level2">
-<h2 class="anchored" data-anchor-id="background-reading">Background reading</h2>
-<p>The definitive reference point for python is <a href="https://www.python.org">www.python.org</a>. It might be helpful to browse various articles on wikipedia first, though, starting with the <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">page about the Python language</a></p>
+<p>Modern programming has an organic, layered feel to it that may come as a surprise. In this course, we will learn how to read through the layers to understand how programs are built and how to build our own. Let us start with some very basic questions.</p>
+<section id="what-is-a-computer" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-computer">What is a computer ?</h2>
+<p>A classical computer is an engine of some kind for processing pure information. Various components are needed to make this possible including some means of initialising and storing the information before and after it is processed, and a mechanism for processing information (including the case where the processing is dependent upon the information itself). Many different machines can meet these criteria but we usually add at least one more requirement: the computers that we are interested in are <em>programmable</em> in that they can be given different instructions that describe what processing will be done.</p>
+<p>The original <strong>Analytical Engine</strong> designed by Babbage and Lovelace in the 1830s (see {cite}<code>babbage_babbages_2010</code>) fits these criteria and so do most modern digital computers. One of the pioneers of computing information theory, John von Neumann, describes the necessary requirements for a true computer and makes many very interesting comparisons between the digital computers of his time (the 1950s) and the human brain in his final book <em>Computing and the Brain</em> {cite}<code>von_neumann_computer_2012</code>.</p>
+<p>There are many kinds of computers that we will not be discussing such as the embedded systems in controllers, engines, cars, aircraft and so on. Some of these might use recognisable programming but many are heavily focused on the job that they must do quickly, with low overhead and no danger of crashing as they process critical information in real time. These systems may well have more in common with early electronic computers because complexity can be the enemy of reliability or at least of demonstrating reliability in the face of every conceivable input.</p>
+<p>We will also make an assumption that there is only one information processing engine that we are programming at any one time. Most computers are, in fact, multiple processing engines that work simultaneously either on different tasks that do not interact or on subsets of the information that are isolated from each other. Real parallel programming almost always requires us to understand and control how those data or task interdependencies work and that is an a subject in its own right.</p>
+</section>
+<section id="what-is-a-programming-language" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-programming-language">What is a programming language ?</h2>
+<p>Broadly speaking, a programming language is a way to tell a computer how to obtain and process information for us. There are two distinct paradigms in programming that approach problems in quite different ways.</p>
+<p>The first of these is the <strong>declarative</strong> approach which states what needs to be done and does not say very much about how it needs to be done. Some examples of this are “Hey Siri …” or “Hey Google …” followed by some question such as “will it be hot today ?” and we expect some sort of reasonable response to that without further explanation. Another example is a spreadsheet where calculations mostly just happen without having to explain in detail how to sum a column or multiply two columns. This is also the way we usually interact with human experts !</p>
+<p>The second paradigm is usually less familiar in our everyday experience. <strong>Imperative</strong> programming is what happens when you lay out every step in detail for the computer to follow and these steps will be followed <em>to the letter</em> no matter what mistakes you make in giving the instructions. We don’t give instructions to people at this level unless they have no experience whatsoever in some topic. “Would you make me a cup of tea, please ?” becomes “Walk from your current position to the kitchen and identify the kettle, turn the on/off switch to the on position …” and so on. Any of these steps is open to misinterpretation and misunderstanding so how do you know when to stop adding more details ?</p>
+<p>Imperative programming is the way we will approach most science problems but we will also be making use of many libraries and modules that <em>have already encoded</em> the basic instructions for the kinds of tasks we want to do. Our job is often just trying our best to find these libraries, test them and work out all the things they can do. The many layers of abstraction are a way to know the appropriate level of detail in describing a task.</p>
+<p>A programming language is just a way to make the writing and executing of these instructions as simple and re-usable as makes sense for the task in hand. Some are very low level for programming individual chips, and some are very high level if, for example, we want to build an interactive website quickly and mostly according to a pre-existing recipe. Some programming languages trade ease of use for speed (languagues like <code>C</code> and <code>Fortran</code> are like this) and some are very flexible but have to do a lot of checks when they run to make sure all the ideas fit together consistently (<code>Python</code> is like that, and so is <code>Perl</code>). Some programming languages are just arrangements of logical blocks where we specify the operations and their interactions but not in text form (e.g.&nbsp;<code>scratch</code>) but they are still, at some level, explaining what to do, in what order, to which pieces of data.</p>
+<p>We are going to concentrate on <code>Python</code> which is a flexible language that is widely used by the scientific community. I has a few things in common with English, actually, in that it is very good at absorbing concepts from other languages, and there are always many different ways to say something. <code>Python</code> makes it possible to create levels of abstraction that hide unimportant details but those details are not particularly well hidden and it is always possible to dig down and find out more.</p>
+</section>
+<section id="what-does-a-well-written-program-or-library-look-like" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-a-well-written-program-or-library-look-like">What does a well-written program or library look like ?</h2>
+<p>One of the first questions to ask before starting to write some code is “did somebody already write this ?” and, if the answer is yes, can you quickly work out which of these options is best: - Use the existing program or library - Modify the existing program or library - Start again</p>
+<p>If you do decide to use somebody else’s code, you will need to understand how it works and check that it really does work as advertised. If you need to modify the code, you should consider whether you are going to contribute those improvements back to the author or the community.</p>
+<p>Going through this process for somebody else’s code is also a very good idea before you write your own code because, honestly, it helps you to be as critical of your own work as you would be of others. Here is a checklist that feels a lot more intimidating if you imagine scrutinising your own programs, not somebody else’s:</p>
+<ul>
+<li>Can I find the source code ?</li>
+<li>Is the source code clear, readable with comments ?</li>
+<li>Is there a suite of tests with good coverage of the code ?</li>
+<li>Are the benchmarks or verifications of inputs v. outputs ?</li>
+<li>Is there clear documentation for a typical user or a typical developer?</li>
+<li>Is it clear how bug-fixes and improvements will be accepted ?</li>
+<li>Is the code up-to-date with the latest operating systems ?</li>
+</ul>
+<p>The discussion so far gets us to the point where we know how to describe what we want from a piece of software even if we don’t know how to build it ourselves (another layer of abstraction, by the way) ! You are going to be encouraged to approach any task from this high level view. We will always start with the question - has somebody done this already ?</p>
+</section>
+<section id="how-do-we-take-advantage-of-re-usable-computing" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-we-take-advantage-of-re-usable-computing">How do we take advantage of re-usable computing ?</h2>
+<p>Our goal is to learn not just how to program a computer but how to write software that works and with all the tests to prove that it works; software that other people will find helpful and that they will be encouraged to use. That is to say, software that is “well-written” by the criteria we just discussed.</p>
+<p>We will touch upon <em>literate programming</em> which is a way to interweave rich documentation (with full text, equations, images etc) into code so that it is automatically well explained and properly documented and also to ensure that the documentation and the code do not drift apart when changes are made.</p>
+<p>We will discuss the benefits of making codes open-source and hosting them on a public repository so that they are easily discoverable. We will discuss version control and testing and the benefits of merging those two things into one process so that you can be sure each change you make to the code does not introduce errors in other parts of the code.</p>
+</section>
+<section id="what-is-the-role-of-a-human-programmer-in-a-world-of-ai" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-role-of-a-human-programmer-in-a-world-of-ai">What is the role of a human programmer in a world of AI ?</h2>
+<p>Why don’t we start by asking the AI ?</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The Evolving Role of Human Programmers in an AI-Assisted World
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>As AI code generation capabilities advance, the human programmer’s role will shift rather than disappear:</p>
+<section id="strategic-direction-problem-definition" class="level2">
+<h2 class="anchored" data-anchor-id="strategic-direction-problem-definition">Strategic Direction &amp; Problem Definition</h2>
+<ul>
+<li>Defining what needs to be built and why</li>
+<li>Translating business needs into technical requirements</li>
+<li>Setting architectural vision and system design principles</li>
+<li>Making critical decisions about tradeoffs (performance, scalability, cost)</li>
+</ul>
+</section>
+<section id="ai-collaboration-oversight" class="level2">
+<h2 class="anchored" data-anchor-id="ai-collaboration-oversight">AI Collaboration &amp; Oversight</h2>
+<ul>
+<li>Prompting AI effectively to generate useful code</li>
+<li>Reviewing, validating, and improving AI-generated solutions</li>
+<li>Ensuring AI output meets business requirements and constraints</li>
+<li>Handling edge cases and complex scenarios AI struggles with</li>
+</ul>
+</section>
+<section id="domain-expertise-context" class="level2">
+<h2 class="anchored" data-anchor-id="domain-expertise-context">Domain Expertise &amp; Context</h2>
+<ul>
+<li>Providing specialized industry/business knowledge</li>
+<li>Understanding organizational context and constraints</li>
+<li>Embedding ethical considerations and company values</li>
+<li>Ensuring compliance with regulations and standards</li>
+</ul>
+</section>
+<section id="system-integration-complexity-management" class="level2">
+<h2 class="anchored" data-anchor-id="system-integration-complexity-management">System Integration &amp; Complexity Management</h2>
+<ul>
+<li>Designing how components interact in complex systems</li>
+<li>Managing dependencies and technical debt</li>
+<li>Ensuring performance, security, and reliability</li>
+<li>Solving novel problems AI hasn’t encountered</li>
+</ul>
+</section>
+<section id="innovation-creativity" class="level2">
+<h2 class="anchored" data-anchor-id="innovation-creativity">Innovation &amp; Creativity</h2>
+<ul>
+<li>Exploring new approaches and technologies</li>
+<li>Creating solutions for previously unsolved problems</li>
+<li>Developing new frameworks and paradigms</li>
+<li>Pushing the boundaries of what’s technically possible</li>
+</ul>
+<p>The programmer becomes less of a code producer and more of a technical director, leveraging AI as a powerful tool while maintaining responsibility for the overall quality, appropriateness, and effectiveness of technical solutions.</p>
+</section>
+</div>
+</div>
+</div>
 
 
 <script type="ojs-module-contents">
@@ -294,7 +385,6 @@ eyJjb250ZW50cyI6W119
 <script type="vfs-file">
 W10=
 </script>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -728,13 +818,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="EMSC e-Course template">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">EMSC e-Course template</span></span>
+      <a href="./index.html" class="pagination-link" aria-label="About This Course">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">About This Course</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./TLDR.html" class="pagination-link" aria-label="TLDR - Python Phrase Book">
-        <span class="nav-page-text"><span class="chapter-title">TLDR - Python Phrase Book</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Intro2PythonLanguage.html" class="pagination-link" aria-label="What kind of Language is Python ?">
+        <span class="nav-page-text"><span class="chapter-title">What kind of Language is Python ?</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
