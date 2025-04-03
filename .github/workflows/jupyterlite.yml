@@ -45,8 +45,7 @@ jobs:
           publish_dir: jupyterlite/dist
 
       - name: check
-        run: echo `pwd`
-        run: ls -l
+        run: echo `pwd`; ls -l
 
   # deploy:
   #   needs: build
