@@ -44,6 +44,8 @@ jobs:
           destination_dir: jupyterlite
           publish_dir: jupyterlite/dist
 
+        run: echo `pwd`
+
   # deploy:
   #   needs: build
   #   if: github.ref == 'refs/heads/main'
