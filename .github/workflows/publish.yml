@@ -1,11 +1,9 @@
-name: publish quarto book + reveal slides
-
 on:
   workflow_dispatch:
   push:
     branches: main
 
-name: Quarto Publish
+name: Quarto Publish Book and Slides
 
 jobs:
   build-deploy:
@@ -19,11 +17,11 @@ jobs:
       - name: Add micromamba
         uses: mamba-org/setup-micromamba@v1
         with:
-          micromamba-version: '1.5.6-0' # any version from https://github.com/mamba-org/micromamba-releases
+          micromamba-version: "1.5.6-0" # any version from https://github.com/mamba-org/micromamba-releases
           environment-file: .github/workflows/envs/renderer.yml
           init-shell: bash
           cache-environment: true
-          post-cleanup: 'all'
+          post-cleanup: "all"
 
       - name: Render docs with quarto
         shell: bash -l {0}
@@ -44,7 +42,6 @@ jobs:
           # destination_dir: book    # The dest dir is identified by branch
           publish_dir: _build
           keep_files: true
-
 
       # - name: Deploy quarto lectures
       #   uses: peaceiris/actions-gh-pages@v3
