@@ -1,18 +1,3 @@
----
-title: What kind of Language is Python ?
-author: 
-    - Louis Moresi
-jupyter: python3
-format:
-  html:
-    code-links: false
-#       - text: Run it here !
-#         icon: rocket-takeoff
-#         ref: https://mybinder.org/v2/gh/ANU-RSES-Education/EMSC-getting-going-with-python/HEAD?labpath=WebBook/Notebooks%2FBinderLandingPage.qmd
-
----
-
-
 # What kind of Language is Python ?
 
 There are some things worth knowing about the python language before diving in. Perhaps the most important thing to be aware of is that python is an *interpreted* language rather than a *compiled* language so there is no translation to fast, machine-executable, binary code. This firmly places efficient coding ahead of fast execution and says a great deal about the philosophy of python as a language: applicable to a very broad class of problems, easy to read and high-level so that it is straightforward to re-use and build upon existing software.

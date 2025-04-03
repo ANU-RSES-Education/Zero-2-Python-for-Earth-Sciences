@@ -10,6 +10,15 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+# pyodide:
+#   packages:
+#     - micropip
+#     - netcdf4
+#     - xarray
+#     - pydap
+#     - jinja2
+#     - ssl
+
 ---
 
 ::: {.callout-note icon=false}
@@ -64,7 +73,7 @@ ax.stock_img()
 plt.show()
 ```
 
-  Try changing the projection - look at the list in the link I gave you above to see what `ccrs` has available. In the notebook, many of the projections will time out because they are so computationally intensive but these work: `EckartI`, `EckartV`, `Stereographic`, `Orthographic`, `LambertConformal`, `Miller`.
+  Try changing the projection - look at the list in the link I gave you above to see what `ccrs` has available. In the notebook, many of the projections will time out because they are so computationally intensive but these work: `EckartI`, `EckartV`, `Stereographic`, `Orthographic`, `LambertConformal`, `Miller`, `Mollweide.
 
 Here is how you can plot a region instead of the globe:
 
@@ -83,7 +92,17 @@ help(ax.stock_img)
 ```
 
 ```{pyodide}
+import micropip as mp
+await mp.install("pydap")
+await mp.install("jinja2")
+await mp.install("ssl")
 
-...
+import xarray
+
+etopo_dataset = "https://thredds.socib.es/thredds/dodsC/ancillary_data/bathymetry/etopo2.nc"
+etopo_data = xarray.open_dataset(etopo_dataset, engine="pydap")
+etopo_data.info
+
+
 
 ```

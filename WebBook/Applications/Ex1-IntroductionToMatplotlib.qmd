@@ -60,31 +60,12 @@ FileLink("test-figure.png")
 
 # Embed the image in the output cell
 display(Image("test-figure.png"))
-
-
 ```
 
 ### Examples
 
-```{pyodide}
-fig = plt.figure(figsize=(6,6), facecolor="none")
+The figure is just used once in a typical, simple plotting routine. The axis / axes are used as a container for all of an individual graph's information. The subplot arguments are rather typical of matplotlib - a 1960s, fortran-like parsing of a three digit integer (above) or three separate arguments that imply the same thing (below). **Which of these is the better choice to use, and why ?**
 
-ax = plt.subplot(321)   # 3x2 array of plots, ax refers to the 1st of them
-ax2 = plt.subplot(322)
-ax3 = plt.subplot(323)
-ax4 = plt.subplot(324)
-ax5 = plt.subplot(325)
-ax6 = plt.subplot(326) # 3x2 array of plots, ax6 refers to the last of them
-
-ax.plot(np.linspace(0, 10, 100), np.sin(1*np.linspace(0, 10, 100)))
-ax2.plot(np.linspace(0, 10, 100), np.sin(2*np.linspace(0, 10, 100)))
-ax3.plot(np.linspace(0, 10, 100), np.sin(3*np.linspace(0, 10, 100)))
-ax4.plot(np.linspace(0, 10, 100), np.sin(4*np.linspace(0, 10, 100)))
-ax5.plot(np.linspace(0, 10, 100), np.sin(5*np.linspace(0, 10, 100)))
-ax6.plot(np.linspace(0, 10, 100), np.sin(6*np.linspace(0, 10, 100)))
-
-plt.show()  # happens anyway !
-```
 
 ```{pyodide}
 # Demo example
@@ -95,12 +76,12 @@ x2 = np.linspace(0.0, 2.0)
 y1 = np.cos(2 * np.pi * x1) * np.exp(-x1)
 y2 = np.cos(2 * np.pi * x2)
 
-plt.subplot(2, 1, 1)
+plt.subplot(211)
 plt.plot(x1, y1, 'o-')
 plt.title('A tale of 2 subplots')
 plt.ylabel('Damped oscillation')
 
-plt.subplot(2, 1, 2)
+plt.subplot(212)
 plt.plot(x2, y2, '.-')
 plt.xlabel('time (s)')
 plt.ylabel('Undamped')
@@ -108,9 +89,34 @@ plt.ylabel('Undamped')
 plt.show()
 ```
 
+It's not just `plot` that can add data to an axis, the style of the plot is largely controlled by the routine that add the data to a given axis. You can add multiple data to an axis and you can do this in multiple formats.
+
 
 ```{pyodide}
-# My preference
+fig = plt.figure(figsize=(6,6), facecolor="none")
+
+ax = plt.subplot(3,2,1)   # 3x2 array of plots, ax refers to the 1st of them
+ax2 = plt.subplot(3,2,2)
+ax3 = plt.subplot(3,2,3)
+ax4 = plt.subplot(3,2,4)
+ax5 = plt.subplot(3,2,5)
+ax6 = plt.subplot(3,2,6) # 3x2 array of plots, ax6 refers to the last of them
+
+ax.plot(np.linspace(0, 10, 100), np.sin(1*np.linspace(0, 10, 100)))
+ax2.scatter(np.linspace(0, 10, 100), np.sin(2*np.linspace(0, 10, 100)))
+ax3.errorbar(np.linspace(0, 10, 50), np.sin(3*np.linspace(0, 10, 50)), yerr=0.3)
+ax4.errorbar(np.linspace(0, 10, 100), np.sin(4*np.linspace(0, 10, 100)), xerr=0.2)
+ax5.step(np.linspace(0, 10, 100), np.sin(5*np.linspace(0, 10, 100)))
+ax6.fill_between(np.linspace(0, 10, 100), np.sin(6*np.linspace(0, 10, 100)))
+
+plt.show()  # Not required in a notebook
+```
+
+
+Here are some more examples that you can explore.
+
+
+```{pyodide}
 
 x1 = np.linspace(0.0, 5.0)
 x2 = np.linspace(0.0, 2.0)
@@ -128,8 +134,7 @@ ax3  = plt.subplot(413)
 ax4  = plt.subplot(414)
 
 ax1.plot(x1, y1, 'o-')
-ax1.set_title('A tale of 2 subplots')
-ax1.set_ylabel('Damped oscillation')
+ax1.set_title('Oscillations')
 ax2.plot(x2, y2, '.-')
 ax2.set_xlabel('time (s)')
 ax2.set_ylabel('Not Damped')
@@ -172,6 +177,9 @@ plt.show()
 ### Matplotlib Gallery
 
 The [gallery](https://matplotlib.org/stable/gallery/index.html) is a collection of examples that demonstrate the range ofcapabilities of matplotlib. Source code is provided for each example and they should all work here.
+
+It is worth using the gallery as a starting point for the plots you want to create. The interface to matplotlib objects is powerful but not designed for everyday use - to do slightly complicated things may require very complicated code. But lots can be done and here are some cool examples.
+
 
 ::: {.callout-warning collapse=true icon="false"}
 # Gallery 1 - Line plots with Error Bars
