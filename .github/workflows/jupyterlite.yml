@@ -26,35 +26,15 @@ jobs:
           cd jupyterlite
           cp README.md content
           jupyter lite build --contents content --output-dir dist
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v3
-      #   with:
-      #     path: dist
 
       - name: Deploy jupyterlite directory
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
 
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           destination_dir: jupyterlite
           publish_dir: jupyterlite/dist
+          keep_files: true
 
       - name: check
-        run: echo `pwd`; ls -l
-
-  # deploy:
-  #   needs: build
-  #   if: github.ref == 'refs/heads/main'
-  #   permissions:
-  #     pages: write
-  #     id-token: write
-
-  #   environment:
-  #     name: github-pages
-  #     url: ${{ steps.deployment.outputs.page_url }}
-
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Deploy to GitHub Pages
-  #       id: deployment
-  #       uses: actions/deploy-pages@v4
+        run: pwd; ls -l; ls -l jupyterlite/dist

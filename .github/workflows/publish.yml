@@ -1,4 +1,4 @@
-# publish to gh-pages
+name: publish quarto book + reveal slides
 
 on:
   workflow_dispatch:
@@ -37,18 +37,19 @@ jobs:
 
       ## Always deploy to version directory
       - name: Deploy quarto book
-        uses: peaceiris/actions-gh-pages@v3
-        
+        uses: peaceiris/actions-gh-pages@v4
+
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # destination_dir: book    # The dest dir is identified by branch 
+          # destination_dir: book    # The dest dir is identified by branch
           publish_dir: _build
-  
+          keep_files: true
+
+
       # - name: Deploy quarto lectures
       #   uses: peaceiris/actions-gh-pages@v3
-        
+
       #   with:
       #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     destination_dir: lectures    # The dest dir is identified by branch 
+      #     destination_dir: lectures    # The dest dir is identified by branch
       #     publish_dir: WebSlides/_slides
- 
