@@ -92,11 +92,7 @@ help(ax.stock_img)
 ```
 
 ```{pyodide}
-import micropip as mp
-await mp.install("pydap")
-await mp.install("jinja2")
-await mp.install("ssl")
-
+#| warning: false
 import xarray
 
 etopo_dataset = "https://thredds.socib.es/thredds/dodsC/ancillary_data/bathymetry/etopo2.nc"

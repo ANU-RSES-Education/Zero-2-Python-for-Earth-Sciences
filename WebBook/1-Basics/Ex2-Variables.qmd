@@ -111,7 +111,7 @@ There is no particular advantage to using these short forms, except convenience 
 
 
 ```{pyodide}
-# Exercise 1
+#| exercise: ex_2
 
 
 
@@ -192,9 +192,9 @@ print(i / 3)
 :::
 
 ```{pyodide}
-# Exercise 2
+#| exercise: ex_2
 
-
+______
 
 
 ```

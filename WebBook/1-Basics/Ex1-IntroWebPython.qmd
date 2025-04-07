@@ -123,7 +123,7 @@ In fact, 'commenting out' code is so common that most editors provide a straight
 
 ## Exercises with Solutions
 
-In some cases, you can check your answers by running the code and comparing the output to the expected result. Here is a simple example in which you are asked to write some code to print the mean of the integers from 1 to 99.
+In some cases, you can check your answers by running the code and comparing the output to the expected result. Here is a simple example in which you are asked to **write some code to print the mean of the integers from 1 to 99**.
 
 :::: {.callout-tip collapse=true icon="false"}
 # Exercise 3 - Checking your answers

@@ -19,36 +19,34 @@ book:
 
     - part: "**Basic Language Skills**"
       chapters:
-        # - Basics/Intro.qmd
-        - Basics/Ex1-IntroWebPython.qmd
-        - Basics/Ex2-Variables.qmd
-        - Basics/Ex2a-Functions.qmd
-        - Basics/Ex3-Conditionals.qmd
-        - Basics/Ex4-Loops.qmd
-        - Basics/Ex5-ListsEtc.qmd
-        - Basics/Ex6-MoreLoops.qmd
-        - Basics/Ex7-Strings.qmd
-        - Basics/Ex8-ReadWriteFiles.qmd
+        - 1-Basics/Ex1-IntroWebPython.qmd
+        - 1-Basics/Ex2-Variables.qmd
+        - 1-Basics/Ex2a-Functions.qmd
+        - 1-Basics/Ex3-Conditionals.qmd
+        - 1-Basics/Ex4-Loops.qmd
+        - 1-Basics/Ex5-ListsEtc.qmd
+        - 1-Basics/Ex6-MoreLoops.qmd
+        - 1-Basics/Ex7-Strings.qmd
+        - 1-Basics/Ex8-ReadWriteFiles.qmd
 
     # - part: "**Version Control**"
     #   chapters:
     #     - Introduction2VersionControl/1-GettingStartedWithGit.qmd
     #     - Introduction2VersionControl/2-NextStepsWithGit.qmd
     #     - Introduction2VersionControl/3-YourOwnRepositories.qmd
-
-    # - part: "**Advanced Language Skills**"
-    #   chapters:
-    #     - Advanced/Intro.qmd
-    #  Classes / Objects
-    #  Modules
-    #  Exceptions
-    #  Decorators
-    #
+    - part: "**Advanced Language Skills**"
+      chapters:
+        - 2-Advanced/Intro.qmd
+        - 2-Advanced/Ex1-PythonClasses.qmd
+      # Modules
+      # Exceptions
+      # Decorators
+      # Properties
 
     - part: "**Applications for Earth Sciences**"
       chapters:
-        - Applications/Ex1-IntroductionToMatplotlib.qmd
-        - Applications/Ex2-IntroductingCartopy.qmd
+        - 3-Applications/Ex1-IntroductionToMatplotlib.qmd
+        - 3-Applications/Ex2-IntroductingCartopy.qmd
 
     # - part: "Next steps: Becoming a Code Developer"
     #   chapters:
@@ -62,10 +60,6 @@ book:
     # - part: "Slides"
     #   chapters:
     #     - LectureSlides/Lecture1.qmd
-
-    # - part: "Work in Progress"
-    #   chapters:
-    #     - _WIP/Test_Pyodide.qmd
 
   # appendices:
   #   - Notebooks/BinderLandingPage.qmd

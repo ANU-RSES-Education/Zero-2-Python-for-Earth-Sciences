@@ -100,3 +100,5 @@ As AI code generation capabilities advance, the human programmer's role will shi
 The programmer becomes less of a code producer and more of a technical director, leveraging AI as a powerful tool while maintaining responsibility for the overall quality, appropriateness, and effectiveness of technical solutions.
 
 :::
+
+So there you have it: humans bring imagination, authority and a healthy dose of skepticism to the table. We can't help you with the first two, but we can work on the critical thinking skills that you will need.
