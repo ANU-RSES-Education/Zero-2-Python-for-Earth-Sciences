@@ -290,8 +290,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#some-better-ways-to-build-classes" id="toc-some-better-ways-to-build-classes" class="nav-link active" data-scroll-target="#some-better-ways-to-build-classes">Some better ways to build classes</a></li>
-  <li><a href="#more-interesting-classes" id="toc-more-interesting-classes" class="nav-link" data-scroll-target="#more-interesting-classes">More interesting classes</a></li>
+  <li><a href="#classes-with-methods" id="toc-classes-with-methods" class="nav-link active" data-scroll-target="#classes-with-methods">Classes with Methods</a></li>
+  <li><a href="#operator-overloading" id="toc-operator-overloading" class="nav-link" data-scroll-target="#operator-overloading">Operator Overloading</a></li>
   </ul>
 <div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://github.com/ANU-RSES-Education/EMSC-getting-going-with-python"><i class="bi bi-github"></i>Github Repository</a></li></ul></div><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="https://mybinder.org/v2/gh/ANU-RSES-Education/EMSC-getting-going-with-python/HEAD?labpath=WebBook/BinderLandingPage.qmd"><i class="bi bi-rocket-takeoff"></i>Open in Binder</a></li></ul></div></nav>
     </div>
@@ -340,12 +340,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiXG5wcmludCAoYy5kZXNjcmlw
 </div>
 <p><code>colour</code> can be thought of as a data container that standardises how we refer to colours. By default it is “Black” but we can always change the values. In the example above, we changed the <code>rgb</code> value but we did not update the description. Remember this for later !</p>
 <p>Another thing, we can also do this:</p>
-<div id="9db23f17" class="cell">
+<div id="7b7bdce1" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>d.complement <span class="op">=</span> (<span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (d.complement)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>But, does this do anything to the class itself ? In other words, do you think the following will work or will it fail ? If you are not sure, try it out in exercise 2.</p>
-<div id="5bac4df5" class="cell">
+<div id="a639e2ba" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (c.complement)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When we make an instance of a class (<code>c</code> or <code>d</code> are instances of the <code>colour</code> class), it is a new object in memory that can be modified quite extensively and this means it can fall out of sync with the class definition if we are not careful. Again, remember this for later !</p>
@@ -401,8 +401,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoicHJpbnQodHlwZShlKSlcbnBy
 </script>
 </div>
 <p>The class definition is held on the object and, as a result, the objects that are defined from classes that have the same name do not have to have the same type. You can see that the <code>c</code> object is still a <code>colour</code> object, but so is <code>e</code> !</p>
-<section id="some-better-ways-to-build-classes" class="level2">
-<h2 class="anchored" data-anchor-id="some-better-ways-to-build-classes">Some better ways to build classes</h2>
+<section id="classes-with-methods" class="level2">
+<h2 class="anchored" data-anchor-id="classes-with-methods">Classes with Methods</h2>
 <p>The point of classes is to collect up data and the operations that we want to perform on that data and pass them around the program as a single object. We didn’t really manage to do that yet, but we are nearly there.</p>
 <p>The <code>rgb</code> value of the colour has a complement that can be calculated automatically, so we should just write a function to do that and bind it to the data. This eliminates the need to manually synchronise the data each time we assign a new colour, and that is a way to reduce the likelihood of making a mistake.</p>
 <p>We define the new version of the class like this:</p>
@@ -450,8 +450,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoibmV3X2MgPSBjb2xvdXIzKHJn
 </script>
 </div>
 </section>
-<section id="more-interesting-classes" class="level2">
-<h2 class="anchored" data-anchor-id="more-interesting-classes">More interesting classes</h2>
+<section id="operator-overloading" class="level2">
+<h2 class="anchored" data-anchor-id="operator-overloading">Operator Overloading</h2>
 <p>One of the extensibility secrets of python is that all the language operators are defined by special ‘invisible’ functions on the classes. That means we can define <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> etc for objects. Think of the way multiplication is defined differently for numbers versus matrices, for example. Here is how we might use <strong>operator overloading</strong> to refer to the different colour mixing methods:</p>
 <div>
 <div id="pyodide-12" class="exercise-cell">
