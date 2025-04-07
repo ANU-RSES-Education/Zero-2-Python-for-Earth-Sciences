@@ -6,10 +6,21 @@ Modern programming has an organic, layered feel to it that may come as a surpris
 
 A classical computer is an engine of some kind for processing pure information. Various components are needed to make this possible including some means of initialising and storing the information before and after it is processed, and a mechanism for processing information (including the case where the processing is dependent upon the information itself). Many different machines can meet these criteria but we usually add at least one more requirement: the computers that we are interested in are *programmable* in that they can be given different instructions that describe what processing will be done.
 
+
 The original **Analytical Engine** designed by Babbage and Lovelace in the 1830s (see {cite}`babbage_babbages_2010`) fits these criteria and so do most modern digital computers. One of the pioneers of computing information theory, John von Neumann, describes the necessary requirements for a true computer and makes many very interesting comparisons between the digital computers of his time (the 1950s) and the human brain in his final book *Computing and the Brain*
 {cite}`von_neumann_computer_2012`.
 
-There are many kinds of computers that we will not be discussing such as the embedded systems in controllers, engines, cars, aircraft and so on. Some of these might use recognisable programming but many are heavily focused on the job that they must do quickly, with low overhead and no danger of crashing as they process critical information in real time. These systems may well have more in common with early electronic computers because complexity can be the enemy of reliability or at least of demonstrating reliability in the face of every conceivable input.
+This is part of the `computer` from an automatic transmission [(read more)](
+https://carpart.com.au/blog/what-is-a-valve-body). Fluid within the channels is under pressure during operation. There are various valves / solenoids that configure the system when it is operating - the shape and length of the channels is part of the programming because this changes the pressure drop and the time-delay for information to propagate within the system. This *is* a computer in the sense that it processes input states into output states. It is not programmable in the sense of having a programming language and it is certainly not a general purpose programmable machine. Perhaps you would like to think about how to debug a program on this architecture.
+
+::: {#fig-transmission-hydraulic-computer}
+![Transmission Valve Body](https://www.slashgear.com/img/gallery/what-is-a-transmission-valve-body-and-what-happens-when-it-has-gone-bad/how-the-transmission-valve-body-works-1738028207.webp){fig-align="center" width=80%}
+
+Inside a tranmission valve body from [Slashgear.com](https://www.slashgear.com/1772860/transmission-valve-body-what-happens-when-its-bad-explanation/)
+:::
+
+There are many kinds of electronic computers that we will not be discussing such as the embedded systems in controllers, engines, cars, aircraft and so on. Some of these might use recognisable programming but many are heavily focused on the job that they must do quickly, with low overhead and no danger of crashing as they process critical information in real time. These systems may well have more in common with early electronic computers because complexity can be the enemy of reliability or at least of demonstrating reliability in the face of every conceivable input. If you build projects using microcontrollers, then you will quickly get a sense of this style of programming; what it offers and its limitations.
+
 
 We will also make an assumption that there is only one information processing engine that we are programming at any one time. Most computers are, in fact, multiple processing engines that work simultaneously either on different tasks that do not interact or on subsets of the information that are isolated from each other. Real parallel programming almost always requires us to understand and control how those data or task interdependencies work and that is an a subject in its own right.
 

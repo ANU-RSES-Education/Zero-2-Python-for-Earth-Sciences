@@ -46,7 +46,6 @@ When you have finished, you can collapse this exercise:
 
 ![](Images/CollapseThisExercise.png){.lightbox width=50% fig-align=center}
 
-
 Usually we will collapse the exercises by default and you'll need to open them to access the instructions.
 
 ```{pyodide}

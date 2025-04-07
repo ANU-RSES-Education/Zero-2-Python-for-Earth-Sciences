@@ -56,7 +56,6 @@ Advancing computer power means that the computer does more of the work and allow
 
 At the very least, this means that, over time, we can expect software (programs) to grow more reliable and gain functionality as people fix and improve it because it is always being reused. The improvements in hardware are what make this possible.
 
-
 ::: {#fig-apple-m1}
 
 ![m1]( Figures/Apple_new-m1-chip_11102020.jpg){fig-align="center" width=60%}

@@ -13,9 +13,9 @@ book:
     - part: "**Introduction**"
       chapters:
         - index.qmd
-        - WhatIsProgramming.qmd
-        - Intro2PythonLanguage.qmd
-        - TLDR.qmd
+        - 0-WhatIsProgramming.qmd
+        - 0-Intro2PythonLanguage.qmd
+        - 0-TLDR.qmd
 
     - part: "**Basic Language Skills**"
       chapters:
@@ -38,6 +38,7 @@ book:
       chapters:
         - 2-Advanced/Intro.qmd
         - 2-Advanced/Ex1-PythonClasses.qmd
+
       # Modules
       # Exceptions
       # Decorators

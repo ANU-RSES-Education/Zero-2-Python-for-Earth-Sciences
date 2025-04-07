@@ -1,0 +1,13 @@
+[workspace]
+authors = ["Louis Moresi <louis.moresi@anu.edu.au>"]
+channels = ["conda-forge"]
+name = "Zero-2-Pyrogrammer-for-Earth-Sciences"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+quarto = ">=1.6.42,<2"
+jupyterlite = ">=0.5.1,<0.6"
+jupyterlite-pyodide-kernel = ">=0.5.2,<0.6"
