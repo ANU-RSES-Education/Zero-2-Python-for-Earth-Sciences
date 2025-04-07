@@ -44,19 +44,30 @@
     ]
   },
   {
-    "objectID": "WhatIsProgramming.html",
-    "href": "WhatIsProgramming.html",
+    "objectID": "0-WhatIsProgramming.html",
+    "href": "0-WhatIsProgramming.html",
     "title": "Modern approaches to programming",
     "section": "",
-    "text": "What is a computer ?\nModern programming has an organic, layered feel to it that may come as a surprise. In this course, we will learn how to read through the layers to understand how programs are built and how to build our own. Let us start with some very basic questions.\nA classical computer is an engine of some kind for processing pure information. Various components are needed to make this possible including some means of initialising and storing the information before and after it is processed, and a mechanism for processing information (including the case where the processing is dependent upon the information itself). Many different machines can meet these criteria but we usually add at least one more requirement: the computers that we are interested in are programmable in that they can be given different instructions that describe what processing will be done.\nThe original Analytical Engine designed by Babbage and Lovelace in the 1830s (see {cite}babbage_babbages_2010) fits these criteria and so do most modern digital computers. One of the pioneers of computing information theory, John von Neumann, describes the necessary requirements for a true computer and makes many very interesting comparisons between the digital computers of his time (the 1950s) and the human brain in his final book Computing and the Brain {cite}von_neumann_computer_2012.\nThere are many kinds of computers that we will not be discussing such as the embedded systems in controllers, engines, cars, aircraft and so on. Some of these might use recognisable programming but many are heavily focused on the job that they must do quickly, with low overhead and no danger of crashing as they process critical information in real time. These systems may well have more in common with early electronic computers because complexity can be the enemy of reliability or at least of demonstrating reliability in the face of every conceivable input.\nWe will also make an assumption that there is only one information processing engine that we are programming at any one time. Most computers are, in fact, multiple processing engines that work simultaneously either on different tasks that do not interact or on subsets of the information that are isolated from each other. Real parallel programming almost always requires us to understand and control how those data or task interdependencies work and that is an a subject in its own right.",
+    "text": "What is a computer ?\nModern programming has an organic, layered feel to it that may come as a surprise. In this course, we will learn how to read through the layers to understand how programs are built and how to build our own. Let us start with some very basic questions.\nA classical computer is an engine of some kind for processing pure information. Various components are needed to make this possible including some means of initialising and storing the information before and after it is processed, and a mechanism for processing information (including the case where the processing is dependent upon the information itself). Many different machines can meet these criteria but we usually add at least one more requirement: the computers that we are interested in are programmable in that they can be given different instructions that describe what processing will be done.\nThe original Analytical Engine designed by Babbage and Lovelace in the 1830s (see {cite}babbage_babbages_2010) fits these criteria and so do most modern digital computers. One of the pioneers of computing information theory, John von Neumann, describes the necessary requirements for a true computer and makes many very interesting comparisons between the digital computers of his time (the 1950s) and the human brain in his final book Computing and the Brain {cite}von_neumann_computer_2012.\nThis is part of the computer from an automatic transmission (read more). Fluid within the channels is under pressure during operation. There are various valves / solenoids that configure the system when it is operating - the shape and length of the channels is part of the programming because this changes the pressure drop and the time-delay for information to propagate within the system. This is a computer in the sense that it processes input states into output states. It is not programmable in the sense of having a programming language and it is certainly not a general purpose programmable machine. Perhaps you would like to think about how to debug a program on this architecture.\nThere are many kinds of electronic computers that we will not be discussing such as the embedded systems in controllers, engines, cars, aircraft and so on. Some of these might use recognisable programming but many are heavily focused on the job that they must do quickly, with low overhead and no danger of crashing as they process critical information in real time. These systems may well have more in common with early electronic computers because complexity can be the enemy of reliability or at least of demonstrating reliability in the face of every conceivable input. If you build projects using microcontrollers, then you will quickly get a sense of this style of programming; what it offers and its limitations.\nWe will also make an assumption that there is only one information processing engine that we are programming at any one time. Most computers are, in fact, multiple processing engines that work simultaneously either on different tasks that do not interact or on subsets of the information that are isolated from each other. Real parallel programming almost always requires us to understand and control how those data or task interdependencies work and that is an a subject in its own right.",
     "crumbs": [
       "**Introduction**",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Modern approaches to programming</span>"
     ]
   },
   {
-    "objectID": "WhatIsProgramming.html#what-is-a-programming-language",
-    "href": "WhatIsProgramming.html#what-is-a-programming-language",
+    "objectID": "0-WhatIsProgramming.html#what-is-a-computer",
+    "href": "0-WhatIsProgramming.html#what-is-a-computer",
+    "title": "Modern approaches to programming",
+    "section": "",
+    "text": "Transmission Valve Body\n\n\n\n\nFigure 2.1: Inside a tranmission valve body from Slashgear.com",
+    "crumbs": [
+      "**Introduction**",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Modern approaches to programming</span>"
+    ]
+  },
+  {
+    "objectID": "0-WhatIsProgramming.html#what-is-a-programming-language",
+    "href": "0-WhatIsProgramming.html#what-is-a-programming-language",
     "title": "Modern approaches to programming",
     "section": "What is a programming language ?",
     "text": "What is a programming language ?\nBroadly speaking, a programming language is a way to tell a computer how to obtain and process information for us. There are two distinct paradigms in programming that approach problems in quite different ways.\nThe first of these is the declarative approach which states what needs to be done and does not say very much about how it needs to be done. Some examples of this are “Hey Siri …” or “Hey Google …” followed by some question such as “will it be hot today ?” and we expect some sort of reasonable response to that without further explanation. Another example is a spreadsheet where calculations mostly just happen without having to explain in detail how to sum a column or multiply two columns. This is also the way we usually interact with human experts !\nThe second paradigm is usually less familiar in our everyday experience. Imperative programming is what happens when you lay out every step in detail for the computer to follow and these steps will be followed to the letter no matter what mistakes you make in giving the instructions. We don’t give instructions to people at this level unless they have no experience whatsoever in some topic. “Would you make me a cup of tea, please ?” becomes “Walk from your current position to the kitchen and identify the kettle, turn the on/off switch to the on position …” and so on. Any of these steps is open to misinterpretation and misunderstanding so how do you know when to stop adding more details ?\nImperative programming is the way we will approach most science problems but we will also be making use of many libraries and modules that have already encoded the basic instructions for the kinds of tasks we want to do. Our job is often just trying our best to find these libraries, test them and work out all the things they can do. The many layers of abstraction are a way to know the appropriate level of detail in describing a task.\nA programming language is just a way to make the writing and executing of these instructions as simple and re-usable as makes sense for the task in hand. Some are very low level for programming individual chips, and some are very high level if, for example, we want to build an interactive website quickly and mostly according to a pre-existing recipe. Some programming languages trade ease of use for speed (languagues like C and Fortran are like this) and some are very flexible but have to do a lot of checks when they run to make sure all the ideas fit together consistently (Python is like that, and so is Perl). Some programming languages are just arrangements of logical blocks where we specify the operations and their interactions but not in text form (e.g. scratch) but they are still, at some level, explaining what to do, in what order, to which pieces of data.\nWe are going to concentrate on Python which is a flexible language that is widely used by the scientific community. I has a few things in common with English, actually, in that it is very good at absorbing concepts from other languages, and there are always many different ways to say something. Python makes it possible to create levels of abstraction that hide unimportant details but those details are not particularly well hidden and it is always possible to dig down and find out more.",
@@ -66,8 +77,8 @@
     ]
   },
   {
-    "objectID": "WhatIsProgramming.html#what-does-a-well-written-program-or-library-look-like",
-    "href": "WhatIsProgramming.html#what-does-a-well-written-program-or-library-look-like",
+    "objectID": "0-WhatIsProgramming.html#what-does-a-well-written-program-or-library-look-like",
+    "href": "0-WhatIsProgramming.html#what-does-a-well-written-program-or-library-look-like",
     "title": "Modern approaches to programming",
     "section": "What does a well-written program or library look like ?",
     "text": "What does a well-written program or library look like ?\nOne of the first questions to ask before starting to write some code is “did somebody already write this ?” and, if the answer is yes, can you quickly work out which of these options is best: - Use the existing program or library - Modify the existing program or library - Start again\nIf you do decide to use somebody else’s code, you will need to understand how it works and check that it really does work as advertised. If you need to modify the code, you should consider whether you are going to contribute those improvements back to the author or the community.\nGoing through this process for somebody else’s code is also a very good idea before you write your own code because, honestly, it helps you to be as critical of your own work as you would be of others. Here is a checklist that feels a lot more intimidating if you imagine scrutinising your own programs, not somebody else’s:\n\nCan I find the source code ?\nIs the source code clear, readable with comments ?\nIs there a suite of tests with good coverage of the code ?\nAre the benchmarks or verifications of inputs v. outputs ?\nIs there clear documentation for a typical user or a typical developer?\nIs it clear how bug-fixes and improvements will be accepted ?\nIs the code up-to-date with the latest operating systems ?\n\nThe discussion so far gets us to the point where we know how to describe what we want from a piece of software even if we don’t know how to build it ourselves (another layer of abstraction, by the way) ! You are going to be encouraged to approach any task from this high level view. We will always start with the question - has somebody done this already ?",
@@ -77,8 +88,8 @@
     ]
   },
   {
-    "objectID": "WhatIsProgramming.html#how-do-we-take-advantage-of-re-usable-computing",
-    "href": "WhatIsProgramming.html#how-do-we-take-advantage-of-re-usable-computing",
+    "objectID": "0-WhatIsProgramming.html#how-do-we-take-advantage-of-re-usable-computing",
+    "href": "0-WhatIsProgramming.html#how-do-we-take-advantage-of-re-usable-computing",
     "title": "Modern approaches to programming",
     "section": "How do we take advantage of re-usable computing ?",
     "text": "How do we take advantage of re-usable computing ?\nOur goal is to learn not just how to program a computer but how to write software that works and with all the tests to prove that it works; software that other people will find helpful and that they will be encouraged to use. That is to say, software that is “well-written” by the criteria we just discussed.\nWe will touch upon literate programming which is a way to interweave rich documentation (with full text, equations, images etc) into code so that it is automatically well explained and properly documented and also to ensure that the documentation and the code do not drift apart when changes are made.\nWe will discuss the benefits of making codes open-source and hosting them on a public repository so that they are easily discoverable. We will discuss version control and testing and the benefits of merging those two things into one process so that you can be sure each change you make to the code does not introduce errors in other parts of the code.",
@@ -88,8 +99,8 @@
     ]
   },
   {
-    "objectID": "WhatIsProgramming.html#what-is-the-role-of-a-human-programmer-in-a-world-of-ai",
-    "href": "WhatIsProgramming.html#what-is-the-role-of-a-human-programmer-in-a-world-of-ai",
+    "objectID": "0-WhatIsProgramming.html#what-is-the-role-of-a-human-programmer-in-a-world-of-ai",
+    "href": "0-WhatIsProgramming.html#what-is-the-role-of-a-human-programmer-in-a-world-of-ai",
     "title": "Modern approaches to programming",
     "section": "What is the role of a human programmer in a world of AI ?",
     "text": "What is the role of a human programmer in a world of AI ?\nWhy don’t we start by asking the AI ?\n\n\n\n\n\n\nThe Evolving Role of Human Programmers in an AI-Assisted World\n\n\n\n\n\nAs AI code generation capabilities advance, the human programmer’s role will shift rather than disappear:\n\nStrategic Direction & Problem Definition\n\nDefining what needs to be built and why\nTranslating business needs into technical requirements\nSetting architectural vision and system design principles\nMaking critical decisions about tradeoffs (performance, scalability, cost)\n\n\n\nAI Collaboration & Oversight\n\nPrompting AI effectively to generate useful code\nReviewing, validating, and improving AI-generated solutions\nEnsuring AI output meets business requirements and constraints\nHandling edge cases and complex scenarios AI struggles with\n\n\n\nDomain Expertise & Context\n\nProviding specialized industry/business knowledge\nUnderstanding organizational context and constraints\nEmbedding ethical considerations and company values\nEnsuring compliance with regulations and standards\n\n\n\nSystem Integration & Complexity Management\n\nDesigning how components interact in complex systems\nManaging dependencies and technical debt\nEnsuring performance, security, and reliability\nSolving novel problems AI hasn’t encountered\n\n\n\nInnovation & Creativity\n\nExploring new approaches and technologies\nCreating solutions for previously unsolved problems\nDeveloping new frameworks and paradigms\nPushing the boundaries of what’s technically possible\n\nThe programmer becomes less of a code producer and more of a technical director, leveraging AI as a powerful tool while maintaining responsibility for the overall quality, appropriateness, and effectiveness of technical solutions.\n\n\n\n\nSo there you have it: humans bring imagination, authority and a healthy dose of skepticism to the table. We can’t help you with the first two, but we can work on the critical thinking skills that you will need.",
@@ -99,8 +110,8 @@
     ]
   },
   {
-    "objectID": "WhatIsProgramming.html#strategic-direction-problem-definition",
-    "href": "WhatIsProgramming.html#strategic-direction-problem-definition",
+    "objectID": "0-WhatIsProgramming.html#strategic-direction-problem-definition",
+    "href": "0-WhatIsProgramming.html#strategic-direction-problem-definition",
     "title": "Modern approaches to programming",
     "section": "Strategic Direction & Problem Definition",
     "text": "Strategic Direction & Problem Definition\n\nDefining what needs to be built and why\nTranslating business needs into technical requirements\nSetting architectural vision and system design principles\nMaking critical decisions about tradeoffs (performance, scalability, cost)",
@@ -110,8 +121,8 @@
     ]
   },
   {
-    "objectID": "WhatIsProgramming.html#ai-collaboration-oversight",
-    "href": "WhatIsProgramming.html#ai-collaboration-oversight",
+    "objectID": "0-WhatIsProgramming.html#ai-collaboration-oversight",
+    "href": "0-WhatIsProgramming.html#ai-collaboration-oversight",
     "title": "Modern approaches to programming",
     "section": "AI Collaboration & Oversight",
     "text": "AI Collaboration & Oversight\n\nPrompting AI effectively to generate useful code\nReviewing, validating, and improving AI-generated solutions\nEnsuring AI output meets business requirements and constraints\nHandling edge cases and complex scenarios AI struggles with",
@@ -121,8 +132,8 @@
     ]
   },
   {
-    "objectID": "WhatIsProgramming.html#domain-expertise-context",
-    "href": "WhatIsProgramming.html#domain-expertise-context",
+    "objectID": "0-WhatIsProgramming.html#domain-expertise-context",
+    "href": "0-WhatIsProgramming.html#domain-expertise-context",
     "title": "Modern approaches to programming",
     "section": "Domain Expertise & Context",
     "text": "Domain Expertise & Context\n\nProviding specialized industry/business knowledge\nUnderstanding organizational context and constraints\nEmbedding ethical considerations and company values\nEnsuring compliance with regulations and standards",
@@ -132,8 +143,8 @@
     ]
   },
   {
-    "objectID": "WhatIsProgramming.html#system-integration-complexity-management",
-    "href": "WhatIsProgramming.html#system-integration-complexity-management",
+    "objectID": "0-WhatIsProgramming.html#system-integration-complexity-management",
+    "href": "0-WhatIsProgramming.html#system-integration-complexity-management",
     "title": "Modern approaches to programming",
     "section": "System Integration & Complexity Management",
     "text": "System Integration & Complexity Management\n\nDesigning how components interact in complex systems\nManaging dependencies and technical debt\nEnsuring performance, security, and reliability\nSolving novel problems AI hasn’t encountered",
@@ -143,8 +154,8 @@
     ]
   },
   {
-    "objectID": "WhatIsProgramming.html#innovation-creativity",
-    "href": "WhatIsProgramming.html#innovation-creativity",
+    "objectID": "0-WhatIsProgramming.html#innovation-creativity",
+    "href": "0-WhatIsProgramming.html#innovation-creativity",
     "title": "Modern approaches to programming",
     "section": "Innovation & Creativity",
     "text": "Innovation & Creativity\n\nExploring new approaches and technologies\nCreating solutions for previously unsolved problems\nDeveloping new frameworks and paradigms\nPushing the boundaries of what’s technically possible\n\nThe programmer becomes less of a code producer and more of a technical director, leveraging AI as a powerful tool while maintaining responsibility for the overall quality, appropriateness, and effectiveness of technical solutions.",
@@ -154,8 +165,8 @@
     ]
   },
   {
-    "objectID": "Intro2PythonLanguage.html",
-    "href": "Intro2PythonLanguage.html",
+    "objectID": "0-Intro2PythonLanguage.html",
+    "href": "0-Intro2PythonLanguage.html",
     "title": "What kind of Language is Python ?",
     "section": "",
     "text": "What kind of Language is Python ?\nThere are some things worth knowing about the python language before diving in. Perhaps the most important thing to be aware of is that python is an interpreted language rather than a compiled language so there is no translation to fast, machine-executable, binary code. This firmly places efficient coding ahead of fast execution and says a great deal about the philosophy of python as a language: applicable to a very broad class of problems, easy to read and high-level so that it is straightforward to re-use and build upon existing software.\nPython is supposed to be easy to use: it does not require you to specify (“declare”) the type of your variables or data before using them and it is happy to convert automatically from one type to another when it makes sense to do so. For example, a floating point 1.0 and an integer 1 are mostly interchangeable in python as they are in everyday life. When you have finished using a variable, there is no need to explicitly delete it though you can if you wish. Python is generally very permissive: there are usually many different ways to write something in python and the one that is easiest to follow is usually the best option to choose.\nPython has extensive exception handling which simply means that errors can be handled by the running program not always resulting in a crash that is deal with by the operating system. In general, it is a good idea to write code that understands what might go wrong and provides an elegant landing if something does. Exceptions also lead to a try it and see approach to programming. It can be easier to write code to catch an error than to try to write code that accounts for every situation without fail (at some point it will fail anyway !).\nPython is also an object oriented language and it is impossible to read python without understanding how it describes its objects and then refers to them. The principle of object-oriented languages is to encapsulate data and operations on that data into “objects” that can be passed around as a single entity and which you then can use without having to know all the internal structure of the object. This is a key part of our earlier discussion about the importance of being able to create abstractions in programming. In object-oriented languages, we typically describe a class of objects that have certain properties (data, operations, structure) without necessarily knowing the details of how those objects are implemented. We can be handed classes and told how to use them, copy them, extend them and so on without having to pull them apart first.\nPython is based around libraries in the form of modules that we import when we need to use them. There are very many modules in the standard python library for doing nearly everything from the operating-system level (make a directory, open a file) to high-level access to internet resources, string manipulations, regular expression parsing, mathematical functions … [links would be helpful]. Once a module is imported, the functions and classes that it defines become available to the program and to make life simpler, the names of all those functions and classes are prefaced by the module name when they are used. That means math.sin is not confused with religion.sin which might take a bit more typing for a programmer but does improve readability and makes life much, much easier for anyone developing a library.\nIf you write some useful code, it is common to bundle it into the form of a module and then to distribute it by uploading a package to a standard location. These packages are then distributed to users via a package manager which is smart enough to make sure that you are installing a version that works on your machine and (more complicated) is consistent with all the other packages you have installed.\nThe two main package managers for python are pip and conda. pip is a little bit more simple and really just worries about installing python packages and their python dependencies. pip is usually used in conjunction with other package managers to handle other dependencies that are distributed as binary libraries (things not derived from python - for example visualisation packages, compilers, language parsers, numerical libraries written in fortran). conda is a great deal more ambitious than pip- it manages entire environments that also include non-python libraries that packages might need. conda is more powerful than pip and tries to replace many other package managers that exist in the non-python world. If you do opt for conda, you really should go the whole nine-yards and try to use it to manage everything. conda creates virtual environments which allow you to have multiple set-ups on a single machine - handy if you have packages that need different versions of python or which have incompatible dependencies. conda is very handy for cloud computing because it a simple text file is (usually) enough to specify how to set up a cloud machine to run the environment you need.",
@@ -165,8 +176,8 @@
     ]
   },
   {
-    "objectID": "Intro2PythonLanguage.html#background-reading",
-    "href": "Intro2PythonLanguage.html#background-reading",
+    "objectID": "0-Intro2PythonLanguage.html#background-reading",
+    "href": "0-Intro2PythonLanguage.html#background-reading",
     "title": "What kind of Language is Python ?",
     "section": "Background reading",
     "text": "Background reading\nThe definitive reference point for python is www.python.org. It might be helpful to browse various articles on wikipedia first, though, starting with the page about the Python language",
@@ -176,8 +187,8 @@
     ]
   },
   {
-    "objectID": "TLDR.html",
-    "href": "TLDR.html",
+    "objectID": "0-TLDR.html",
+    "href": "0-TLDR.html",
     "title": "TLDR - Python Phrase Book",
     "section": "",
     "text": "Obligatory Hello world program\nThe first thing we should do is become familiar with the shape and feel of python code because we can’t really discuss the features of python without a few examples. So here is a little phrase book …\nThere is no set up needed to run this simple example because the print command is built into python. It is actually implemented as a function that displays its argument to the screen, so now you know what python functions look like ! You can also see how to write a comment.\nHere are a couple of other ways to do the same thing\nWe can assign the message to a variable and print that directly. The print function does not need to be told that hello_world_string is a string (and the fact that the name has the word string in it is neither here nor there). Variable names are allowed to have underscore characters in them, letters and numbers (other than the first character, that can’t be a number). underscores at the beginning of a variable are conventionally “hidden” which actually just means they are a bit harder to find in an interactive environment.",
@@ -187,8 +198,8 @@
     ]
   },
   {
-    "objectID": "TLDR.html#obligatory-hello-world-program",
-    "href": "TLDR.html#obligatory-hello-world-program",
+    "objectID": "0-TLDR.html#obligatory-hello-world-program",
+    "href": "0-TLDR.html#obligatory-hello-world-program",
     "title": "TLDR - Python Phrase Book",
     "section": "",
     "text": "&gt;&gt;&gt;\nHello World\n\n\n\n\n\n\n\n\n&gt;&gt;&gt;\nHello World\n-- Hello World --\n\n\n\n\n\n\n\nPython objects and methods are everywhere!\n\n\n\nIn fact, the string is a python object that understands that it may need to be printed and will respond appropriately to the print function’s call. The format function is also part of the repertoire of the string object and we will see this object.function way of accessing the “methods” of an object very, very often.",
@@ -198,8 +209,8 @@
     ]
   },
   {
-    "objectID": "TLDR.html#indentation-and-block-structure",
-    "href": "TLDR.html#indentation-and-block-structure",
+    "objectID": "0-TLDR.html#indentation-and-block-structure",
+    "href": "0-TLDR.html#indentation-and-block-structure",
     "title": "TLDR - Python Phrase Book",
     "section": "Indentation and block structure",
     "text": "Indentation and block structure\npython uses indentation to define code blocks and will complain when the indentation is broken. This is important for defining functions, conditional statements, loops and so on:\n\nLoops and if statements\n\n\n\n\n\n\nThis has the layout of a typical python code - the blocks that make up a loop or the branches of conditions are defined by the indentation. Easy if the code is short, much harder to follow if you cram too much into a block.",
@@ -209,8 +220,8 @@
     ]
   },
   {
-    "objectID": "TLDR.html#functions",
-    "href": "TLDR.html#functions",
+    "objectID": "0-TLDR.html#functions",
+    "href": "0-TLDR.html#functions",
     "title": "TLDR - Python Phrase Book",
     "section": "Functions",
     "text": "Functions\n\n\n\n\n\n\n&gt;&gt;&gt;\n1\nHello world\n\nHelp on function my_first_function in module __main__:\n\nmy_first_function(argument1, argument2)\n    This is the \"help\" for a function a.k.a. docstring. This particular function returns\n    its first argument\n\n\n\n\n\n\n&gt;&gt;&gt;\n(1, 2)\n('Hello world', 0)\nHelp on function my_second_function in module __main__:\n\nmy_second_function(argument1, argument2)\n    Function returns both arguments\n\n1\n2\nFunctions can return many arguments and they come back as a tuple. It is straightforward to unpack the values that are returned (the last example above).\n\n\n\n\n\n\nInterpreters vs Compilers\n\n\n\nSince python is an interpreted language, you must define functions before they are encountered in the code. That inverts the way many people write their code with the subroutines defined after the logic of the code is laid out. Instead, python uses modules to organise collections of code that are defined outside the main flow of the code.",
@@ -220,8 +231,8 @@
     ]
   },
   {
-    "objectID": "TLDR.html#modules",
-    "href": "TLDR.html#modules",
+    "objectID": "0-TLDR.html#modules",
+    "href": "0-TLDR.html#modules",
     "title": "TLDR - Python Phrase Book",
     "section": "Modules",
     "text": "Modules\nThe power of python is probably in the way it encourages sharing and builds a community of users. Before we can do much with python, we generally need to import the modules with the extra functionality we need. The print function is unusual in not needing to be imported, nearly everything else we want to do needs an import first\nFor example, the standard python library comes with modules for basic file system operations, string manipulation, mathematical functions, spawning processes … and so on. The full list is in the python documentation. These capabilities are provided (if you have downloaded python, you have these modules) but are not automatically activated.\nHere are a couple of examples:\nimport math\n\nprint(math.sin(math.pi/2))\nprint(math.cos(math.pi/2))\n&gt;&gt;&gt;\n1.0\n6.123233995736766e-17\nSee how the module.function works. Sometimes, you just want to import a few bits and pieces and you can save some typing by importing those functions at the base level - they can then be used without referencing the module name (if the names do not clash, of course, and provided you remember to import everything you need !)\n\nfrom math import sin, pi\n\nprint(sin(pi/2))\nprint(cos(pi/2))\n&gt;&gt;&gt;\n1.0\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\n&lt;ipython-input-7-2b3c4d0b7471&gt; in &lt;module&gt;\n      4\n      5 #\n----&gt; 6 print(cos(pi/2))\n\nNameError: name 'cos' is not defined\nYou can change the names when you import to avoid clashes. Here is an example using cmath which is the complex math library complementary to the standard (real numbers) math library.\nfrom math import sin, pi\nfrom cmath import sin as csin\n\nprint(sin(pi/2))\nprint(csin(pi/2))\n&gt;&gt;&gt;\n1.0\n(1+0j)\nIf it makes sense to you, import modules under a different name too\nimport math as real_math\nimport cmath as complex_math\n\nprint(real_math.sin(real_math.pi))",
@@ -231,8 +242,8 @@
     ]
   },
   {
-    "objectID": "TLDR.html#parlez-vous-python-beszélsz-pythonban",
-    "href": "TLDR.html#parlez-vous-python-beszélsz-pythonban",
+    "objectID": "0-TLDR.html#parlez-vous-python-beszélsz-pythonban",
+    "href": "0-TLDR.html#parlez-vous-python-beszélsz-pythonban",
     "title": "TLDR - Python Phrase Book",
     "section": "Parlez-vous Python / Beszélsz pythonban ?",
     "text": "Parlez-vous Python / Beszélsz pythonban ?\nNot yet !\nBut now you should have some sense of what a python code looks like and why it will break if you type the wrong number of spaces and how dots are used to denote a hierarchy. Next we can take a look at the different types of data in python and then go on to explore how data and functions are bundled together in python objects. All the while, it is fine to dip in to the step-by-step examples.\nBut it would be useful for us to be able to try out examples and for that, we will want to use live documents and, later, jupyter notebooks.\n\n\n\n\n\n\nCoding scratch space",
