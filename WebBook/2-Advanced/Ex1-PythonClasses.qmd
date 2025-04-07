@@ -138,7 +138,7 @@ print (type(e) == type(d))
 The class definition is held on the object and, as a result, the objects that are defined from classes that have the same name do not have to have the same type. You can see that the `c` object is still a `colour` object, but so is `e` !
 
 
-## Some better ways to build classes
+## Classes with Methods
 
 The point of classes is to collect up data and the operations that we want to perform on that data and pass them around the program as a single object. We didn't really manage to do that yet, but we are nearly there.
 
@@ -248,7 +248,7 @@ print (new_c.mix(new_d))
 print (new_c.mixmax(new_d))
 ```
 
-## More interesting classes
+## Operator Overloading
 
 One of the extensibility secrets of python is that all the language operators are defined by special 'invisible' functions on the classes. That means we can define `+`, `-`, `*`, `/` etc for objects. Think of the way multiplication is defined differently for numbers versus matrices, for example. Here is how we might use **operator overloading** to refer to the different colour mixing methods:
 

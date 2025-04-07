@@ -1,8 +1,9 @@
-# EMSC - introduction to python
+# EMSC - introduction to Programming
 
 ## Web pages
 
 - [Web version (Basic Examples Only)](https://anu-rses-education.github.io/Zero-2-Python-for-Earth-Sciences/book)
+
 
 ## Binder:
 

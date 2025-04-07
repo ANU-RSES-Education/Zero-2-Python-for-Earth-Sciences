@@ -17,3 +17,9 @@ Basics4Binder
 # pixi environments
 .pixi
 *.egg-info
+
+
+
+**/.jupyterlite.doit.db
+_output
+.jupyter
