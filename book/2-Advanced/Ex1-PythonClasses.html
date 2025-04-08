@@ -340,12 +340,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiXG5wcmludCAoYy5kZXNjcmlw
 </div>
 <p><code>colour</code> can be thought of as a data container that standardises how we refer to colours. By default it is “Black” but we can always change the values. In the example above, we changed the <code>rgb</code> value but we did not update the description. Remember this for later !</p>
 <p>Another thing, we can also do this:</p>
-<div id="0d42e740" class="cell">
+<div id="2f9611ac" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>d.complement <span class="op">=</span> (<span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">0.0</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (d.complement)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>But, does this do anything to the class itself ? In other words, do you think the following will work or will it fail ? If you are not sure, try it out in exercise 2.</p>
-<div id="c5723b62" class="cell">
+<div id="63d02e0c" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (c.complement)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When we make an instance of a class (<code>c</code> or <code>d</code> are instances of the <code>colour</code> class), it is a new object in memory that can be modified quite extensively and this means it can fall out of sync with the class definition if we are not careful. Again, remember this for later !</p>
