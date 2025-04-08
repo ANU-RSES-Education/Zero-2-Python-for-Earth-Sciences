@@ -44,10 +44,6 @@ ipyleaflet
 plotly>=5,<6
 bqplot
 
-# Earth science libraries not requested above (likely this should match the content of _quarto.yml in the WebBook
+# Earth science libraries not requested above (likely this should match the content of _quarto.yml in the WebBook)
 xarray
 pydap
-netCDF4
-micropip
-jinja2
-ssl
