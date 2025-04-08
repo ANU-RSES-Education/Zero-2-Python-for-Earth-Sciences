@@ -19,6 +19,8 @@ Basics4Binder
 *.egg-info
 
 
-
+## If you run jupyter-lite locally, it can mess up the github deployment if you leave these in place
+#
 **/.jupyterlite.doit.db
 _output
+**/.jupyter
