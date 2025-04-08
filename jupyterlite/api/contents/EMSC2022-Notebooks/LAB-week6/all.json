@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2025-04-08T01:45:04.661121Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-04-08T01:44:24.320884Z",
+      "mimetype": null,
+      "name": "LAB6-focal_mechanisms.ipynb",
+      "path": "EMSC2022-Notebooks/LAB-week6/LAB6-focal_mechanisms.ipynb",
+      "size": 84155,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2025-04-08T01:45:04.661121Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-04-08T01:44:24.320884Z",
+      "mimetype": null,
+      "name": "LAB6-izmit+focal+mechanism.ipynb",
+      "path": "EMSC2022-Notebooks/LAB-week6/LAB6-izmit+focal+mechanism.ipynb",
+      "size": 1483,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2025-04-08T01:45:04.661121Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2025-04-08T01:45:04.661121Z",
+  "mimetype": null,
+  "name": "LAB-week6",
+  "path": "EMSC2022-Notebooks/LAB-week6",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

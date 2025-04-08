@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2025-04-08T01:45:04.658121Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-04-08T01:44:24.319883Z",
+      "mimetype": null,
+      "name": "LAB5_On_Demand_MapServices.ipynb",
+      "path": "EMSC2022-Notebooks/LAB-week5/old/LAB5_On_Demand_MapServices.ipynb",
+      "size": 1263206,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2025-04-08T01:45:04.660121Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-04-08T01:44:24.320884Z",
+      "mimetype": null,
+      "name": "LAB5_Volcano+Map_v0.ipynb",
+      "path": "EMSC2022-Notebooks/LAB-week5/old/LAB5_Volcano+Map_v0.ipynb",
+      "size": 6308,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2025-04-08T01:45:04.660121Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2025-04-08T01:45:04.660121Z",
+  "mimetype": null,
+  "name": "old",
+  "path": "EMSC2022-Notebooks/LAB-week5/old",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

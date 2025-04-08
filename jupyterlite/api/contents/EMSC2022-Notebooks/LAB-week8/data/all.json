@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2025-04-08T01:45:04.664121Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-04-08T01:44:24.326883Z",
+      "mimetype": "text/csv",
+      "name": "anss.csv",
+      "path": "EMSC2022-Notebooks/LAB-week8/data/anss.csv",
+      "size": 1245184,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2025-04-08T01:45:04.664121Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2025-04-08T01:45:04.664121Z",
+  "mimetype": null,
+  "name": "data",
+  "path": "EMSC2022-Notebooks/LAB-week8/data",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

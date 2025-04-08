@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2025-04-08T01:45:04.663121Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-04-08T01:44:24.322883Z",
+      "mimetype": null,
+      "name": "LAB6-Gutenberg-Richter.ipynb",
+      "path": "EMSC2022-Notebooks/LAB-week8/LAB6-Gutenberg-Richter.ipynb",
+      "size": 97564,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2025-04-08T01:45:04.663121Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-04-08T01:44:24.322883Z",
+      "mimetype": null,
+      "name": "LAB8-Gutenberg-Richter.ipynb",
+      "path": "EMSC2022-Notebooks/LAB-week8/LAB8-Gutenberg-Richter.ipynb",
+      "size": 10638,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2025-04-08T01:45:04.664121Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-04-08T01:45:04.664121Z",
+      "mimetype": null,
+      "name": "data",
+      "path": "EMSC2022-Notebooks/LAB-week8/data",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    }
+  ],
+  "created": "2025-04-08T01:45:04.663121Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2025-04-08T01:45:04.663121Z",
+  "mimetype": null,
+  "name": "LAB-week8",
+  "path": "EMSC2022-Notebooks/LAB-week8",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}
