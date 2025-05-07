@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2025-05-07T02:11:22.539460Z",
+      "created": "2025-05-07T08:07:45.672062Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-05-07T02:10:33.993085Z",
+      "last_modified": "2025-05-07T08:06:52.321724Z",
       "mimetype": null,
       "name": "LAB6-focal_mechanisms.ipynb",
       "path": "EMSC2022-Notebooks/LAB-week6/LAB6-focal_mechanisms.ipynb",
@@ -16,11 +16,11 @@
     },
     {
       "content": null,
-      "created": "2025-05-07T02:11:22.539460Z",
+      "created": "2025-05-07T08:07:45.672062Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-05-07T02:10:33.993085Z",
+      "last_modified": "2025-05-07T08:06:52.321724Z",
       "mimetype": null,
       "name": "LAB6-izmit+focal+mechanism.ipynb",
       "path": "EMSC2022-Notebooks/LAB-week6/LAB6-izmit+focal+mechanism.ipynb",
@@ -29,11 +29,11 @@
       "writable": true
     }
   ],
-  "created": "2025-05-07T02:11:22.539460Z",
+  "created": "2025-05-07T08:07:45.672062Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2025-05-07T02:11:22.539460Z",
+  "last_modified": "2025-05-07T08:07:45.672062Z",
   "mimetype": null,
   "name": "LAB-week6",
   "path": "EMSC2022-Notebooks/LAB-week6",

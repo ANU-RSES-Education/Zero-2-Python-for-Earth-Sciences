@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2025-05-07T02:11:22.545460Z",
+      "created": "2025-05-07T08:07:45.678062Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-05-07T02:10:33.999085Z",
+      "last_modified": "2025-05-07T08:06:52.328724Z",
       "mimetype": null,
       "name": "EMSC2022W2.ipynb",
       "path": "EMSC2022-Notebooks/LAB2/EMSC2022W2.ipynb",
@@ -15,11 +15,11 @@
       "writable": true
     }
   ],
-  "created": "2025-05-07T02:11:22.545460Z",
+  "created": "2025-05-07T08:07:45.678062Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2025-05-07T02:11:22.545460Z",
+  "last_modified": "2025-05-07T08:07:45.678062Z",
   "mimetype": null,
   "name": "LAB2",
   "path": "EMSC2022-Notebooks/LAB2",
