@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2025-04-08T01:45:04.568121Z",
+      "created": "2025-05-07T02:11:22.448462Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-04-08T01:44:24.159883Z",
+      "last_modified": "2025-05-07T02:10:33.835087Z",
       "mimetype": null,
       "name": "Practical10-Part5-MogiModel.ipynb",
       "path": "EMSC2022-Notebooks/LAB-week10/Practical10-Part5-MogiModel.ipynb",
@@ -16,11 +16,11 @@
     },
     {
       "content": null,
-      "created": "2025-04-08T01:45:04.568121Z",
+      "created": "2025-05-07T02:11:22.448462Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-04-08T01:44:24.159883Z",
+      "last_modified": "2025-05-07T02:10:33.834087Z",
       "mimetype": null,
       "name": "EMSC2022_sem1_2023_lowerpuna.ipynb",
       "path": "EMSC2022-Notebooks/LAB-week10/EMSC2022_sem1_2023_lowerpuna.ipynb",
@@ -29,11 +29,11 @@
       "writable": true
     }
   ],
-  "created": "2025-04-08T01:45:04.568121Z",
+  "created": "2025-05-07T02:11:22.448462Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2025-04-08T01:45:04.568121Z",
+  "last_modified": "2025-05-07T02:11:22.448462Z",
   "mimetype": null,
   "name": "LAB-week10",
   "path": "EMSC2022-Notebooks/LAB-week10",

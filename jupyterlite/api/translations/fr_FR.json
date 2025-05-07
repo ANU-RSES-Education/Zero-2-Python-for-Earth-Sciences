@@ -490,6 +490,9 @@
       "%1 provider": [
         "Fournisseur %1"
       ],
+      "%1 toolbar": [
+        "Barre d'outils %1"
+      ],
       "%1 workspace with %2 tabs, last modified on %3": [
         "Espace de travail %1 avec des onglets %2 , derni\u00e8re modification sur %3"
       ],
@@ -625,6 +628,13 @@
       "Are you sure you want to exit JupyterLab?\n\nAny unsaved changes will be lost.": [
         "\u00cates-vous s\u00fbr de vouloir quitter JupyterLab?\n\nToutes les modifications non enregistr\u00e9es seront perdues."
       ],
+      "Are you sure you want to move to trash the %1 selected item?": [
+        "\u00cates-vous s\u00fbr de vouloir d\u00e9placer dans la corbeille l'\u00e9l\u00e9ment s\u00e9lectionn\u00e9 %1?",
+        "\u00cates-vous s\u00fbr de vouloir d\u00e9placer vers la corbeille les \u00e9l\u00e9ments s\u00e9lectionn\u00e9s %1?"
+      ],
+      "Are you sure you want to move to trash: %1?": [
+        "\u00cates-vous s\u00fbr de vouloir d\u00e9placer dans la corbeille %1?"
+      ],
       "Are you sure you want to permanently delete the %1 selected item?": [
         "\u00cates-vous s\u00fbr de vouloir supprimer d\u00e9finitivement l'\u00e9l\u00e9ment s\u00e9lectionn\u00e9 %1?",
         "\u00cates-vous s\u00fbr de vouloir supprimer d\u00e9finitivement les \u00e9l\u00e9ments s\u00e9lectionn\u00e9s %1?"
@@ -693,6 +703,9 @@
       "Breakpoints": [
         "Points d'arr\u00eat"
       ],
+      "Breakpoints panel toolbar": [
+        "Barre d'outils du panneau des points d'arr\u00eat"
+      ],
       "Build": [
         "Compiler"
       ],
@@ -741,6 +754,9 @@
       "Callstack": [
         "Pile des appels"
       ],
+      "Callstack panel toolbar": [
+        "Barre d'outils du panneau de la hi\u00e9rarchie d'appels"
+      ],
       "Cancel": [
         "Annuler"
       ],
@@ -780,11 +796,17 @@
       "Cell not executed due to pending input": [
         "La cellule n'a pas \u00e9t\u00e9 ex\u00e9cut\u00e9e en raison d'une entr\u00e9e en attente"
       ],
+      "Cell toolbar": [
+        "Barre d'outils des cellules"
+      ],
       "Cell type": [
         "Type de cellule"
       ],
       "Cell type not changed due to pending input": [
         "Le type de cellule n'a pas \u00e9t\u00e9 modifi\u00e9 en raison d'une entr\u00e9e en attente"
+      ],
+      "Change Console Prompt Position": [
+        "Changer la position de la cellule \u00e9ditable de la console"
       ],
       "Change Kernel\u2026": [
         "Changer de noyau\u2026"
@@ -794,6 +816,9 @@
       ],
       "Change editor language.": [
         "Modifier le langage de l'\u00e9diteur."
+      ],
+      "Change interface language to %1": [
+        "Changer la langue de l'interface en %1"
       ],
       "Change interface language?": [
         "Changer la langue de l'interface ?"
@@ -1277,6 +1302,9 @@
       "Default": [
         "D\u00e9faut"
       ],
+      "Default editor toolbar": [
+        "Barre d'outils par d\u00e9faut de l'\u00e9diteur"
+      ],
       "Default: %1": [
         "Valeur par d\u00e9faut : %1"
       ],
@@ -1411,6 +1439,9 @@
       "Distrust HTML": [
         "Se m\u00e9fier du HTML"
       ],
+      "Do not ask for rename on first save.": [
+        "Ne pas demander le renommage lors de la premi\u00e8re sauvegarde."
+      ],
       "Do not ask me again.": [
         "Ne plus demander."
       ],
@@ -1447,6 +1478,9 @@
       "Download": [
         "T\u00e9l\u00e9charger"
       ],
+      "Download All Licenses": [
+        "T\u00e9l\u00e9charger toutes les licences"
+      ],
       "Download All Licenses as": [
         "T\u00e9l\u00e9charger toutes les licences sous"
       ],
@@ -1455,6 +1489,9 @@
       ],
       "Drag and Drop is currently not supported for folders": [
         "Glisser-d\u00e9poser n'est actuellement pas pris en charge pour les dossiers"
+      ],
+      "Drop Cursor": [
+        "Curseur de l\u00e2ch\u00e9"
       ],
       "Duplicate": [
         "Dupliquer"
@@ -1520,6 +1557,9 @@
       ],
       "Enable %1 plugin": [
         "Activer le plugin %1"
+      ],
+      "Enable Context Menu": [
+        "Activer le menu context"
       ],
       "Enable Debugger": [
         "Activer le d\u00e9bogueur"
@@ -1621,8 +1661,17 @@
       "Expand Selected Outputs": [
         "D\u00e9velopper les sorties s\u00e9lectionn\u00e9es"
       ],
+      "Export": [
+        "Exporter"
+      ],
+      "Export Settings": [
+        "Exporter les param\u00e8tres"
+      ],
       "Export Workspace\u2026": [
         "Exporter l'espace de travail\u2026"
+      ],
+      "Export settings to a JSON file": [
+        "Exporter les param\u00e8tres dans un fichier JSON"
       ],
       "Extend Selection Above": [
         "\u00c9tendre la s\u00e9lection au dessus"
@@ -1656,6 +1705,9 @@
       ],
       "Extension removal not supported.": [
         "Suppression de l'extension non prise en charge."
+      ],
+      "Extensions panel toolbar": [
+        "Barre d'outils du panneau d'extensions"
       ],
       "F#": [
         "F#"
@@ -1708,11 +1760,17 @@
       "File Size": [
         "Taille du fichier"
       ],
+      "File browser toolbar": [
+        "Barre d'outils du navigateur de fichiers"
+      ],
       "File name": [
         "Nom du fichier"
       ],
       "Files still uploading": [
         "Fichiers en cours de chargement"
+      ],
+      "Fill in middle on typing": [
+        "Remplir au milieu de la saisie"
       ],
       "Filter": [
         "Filtrer"
@@ -1933,8 +1991,17 @@
       "Image Viewer": [
         "Visionneuse d\u2019images"
       ],
+      "Import": [
+        "Importer"
+      ],
+      "Import Settings": [
+        "Importer les param\u00e8tres"
+      ],
       "Import Workspace\u2026": [
         "Importer un espace de travail\u2026"
+      ],
+      "Import settings from a JSON file": [
+        "Importer les param\u00e8tres depuis un fichier JSON"
       ],
       "In collaborative mode, the document is saved automatically after every change": [
         "En mode collaboratif, le document est sauvegard\u00e9 automatiquement apr\u00e8s chaque modification"
@@ -2124,6 +2191,9 @@
       ],
       "Kernel Terminating": [
         "Fermeture du noyau"
+      ],
+      "Kernel sources panel toolbar": [
+        "Barre d'outils du panneau des sources du noyau"
       ],
       "Kernel status": [
         "\u00c9tat du noyau"
@@ -2330,6 +2400,9 @@
         "D\u00e9placer cette cellule vers le haut",
         "D\u00e9placer ces %1 cellules vers le haut"
       ],
+      "Move to Trash": [
+        "D\u00e9placer dans la corbeille"
+      ],
       "Move up": [
         "Monter"
       ],
@@ -2410,6 +2483,9 @@
       ],
       "New R File": [
         "Nouveau fichier R"
+      ],
+      "New Subshell Console for Notebook": [
+        "Nouvelle console de sous-interpr\u00e9teur pour le notebook"
       ],
       "New Terminal": [
         "Nouveau Terminal"
@@ -2967,6 +3043,9 @@
       "Rename Workspace\u2026": [
         "Renommer l'espace de travail\u2026"
       ],
+      "Rename and Save": [
+        "Renommer et sauvegarder"
+      ],
       "Rename file": [
         "Renommer le fichier"
       ],
@@ -3355,6 +3434,9 @@
       "Search shortcuts": [
         "Raccourcis de recherche"
       ],
+      "Search workspace": [
+        "Rechercher un espace de travail"
+      ],
       "Searching outputs is expensive and requires to first rendered all outputs. Are you sure you want to search in the cell outputs?": [
         "La recherche dans les sorties est co\u00fbteuse et n\u00e9cessite un premier rendu de celles-ci. \u00cates-vous s\u00fbr de vouloir rechercher dans les sorties des cellules ?"
       ],
@@ -3421,6 +3503,9 @@
       "Select kernel for:": [
         "S\u00e9lectionnez le noyau pour:"
       ],
+      "Select settings sections to import": [
+        "S\u00e9lectionnez les sections de param\u00e8tres \u00e0 importer"
+      ],
       "Select the cell type": [
         "S\u00e9lectionnez le type de cellule"
       ],
@@ -3483,6 +3568,9 @@
       ],
       "Settings Editor": [
         "\u00c9diteur de param\u00e8tres"
+      ],
+      "Settings Imported": [
+        "Param\u00e8tres import\u00e9s"
       ],
       "Shell": [
         "Shell"
@@ -3577,6 +3665,9 @@
       "Show Status Bar": [
         "Afficher la barre d\u2019\u00e9tat"
       ],
+      "Show Workspace Indicator": [
+        "Afficher l'indicateur d'espace de travail"
+      ],
       "Show first-level heading number": [
         "Afficher le num\u00e9ro des titres du premier niveau"
       ],
@@ -3669,6 +3760,9 @@
       ],
       "Source": [
         "Source"
+      ],
+      "Sources preview panel toolbar": [
+        "Barre d'outils du panneau de pr\u00e9visualisation des sources"
       ],
       "Spaces": [
         "Espaces"
@@ -3783,6 +3877,9 @@
       ],
       "Table of Contents section": [
         "Section Table des mati\u00e8res"
+      ],
+      "Table of contents sidepanel toolbar": [
+        "Barre d'outils de la table des mati\u00e8res"
       ],
       "Tabs and Running Sessions": [
         "Onglets et sessions en cours"
@@ -3979,6 +4076,9 @@
       "Toggle Sidebar Element": [
         "Activer/d\u00e9sactiver l'\u00e9l\u00e9ment de la barre lat\u00e9rale"
       ],
+      "Toggle Tab Focus Mode": [
+        "Activer/d\u00e9sactiver le mode focus par tabulation"
+      ],
       "Toggle Visibility of Selected Outputs": [
         "Afficher/Masquer les sorties s\u00e9lectionn\u00e9es"
       ],
@@ -3994,6 +4094,9 @@
       "Toggle virtual scrollbar (enabled with windowing mode: full)": [
         "Activer/d\u00e9sactiver la barre de d\u00e9filement virtuelle (activ\u00e9e en mode fen\u00eatr\u00e9 : complet (`full`))"
       ],
+      "Toggles behavior of Tab key between inserting indentation and moving to next focusable element": [
+        "Bascule le comportement de la touche Tab entre l'insertion de l'indentation et le passage \u00e0 l'\u00e9l\u00e9ment ciblable suivant"
+      ],
       "Toggles block commends in languages which support it (e.g. C, JavaScript)": [
         "D\u00e9-/comment\u00e9 le block pour les languages le supportant (comme C ou JavaScript)"
       ],
@@ -4005,6 +4108,9 @@
       ],
       "Top Bar": [
         "Barre sup\u00e9rieure"
+      ],
+      "Topbar toolbar": [
+        "Barre d'outils sup\u00e9rieure"
       ],
       "Tree View": [
         "Vue en arborescence"
@@ -4132,6 +4238,9 @@
       "Variables": [
         "Variables"
       ],
+      "Variables toolbar": [
+        "Barre d'outils des variables"
+      ],
       "Velocity": [
         "Velocity"
       ],
@@ -4171,6 +4280,9 @@
       "Whether to fetch completions %1 provider.": [
         "R\u00e9cup\u00e9rer ou non les suggestions du fournisseur %1."
       ],
+      "Whether to show completions in the middle of the code line from %1 provider on typing.": [
+        "Afficher/Masquer les compl\u00e9tions au milieu de la ligne de code du fournisseur %1 lors de la saisie."
+      ],
       "While the plugin \"%1\" is not required by other enabled plugins, some plugins provide optional features depending on it. These plugins are:": [
         "Bien que le plugin \"%1\" n'est pas requis par d'autres plugins activ\u00e9s, il permet \u00e0 certains plugins de fournir des fonctionnalit\u00e9s optionnelles. Ces plugins sont:"
       ],
@@ -4179,6 +4291,9 @@
       ],
       "Word Wrap": [
         "Retour \u00e0 la ligne"
+      ],
+      "Workspace": [
+        "Espace de travail"
       ],
       "Workspace loader": [
         "Chargeur d'espace de travail"
@@ -4642,6 +4757,12 @@
       "schema\u0004Kernel dialogs settings.": [
         "Param\u00e8tres des bo\u00eetes de dialogue des noyaux d'ex\u00e9cution."
       ],
+      "schema\u0004Kernels": [
+        "Noyaux d'ex\u00e9cution"
+      ],
+      "schema\u0004Kernels and kernel sessions settings": [
+        "Configuration des noyaux et des sessions"
+      ],
       "schema\u0004Keyboard Shortcuts": [
         "Raccourcis clavier"
       ],
@@ -4813,6 +4934,12 @@
       "schema\u0004Top Bar settings.": [
         "Param\u00e8tres de la barre sup\u00e9rieure."
       ],
+      "schema\u0004Workspace Indicator": [
+        "Indicateur de l'espace de travail"
+      ],
+      "schema\u0004Workspace Indicator Settings": [
+        "Param\u00e8tres de l'indicateur d'espace de travail"
+      ],
       "schema\u0004Workspaces": [
         "Espaces de travail"
       ],
@@ -4852,6 +4979,9 @@
       "settings\u0004Always": [
         "Toujours"
       ],
+      "settings\u0004Always show": [
+        "Toujours afficher"
+      ],
       "settings\u0004An item is defined by a 'name', a 'command' name, and an 'icon' name": [
         "Un \u00e9l\u00e9ment est d\u00e9fini par un nom `name`, une commande `command` et un nom d'ic\u00f4ne `icon`"
       ],
@@ -4869,6 +4999,9 @@
       ],
       "settings\u0004Application-level visual styling theme. Ignored when Adaptive Theme is enabled.": [
         "Th\u00e8me pour l'application. Ignor\u00e9 lorsque le th\u00e8me adaptatif est activ\u00e9."
+      ],
+      "settings\u0004Ask (None)": [
+        "Demander (None)"
       ],
       "settings\u0004Ask for confirmation to close a document": [
         "Demander une confirmation pour fermer un document"
@@ -4888,6 +5021,9 @@
       "settings\u0004Automatically Start Preferred Kernel": [
         "D\u00e9marrer automatiquement le noyau pr\u00e9f\u00e9r\u00e9"
       ],
+      "settings\u0004Automatically render markdown when cursor leaves markdown cells": [
+        "Rendre automatiquement le markdown lorsque le curseur quitte les cellules markdown"
+      ],
       "settings\u0004Autosave Documents": [
         "Enregistrement automatique des documents"
       ],
@@ -4903,6 +5039,9 @@
       "settings\u0004Blinking cursor": [
         "Curseur clignotant"
       ],
+      "settings\u0004Bottom": [
+        "En bas"
+      ],
       "settings\u0004CSV Viewer": [
         "Visionneuse CSV"
       ],
@@ -4911,6 +5050,12 @@
       ],
       "settings\u0004Check for JupyterLab updates": [
         "V\u00e9rifier les mises \u00e0 jour de JupyterLab"
+      ],
+      "settings\u0004Clear Cells on Execute": [
+        "Effacer les cellules \u00e0 l'ex\u00e9cution"
+      ],
+      "settings\u0004Clear Code Content on Execute": [
+        "Effacer le code lors de l'ex\u00e9cution"
       ],
       "settings\u0004Close on exit": [
         "Fermer \u00e0 la sortie"
@@ -4951,6 +5096,9 @@
       "settings\u0004Configuration to be sent to language server over LSP when initialized: see the specific language server's documentation for more": [
         "Configuration \u00e0 envoyer au serveur de langage par LSP lors de l'initialisation : voir la documentation du serveur de langage sp\u00e9cifique pour plus de d\u00e9tails"
       ],
+      "settings\u0004Console panel toolbar items": [
+        "\u00c9l\u00e9ments de la barre d'outils de la console"
+      ],
       "settings\u0004Customize shell widget positioning": [
         "Personnaliser le positionnement des widgets"
       ],
@@ -4978,6 +5126,9 @@
       "settings\u0004Defines the position and components of execution progress indicator.": [
         "D\u00e9finit la position et les composants de l'indicateur de progression de l'ex\u00e9cution."
       ],
+      "settings\u0004Disabled": [
+        "D\u00e9sactiv\u00e9"
+      ],
       "settings\u0004Disclaimed Status": [
         "Statut de renonciation"
       ],
@@ -4998,6 +5149,9 @@
       ],
       "settings\u0004Documentation panel setting.": [
         "Param\u00e8tres du panneau de documentation."
+      ],
+      "settings\u0004Don't show": [
+        "Ne pas afficher"
       ],
       "settings\u0004Editor": [
         "\u00c9diteur"
@@ -5092,6 +5246,9 @@
       "settings\u0004Hidden mode of main panel widgets": [
         "Mode pour masquer les widgets du panneau principal"
       ],
+      "settings\u0004Hide Code Input": [
+        "Cacher le code fourni"
+      ],
       "settings\u0004Hide Front Matter": [
         "Cacher le Pr\u00e9ambule"
       ],
@@ -5152,6 +5309,12 @@
       "settings\u0004Item type": [
         "Type d'\u00e9l\u00e9ment"
       ],
+      "settings\u0004Kernel": [
+        "Noyau d'ex\u00e9cution"
+      ],
+      "settings\u0004Kernel Comms over subshells": [
+        "Comms du noyau d'ex\u00e9cution vers les sous-interpr\u00e9teurs"
+      ],
       "settings\u0004Kernel history access": [
         "Acc\u00e8s \u00e0 l'historique d'ex\u00e9cution"
       ],
@@ -5178,6 +5341,9 @@
       ],
       "settings\u0004Language-server specific configuration, keyed by implementation": [
         "Configuration sp\u00e9cifique au serveur de langage, une entr\u00e9e par impl\u00e9mentation"
+      ],
+      "settings\u0004Left": [
+        "\u00c0 gauche"
       ],
       "settings\u0004Length of save interval in seconds": [
         "Dur\u00e9e entre deux sauvegardes en secondes"
@@ -5299,6 +5465,9 @@
       "settings\u0004Number of cells to render outside de the viewport": [
         "Nombre de cellules \u00e0 afficher en dehors de la fen\u00eatre d'affichage"
       ],
+      "settings\u0004Number of cells to render outside the viewport": [
+        "Nombre de cellules \u00e0 afficher en dehors de la fen\u00eatre d'affichage"
+      ],
       "settings\u0004Number of lines of inline completion to show before collapsing. Setting zero disables the limit.": [
         "Nombre de lignes de compl\u00e9tion en ligne \u00e0 afficher avant de les r\u00e9duire. Z\u00e9ro d\u00e9sactive la limite."
       ],
@@ -5310,6 +5479,12 @@
       ],
       "settings\u0004On hover": [
         "Au survol"
+      ],
+      "settings\u0004One subshell per comm": [
+        "Un sous-interpr\u00e9teur par \"comm\""
+      ],
+      "settings\u0004One subshell per comm-target": [
+        "Un sous-interpr\u00e9teur par cible \"comm\""
       ],
       "settings\u0004Option key on macOS can be used as meta key. This enables to use shortcuts such as option + f to move cursor forward one word": [
         "La touche \"option\" sur macOS peut \u00eatre utilis\u00e9e comme touche de combinaison. Cela permet d'utiliser des raccourcis tels que \"option + f\" pour avancer le curseur d'un mot"
@@ -5334,6 +5509,9 @@
       ],
       "settings\u0004Prompt Cell Configuration": [
         "Configuration des cellules de code"
+      ],
+      "settings\u0004Prompt Cell Position": [
+        "Position de la cellule \u00e9ditable"
       ],
       "settings\u0004Providers with higher rank will be shown before the ones with lower rank, providers with negative rank are disabled.": [
         "Les compl\u00e9teurs de priorit\u00e9 sup\u00e9rieure seront affich\u00e9s avant ceux de priorit\u00e9 inf\u00e9rieure, les compl\u00e9teurs avec une priorit\u00e9 n\u00e9gative sont d\u00e9sactiv\u00e9s."
@@ -5364,6 +5542,9 @@
       ],
       "settings\u0004Reserve space for the longest candidate": [
         "R\u00e9server l'espace pour la suggestion la plus longue"
+      ],
+      "settings\u0004Right": [
+        "\u00c0 droite"
       ],
       "settings\u0004Scheme allowed by the HTML sanitizer.": [
         "Sch\u00e9ma autoris\u00e9 lors de l'assainissement HTML."
@@ -5410,6 +5591,9 @@
       "settings\u0004Show All Kernel Activity": [
         "Afficher toute l'activit\u00e9 du noyau"
       ],
+      "settings\u0004Show Banner": [
+        "Afficher la banni\u00e8re"
+      ],
       "settings\u0004Show a toolbar inside the active cell, if there is enough room for one": [
         "Afficher une barre d'outils \u00e0 l'int\u00e9rieur de la cellule active, s'il y a assez d'espace disponible"
       ],
@@ -5434,17 +5618,29 @@
       "settings\u0004Show hidden files": [
         "Afficher les fichiers cach\u00e9s"
       ],
+      "settings\u0004Show if one or more": [
+        "Afficher si il y a des terminaux"
+      ],
+      "settings\u0004Show input placeholder": [
+        "Afficher la suggestion dans le champ de saisie"
+      ],
       "settings\u0004Show kernel status on toolbar or status bar.": [
         "Afficher l'\u00e9tat du noyau sur la barre d'outils ou la barre d'\u00e9tat."
       ],
       "settings\u0004Show last modified column": [
         "Afficher la derni\u00e8re colonne modifi\u00e9e"
       ],
+      "settings\u0004Show placeholder text for standard input fields (requires reload)": [
+        "Afficher les suggestions pour les champs de saisie standard (rechargement n\u00e9cessaire)"
+      ],
       "settings\u0004Show shortcuts in the widget": [
         "Afficher les raccourcis dans le widget"
       ],
       "settings\u0004Show the documentation panel.": [
         "Afficher le panneau de documentation."
+      ],
+      "settings\u0004Show the status bar item": [
+        "Afficher l'\u00e9l\u00e9ment dans la barre d'\u00e9tat"
       ],
       "settings\u0004Show widget": [
         "Afficher le widget"
@@ -5620,6 +5816,9 @@
       "settings\u0004Theme Manager": [
         "Gestionnaire de th\u00e8me"
       ],
+      "settings\u0004Top": [
+        "En haut"
+      ],
       "settings\u0004Top bar items": [
         "\u00c9l\u00e9ments de la barre sup\u00e9rieure"
       ],
@@ -5667,6 +5866,15 @@
       ],
       "settings\u0004When to show the inline completer widget.": [
         "Quand afficher le widget de compl\u00e9tion des \u00e9diteurs."
+      ],
+      "settings\u0004Where to place the prompt cell of the console.": [
+        "O\u00f9 placer la cellule \u00e9ditable de la console."
+      ],
+      "settings\u0004Whether comm messages should be sent to kernel subshells, if the kernel supports it.": [
+        "Les messages \"comm\" doivent-ils \u00eatre envoy\u00e9s aux sous-interpr\u00e9teurs du noyau, si le noyau d'ex\u00e9cution le supporte."
+      ],
+      "settings\u0004Whether the application context (right-click) menu is disabled": [
+        "Le menu contextuel de l'application (clic droit) est-il d\u00e9sactiv\u00e9?"
       ],
       "settings\u0004Whether the command palette should be modal or in the left panel.": [
         "Si la palette de commandes doit \u00eatre modale ou dans le panneau de gauche."
@@ -5743,7 +5951,19 @@
       "settings\u0004Whether to check for newer version of JupyterLab or not. It requires `fetchNews` to be `true` to be active. If `true`, it will make a request to a website.": [
         "V\u00e9rifier si une nouvelle version de JupyterLab est disponible ou non. Il faut que `fetchNews` soit `true` pour \u00eatre actif. Si `true`, une requ\u00eate \u00e0 un site web sera envoy\u00e9e."
       ],
+      "settings\u0004Whether to check for newer versions of JupyterLab or not. It requires `fetchNews` to be set to Always (`true`) to be active. If `true`, it will make a request to a website.": [
+        "V\u00e9rifier si une nouvelle version de JupyterLab est disponible ou non. Il faut que `fetchNews` soit `true` pour \u00eatre actif. Si `true`, une requ\u00eate \u00e0 un site web sera envoy\u00e9e."
+      ],
+      "settings\u0004Whether to clear the code content of the console when code is executed.": [
+        "Effacer ou non le code de la console \u00e0 l'ex\u00e9cution."
+      ],
+      "settings\u0004Whether to clear the console when code is executed.": [
+        "Effacer ou non la console \u00e0 l'ex\u00e9cution de code."
+      ],
       "settings\u0004Whether to fetch news from Jupyter news feed. If `true`, it will make a request to a website.": [
+        "R\u00e9cup\u00e9rer les actualit\u00e9s depuis le fil de nouvelles Jupyter. Si `true`, une requ\u00eate \u00e0 un site web sera envoy\u00e9e."
+      ],
+      "settings\u0004Whether to fetch news from the Jupyter news feed. If Always (`true`), it will make a request to a website.": [
         "R\u00e9cup\u00e9rer les actualit\u00e9s depuis le fil de nouvelles Jupyter. Si `true`, une requ\u00eate \u00e0 un site web sera envoy\u00e9e."
       ],
       "settings\u0004Whether to flash on new log message or not": [
@@ -5755,6 +5975,9 @@
       "settings\u0004Whether to hide YAML front matter.\nThe YAML front matter must be placed at the top of the document,\nstarted by a line of three dashes (---) and ended by a line of\nthree dashes (---) or three points (...).": [
         "S'il faut cacher le pr\u00e9ambule en YAML.\nLe pr\u00e9ambule en YAML doit \u00eatre plac\u00e9 au d\u00e9but du document,\ncommen\u00e7ant par une ligne avec trois tirets (---), et finissant par une ligne\navec trois tirets (---) ou trois point (...)."
       ],
+      "settings\u0004Whether to hide the code input after a cell is executed.": [
+        "Cacher ou non le code fourni apr\u00e8s l'ex\u00e9cution d'une cellule."
+      ],
       "settings\u0004Whether to include cell output in headings or not.": [
         "Inclure ou non la sortie des cellules dans les titres."
       ],
@@ -5763,6 +5986,9 @@
       ],
       "settings\u0004Whether to prompt to rename untitled file on first manual save.": [
         "Faut-il demander de renommer le fichier sans titre lors de la premi\u00e8re sauvegarde manuelle."
+      ],
+      "settings\u0004Whether to render markdown cells when the cursor moves out of them.": [
+        "G\u00e9n\u00e9rer ou non le rendu des cellules markdown \u00e0 la sortie du curseur."
       ],
       "settings\u0004Whether to replace URLs with links or not.": [
         "Remplacer ou non les URLs par des liens."
@@ -5797,8 +6023,17 @@
       "settings\u0004Whether to show the file size column": [
         "Afficher ou non la colonne de taille de fichier"
       ],
+      "settings\u0004Whether to show the kernel banner.": [
+        "Afficher ou non la banni\u00e8re du noyau d'ex\u00e9cution."
+      ],
       "settings\u0004Whether to show the last modified column": [
         "Afficher/Masquer la derni\u00e8re colonne modifi\u00e9e"
+      ],
+      "settings\u0004Whether to show the running kernels item in the status bar": [
+        "Afficher/Masquer les noyaux en cours d'ex\u00e9cution dans la barre d'\u00e9tat"
+      ],
+      "settings\u0004Whether to show the running terminals item in the status bar": [
+        "Afficher/Masquer les terminaux en cours d'ex\u00e9cution dans la barre d'\u00e9tat"
       ],
       "settings\u0004Whether to shut down or not the kernel when closing a notebook.": [
         "Fermer ou non le noyau lors de la fermeture d'un notebook."
