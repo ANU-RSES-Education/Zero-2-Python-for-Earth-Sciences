@@ -517,14 +517,25 @@
     ]
   },
   {
-    "objectID": "3-Applications/Ex2-IntroductingCartopy.html",
-    "href": "3-Applications/Ex2-IntroductingCartopy.html",
+    "objectID": "3-Applications/Ex2-IntroducingCartopy.html",
+    "href": "3-Applications/Ex2-IntroducingCartopy.html",
     "title": "Introduction to Cartopy for Map-making",
     "section": "",
     "text": "Let’s get started\nWe are going to work through a number of the examples and try to extend them to do the kinds of things you might find interesting and useful in the future. The examples are in the form of a gallery\nYou might also want to look at the list of map projections from time to time. Not all maps can be plotted in every projection (sometimes because of bugs and sometimes because they are not supposed to work for the data you have) but you can try them and see what happens.\nCartopy is built on top of a lot of the matplotlib graphing tools. It works by introducing a series of projections associated with the axes of a graph. On top of that there is a big toolkit for reading in images, finding data from standard web feeds, and manipulating geographical objects. Many, many libraries are involved and sometimes things break. Luckily the installation that is built for this course is about as reliable as we can ever get. I’m just warning you, though, that it can be quite tough if you want to put this on your laptop from scratch.\nWe have a number of imports that we will need almost every time.\nIf we are going to plot anything then we need to include matplotlib.\nThe simplest plot: global map using the default image built into the package and adding coastlines\nTry changing the projection - look at the list in the link I gave you above to see what ccrs has available. In the notebook, many of the projections will time out because they are so computationally intensive but these work: EckartI, EckartV, Stereographic, Orthographic, LambertConformal, Miller, `Mollweide.\nHere is how you can plot a region instead of the globe:",
     "crumbs": [
       "**Applications for Earth Sciences**",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Introduction to Cartopy for Map-making</span>"
+    ]
+  },
+  {
+    "objectID": "3-Applications/Ex3-IntroducingWebMappingServices.html",
+    "href": "3-Applications/Ex3-IntroducingWebMappingServices.html",
+    "title": "IntroducingWeb Mapping Services",
+    "section": "",
+    "text": "Let’s get started\nWe have a number of imports that we will need almost every time.\nIf we are going to plot anything then we need to include matplotlib.\nHow to find out what layers there are:",
+    "crumbs": [
+      "**Applications for Earth Sciences**",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>IntroducingWeb Mapping Services</span>"
     ]
   }
 ]
