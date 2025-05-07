@@ -47,7 +47,8 @@ book:
     - part: "**Applications for Earth Sciences**"
       chapters:
         - 3-Applications/Ex1-IntroductionToMatplotlib.qmd
-        - 3-Applications/Ex2-IntroductingCartopy.qmd
+        - 3-Applications/Ex2-IntroducingCartopy.qmd
+        - 3-Applications/Ex3-IntroducingWebMappingServices.qmd
 
     # - part: "Next steps: Becoming a Code Developer"
     #   chapters:
@@ -113,6 +114,7 @@ pyodide:
     - pydap
     - jinja2
     - ssl
+    - owslib
 
   # pdf:
   #   documentclass: scrreprt

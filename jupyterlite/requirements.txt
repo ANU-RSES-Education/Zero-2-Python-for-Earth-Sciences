@@ -47,3 +47,4 @@ bqplot
 # Earth science libraries not requested above (likely this should match the content of _quarto.yml in the WebBook)
 xarray
 pydap
+owslib
