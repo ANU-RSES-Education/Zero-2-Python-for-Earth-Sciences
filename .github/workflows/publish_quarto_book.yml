@@ -1,12 +1,12 @@
+name: Quarto Publish Book and Slides
+
 on:
   workflow_dispatch:
   push:
     branches: main
 
-name: Quarto Publish Book and Slides
-
 jobs:
-  build-deploy:
+  build-deploy-quarto:
     runs-on: ubuntu-latest
     permissions:
       contents: write

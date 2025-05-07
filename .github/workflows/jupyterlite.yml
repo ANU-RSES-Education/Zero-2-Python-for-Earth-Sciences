@@ -9,7 +9,7 @@ on:
       - "*"
 
 jobs:
-  build:
+  build-deploy-jupyterlite:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
