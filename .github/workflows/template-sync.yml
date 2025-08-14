@@ -1,4 +1,4 @@
-# File: .github/workflows/template-sync.yml
+name: Check for updates to template
 
 on:
   # cronjob trigger
@@ -26,6 +26,6 @@ jobs:
       - name: actions-template-sync
         uses: AndreasAugustin/actions-template-sync@v2
         with:
-          source_repo_path: ANU-RSES-Education/EMSC-QuartoBook-Course
+          source_repo_path: ANU-RSES-Education/EMSC-QuartoBook-Course # Point to template repo
           # upstream_branch: <target_branch> # defaults to main
           # pr_labels: <label1>,<label2>[,...] # defaults to template_sync
