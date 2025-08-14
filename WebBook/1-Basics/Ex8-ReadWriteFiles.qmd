@@ -45,7 +45,7 @@ We need to make sure the data file we are going to use is saved on your computer
 
 import os, requests
 
-file_url = "https://raw.githubusercontent.com/ANU-RSES-Education/EMSC-getting-going-with-python/main/WebBook/Basics/Resources/sample.dat"
+file_url ="https://raw.githubusercontent.com/ANU-RSES-Education/Zero-2-Python-for-Earth-Sciences/refs/heads/main/WebBook/1-Basics/Resources/sample.dat"
 
 response = requests.get(file_url)
 if response.status_code == 200:
