@@ -6,20 +6,18 @@ dependencies:
   - python=3.10
   - mpmath<=1.3
   - mesalib
-  - numpy < 2
-  - pydap
-  - xarray
-  - owslib
+  - numpy
   - scipy
   - h5py
   - sympy
   - pytest
   - pyvista[all]
   - pip
-  - pip:
-      - gmsh
-      - jupyterlab>=4.1
-      - jupytext>=1.16.1
-      - pygments>=2.17.0
-      - trame-vtk
-      - trame-vuetify
+  - pip:  
+    - gmsh
+    - jupyterlab>=4.1
+    - jupytext>=1.16.1
+    - pygments>=2.17.0
+    - trame-vtk
+    - trame-vuetify
+  

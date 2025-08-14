@@ -3,108 +3,59 @@ project:
   output-dir: ../_build/book
 
 book:
-  title: "Zero 2 Programmer for Earth Scientists"
-  author:
-    - "Louis Moresi"
-    - "Andrew Valentine"
-  date: "06/04/2025"
-  bread-crumbs: True
+  title: "EMSC Quarto"
+  author: "Louis Moresi"
+  date: "06/03/2024"
+  bread-crumbs: false
   chapters:
-    - part: "**Introduction**"
+    - part: "Introduction"
       chapters:
         - index.qmd
-        - 0-WhatIsProgramming.qmd
-        - 0-Intro2PythonLanguage.qmd
-        - 0-TLDR.qmd
-
-    - part: "**Basic Language Skills**"
+        - intro.qmd
+    - part: "Details"
       chapters:
-        - 1-Basics/Ex1-IntroWebPython.qmd
-        - 1-Basics/Ex2-Variables.qmd
-        - 1-Basics/Ex2a-Functions.qmd
-        - 1-Basics/Ex3-Conditionals.qmd
-        - 1-Basics/Ex4-Loops.qmd
-        - 1-Basics/Ex5-ListsEtc.qmd
-        - 1-Basics/Ex6-MoreLoops.qmd
-        - 1-Basics/Ex7-Strings.qmd
-        - 1-Basics/Ex8-ReadWriteFiles.qmd
+        - summary.qmd
+        - references.qmd
 
-    # - part: "**Version Control**"
-    #   chapters:
-    #     - Introduction2VersionControl/1-GettingStartedWithGit.qmd
-    #     - Introduction2VersionControl/2-NextStepsWithGit.qmd
-    #     - Introduction2VersionControl/3-YourOwnRepositories.qmd
-    - part: "**Advanced Language Skills**"
+    - part: "Slides"
       chapters:
-        - 2-Advanced/Intro.qmd
-        - 2-Advanced/Ex1-PythonClasses.qmd
+        - LectureSlides/Lecture1.qmd
 
-      # Modules
-      # Exceptions
-      # Decorators
-      # Properties
-
-    - part: "**Applications for Earth Sciences**"
-      chapters:
-        - 3-Applications/Ex1-IntroductionToMatplotlib.qmd
-        - 3-Applications/Ex2-IntroducingCartopy.qmd
-        - 3-Applications/Ex3-IntroducingWebMappingServices.qmd
-
-    # - part: "Next steps: Becoming a Code Developer"
-    #   chapters:
-    #     - DevSkills/Intro.qmd
-
-    # - part: "Notebooks"
-    #   chapters:
-    #   - Notebooks/Introduction.qmd
-    #   - Notebooks/Ex01/Ex1-GettingStartedWithJupyter.qmd
-
-    # - part: "Slides"
-    #   chapters:
-    #     - LectureSlides/Lecture1.qmd
-
-  # appendices:
-  #   - Notebooks/BinderLandingPage.qmd
-  #   - Notebooks/TestNB1.ipynb
-  #   - Notebooks/TestQMD_NB1.qmd
+  appendices:
+    - Notebooks/BinderLandingPage.qmd
+    - Notebooks/TestNB1.ipynb
+    - Notebooks/TestQMD_NB1.qmd
 
   navbar:
     search: true
-    logo: assets/ANU-logo.jpg
+    logo: Images/ANU-logo.jpg
     background: "white"
     foreground: "#C58812" # ANU honey colour
 
   sidebar:
     # logo: Images/COS-EarthSciences-800.jpg
-    logo: assets/AuWorldEQ.jpg
+    # logo: Images/ANU-logo.jpg
     background: "white"
     # foreground: "#C58812" # ANU honey colour
 
 bibliography: references.bib
 
-execute:
-  enabled: false
-
 format:
-  live-html:
-    theme: [united, "assets/theme.scss"] # united / simplex / flatly
-    mainfont: "Jost"
-    fontsize: 0.9em
-    linestretch: 1.7
+  html:
+    theme: flatly # united / simplex
     linkcolor: "#C58812"
-    number-sections: false
-    number-depth: 1
-    # filters:
-    #   - pyodide
 
     code-links:
       - text: Open in Binder
         icon: rocket-takeoff
-        href: https://mybinder.org/v2/gh/ANU-RSES-Education/EMSC-getting-going-with-python/HEAD?labpath=WebBook/BinderLandingPage.qmd
+        href: https://mybinder.org/v2/gh/ANU-RSES-Education/EMSC-QuartoBook/HEAD?labpath=WebBook/Notebooks%2FBinderLandingPage.qmd
     other-links:
       - text: Github Repository
         icon: github
-        href: https://github.com/ANU-RSES-Education/EMSC-getting-going-with-python
+        href: https://github.com/ANU-RSES-Education/EMSC-QuartoBook
+
+  pdf:
+    documentclass: scrreprt
 
 pyodide:
   packages:
@@ -114,7 +65,3 @@ pyodide:
     - pydap
     - jinja2
     - ssl
-    - owslib
-
-  # pdf:
-  #   documentclass: scrreprt
