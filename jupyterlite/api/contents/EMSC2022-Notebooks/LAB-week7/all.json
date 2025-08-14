@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2025-08-14T04:14:34.199397Z",
+      "created": "2025-08-14T06:05:54.026409Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-08-14T04:13:46.584584Z",
+      "last_modified": "2025-08-14T06:05:05.745206Z",
       "mimetype": null,
       "name": "LAB7-NZ_Earthquake.ipynb",
       "path": "EMSC2022-Notebooks/LAB-week7/LAB7-NZ_Earthquake.ipynb",
@@ -16,11 +16,11 @@
     },
     {
       "content": null,
-      "created": "2025-08-14T04:14:34.199397Z",
+      "created": "2025-08-14T06:05:54.026409Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-08-14T04:13:46.585584Z",
+      "last_modified": "2025-08-14T06:05:05.746206Z",
       "mimetype": null,
       "name": "LAB7-Raypaths.ipynb",
       "path": "EMSC2022-Notebooks/LAB-week7/LAB7-Raypaths.ipynb",
@@ -29,11 +29,11 @@
       "writable": true
     }
   ],
-  "created": "2025-08-14T04:14:34.199397Z",
+  "created": "2025-08-14T06:05:54.026409Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2025-08-14T04:14:34.199397Z",
+  "last_modified": "2025-08-14T06:05:54.026409Z",
   "mimetype": null,
   "name": "LAB-week7",
   "path": "EMSC2022-Notebooks/LAB-week7",
