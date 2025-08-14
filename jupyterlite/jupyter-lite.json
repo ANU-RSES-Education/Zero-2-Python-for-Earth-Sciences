@@ -62,13 +62,13 @@
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.d4a268dd70153c5d1266.js",
+        "load": "static/remoteEntry.ac6ba46a96b6912c489d.js",
         "name": "bqplot"
       },
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.7b364776099b271c7e6e.js",
+        "load": "static/remoteEntry.fb45db9d3f32bd4bc57a.js",
         "name": "ipycanvas"
       },
       {
@@ -80,7 +80,7 @@
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.a83217134ba8dacb85fc.js",
+        "load": "static/remoteEntry.9aa97e6313eff609d36c.js",
         "name": "jupyter-leaflet"
       },
       {
