@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2025-08-14T03:56:41.388846Z",
+      "created": "2025-08-14T04:14:34.193397Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-08-14T03:55:57.211416Z",
+      "last_modified": "2025-08-14T04:13:46.578584Z",
       "mimetype": "image/png",
       "name": "volcano_map.png",
       "path": "EMSC2022-Notebooks/LAB-week5/images/volcano_map.png",
@@ -15,11 +15,11 @@
       "writable": true
     }
   ],
-  "created": "2025-08-14T03:56:41.388846Z",
+  "created": "2025-08-14T04:14:34.193397Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2025-08-14T03:56:41.388846Z",
+  "last_modified": "2025-08-14T04:14:34.193397Z",
   "mimetype": null,
   "name": "images",
   "path": "EMSC2022-Notebooks/LAB-week5/images",
