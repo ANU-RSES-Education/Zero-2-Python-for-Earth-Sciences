@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2025-08-14T06:05:54.032409Z",
+      "created": "2025-08-14T10:01:16.092154Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-08-14T06:05:05.752206Z",
+      "last_modified": "2025-08-14T10:00:32.724131Z",
       "mimetype": null,
       "name": "EMSC2022W4.ipynb",
       "path": "EMSC2022-Notebooks/LAB4/EMSC2022W4.ipynb",
@@ -16,11 +16,11 @@
     },
     {
       "content": null,
-      "created": "2025-08-14T06:05:54.032409Z",
+      "created": "2025-08-14T10:01:16.092154Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-08-14T06:05:05.752206Z",
+      "last_modified": "2025-08-14T10:00:32.724131Z",
       "mimetype": null,
       "name": "EMSC2022W4-Solution.ipynb",
       "path": "EMSC2022-Notebooks/LAB4/EMSC2022W4-Solution.ipynb",
@@ -29,11 +29,11 @@
       "writable": true
     }
   ],
-  "created": "2025-08-14T06:05:54.032409Z",
+  "created": "2025-08-14T10:01:16.092154Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2025-08-14T06:05:54.032409Z",
+  "last_modified": "2025-08-14T10:01:16.092154Z",
   "mimetype": null,
   "name": "LAB4",
   "path": "EMSC2022-Notebooks/LAB4",
