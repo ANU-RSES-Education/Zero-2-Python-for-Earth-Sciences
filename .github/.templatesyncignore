@@ -1,3 +1,5 @@
 .github/workflows/**
 /WebBook/**
 /WebSlides/**
+
+README.md
