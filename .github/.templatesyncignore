@@ -1,5 +1,5 @@
 .github/workflows/**
-/WebBook/**
-/WebSlides/**
+WebBook/**
+WebSlides/**
 
 README.md
