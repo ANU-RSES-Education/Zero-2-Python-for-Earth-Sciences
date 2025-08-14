@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2025-08-14T10:01:15.971154Z",
+      "created": "2025-08-14T10:36:25.842345Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-08-14T10:00:32.553131Z",
+      "last_modified": "2025-08-14T10:35:41.237297Z",
       "mimetype": "application/x-netcdf",
       "name": "age.3.6.nc",
       "path": "EMSC2022-Notebooks/LAB-convection/data/age.3.6.nc",
@@ -16,11 +16,11 @@
     },
     {
       "content": null,
-      "created": "2025-08-14T10:01:15.958154Z",
+      "created": "2025-08-14T10:36:25.829345Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-08-14T10:00:32.508131Z",
+      "last_modified": "2025-08-14T10:35:41.192297Z",
       "mimetype": null,
       "name": "OceanAgeDepth.npz",
       "path": "EMSC2022-Notebooks/LAB-convection/data/OceanAgeDepth.npz",
@@ -29,11 +29,11 @@
       "writable": true
     }
   ],
-  "created": "2025-08-14T10:01:15.963154Z",
+  "created": "2025-08-14T10:36:25.834345Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2025-08-14T10:01:15.963154Z",
+  "last_modified": "2025-08-14T10:36:25.834345Z",
   "mimetype": null,
   "name": "data",
   "path": "EMSC2022-Notebooks/LAB-convection/data",

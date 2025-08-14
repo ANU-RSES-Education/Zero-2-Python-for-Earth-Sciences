@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2025-08-14T10:01:16.089154Z",
+      "created": "2025-08-14T10:36:25.963345Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-08-14T10:00:32.722131Z",
+      "last_modified": "2025-08-14T10:35:41.407297Z",
       "mimetype": "text/csv",
       "name": "anss.csv",
       "path": "EMSC2022-Notebooks/LAB-week8/data/anss.csv",
@@ -15,11 +15,11 @@
       "writable": true
     }
   ],
-  "created": "2025-08-14T10:01:16.088154Z",
+  "created": "2025-08-14T10:36:25.963345Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2025-08-14T10:01:16.088154Z",
+  "last_modified": "2025-08-14T10:36:25.963345Z",
   "mimetype": null,
   "name": "data",
   "path": "EMSC2022-Notebooks/LAB-week8/data",
