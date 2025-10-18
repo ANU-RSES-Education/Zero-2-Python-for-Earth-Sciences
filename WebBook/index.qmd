@@ -31,7 +31,7 @@ In this course, we are first going to touch on some basic principles of programm
 
 We are also trying to learn good programming habits - like writing a plan for our software before leaping in, using reliable version control (especially when working in teams), writing tests, adopting a helpful, clear programming style.
 
-There is a [step-by-step guide](Notebooks/StepByStep/Introduction.md) to learning python programming and also a number of [deeper-dives](Notebooks/Themes/0-StartHere.md) into topics of relevance to Earth Science.
+<!-- There is a [step-by-step guide](Notebooks/StepByStep/Introduction.md) to learning python programming and also a number of [deeper-dives](Notebooks/Themes/0-StartHere.md) into topics of relevance to Earth Science. -->
 
 ## Introduction
 

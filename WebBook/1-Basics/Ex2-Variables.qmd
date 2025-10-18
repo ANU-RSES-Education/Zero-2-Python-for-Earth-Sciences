@@ -192,7 +192,7 @@ print(i / 3)
 :::
 
 ```{pyodide}
-#| exercise: ex_2
+#| exercise: ex_2_types
 
 ______
 
