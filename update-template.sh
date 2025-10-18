@@ -177,21 +177,33 @@ elif git remote | grep -q "template"; then
     echo "   Fetching latest template changes..."
     git fetch template
 
-    BEHIND=$(git rev-list --count HEAD..template/main 2>/dev/null || echo "0")
+    # Find the common ancestor (merge-base) between current branch and template
+    MERGE_BASE=$(git merge-base HEAD template/main 2>/dev/null || echo "")
 
-    if [ "$BEHIND" -gt 0 ]; then
-        print_warning "Template is $BEHIND commits ahead"
-        echo ""
-        echo "   Recent template changes:"
-        git log --oneline --no-decorate HEAD..template/main | head -5 | sed 's/^/   - /'
-        echo ""
-        echo "   To see detailed changes:"
-        echo "   git diff HEAD template/main"
-        echo "   git log HEAD..template/main"
-        echo ""
-        echo "   Or check the template-sync workflow for automated PRs"
+    if [ -n "$MERGE_BASE" ]; then
+        # Count commits in template/main since the merge-base
+        NEW_COMMITS=$(git rev-list --count ${MERGE_BASE}..template/main 2>/dev/null || echo "0")
+
+        if [ "$NEW_COMMITS" -gt 0 ]; then
+            print_warning "Template has $NEW_COMMITS new commit(s) since last sync"
+            echo ""
+            echo "   New template changes:"
+            git log --oneline --no-decorate ${MERGE_BASE}..template/main | head -5 | sed 's/^/   - /'
+            if [ "$NEW_COMMITS" -gt 5 ]; then
+                echo "   ... and $((NEW_COMMITS - 5)) more"
+            fi
+            echo ""
+            echo "   To see detailed changes:"
+            echo "   git log ${MERGE_BASE}..template/main"
+            echo "   git diff ${MERGE_BASE}..template/main"
+            echo ""
+            echo "   The template-sync workflow will create a PR with these changes"
+        else
+            print_status "Template is up to date"
+            echo "   (Last synced at commit: ${MERGE_BASE:0:7})"
+        fi
     else
-        print_status "Template is up to date"
+        print_warning "Could not determine merge-base with template"
     fi
 else
     print_warning "Template remote not configured"
