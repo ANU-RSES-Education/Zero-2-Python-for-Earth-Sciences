@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,14 +71,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../1-Basics/Ex6-MoreLoops.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c1e203bd8436a5e1001be342a4662c3e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7fc13c4647e4148ec3b7c84e3d3f5daf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -125,7 +126,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -151,7 +152,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../assets/ANU-logo.jpg" alt="" class="navbar-logo">
+    <img src="../assets/ANU-logo.jpg" alt="" class="navbar-logo light-content">
+    <img src="../assets/ANU-logo.jpg" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Zero 2 Programmer for Earth Scientists</span>
@@ -179,7 +181,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/AuWorldEQ.jpg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../assets/AuWorldEQ.jpg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../assets/AuWorldEQ.jpg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
@@ -375,7 +378,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Summary
+<span class="screen-reader-only">Note</span>Summary
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -384,34 +387,34 @@ Summary
 </div>
 <p>Until now, we have mainly been dealing with numeric data (numbers). However, it is often necessary to process text sequences, referred to as ‘character strings’. In this section, we will see some of the mechanisms Python provides for text processing. Even when we are not processing lots of text, we do need to be able to read and write the results of our work and the starting point for that is text manipulation.</p>
 <p>As we have already seen, any literal text sequence can be entered between a pair of inverted commas (” ” or ’ ’), and stored to a variable. Python allows both single and double quotes to be used (not all languages do, so be careful if translating this sort of thinking to another language in the future).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"Hamlet"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>quote <span class="op">=</span> <span class="st">'To be or not to be: that is the question.'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"Hamlet"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>quote <span class="op">=</span> <span class="st">'To be or not to be: that is the question.'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If we look at <code>type(name)</code>, we see that Python has a <code>str</code> type to represent strings.</p>
 <p>To join two strings together, we can simply combine them using the <code>+</code> operator:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> name<span class="op">+</span><span class="st">" says "</span><span class="op">+</span>quote</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> name<span class="op">+</span><span class="st">" says "</span><span class="op">+</span>quote</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>We can enter quotation marks in a string literal by using the <em>other</em> kind of quotation mark as the string delimiter: either</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> name<span class="op">+</span><span class="st">" says '"</span><span class="op">+</span>quote<span class="op">+</span><span class="st">"'"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> name<span class="op">+</span><span class="st">" says '"</span><span class="op">+</span>quote<span class="op">+</span><span class="st">"'"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> name<span class="op">+</span><span class="st">' says "'</span><span class="op">+</span>quote<span class="op">+</span><span class="st">'"'</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>We can also ‘escape’ the quotation mark, by placing a <code>\</code> in front of it. This forces Python to treat it as a literal character, without any special meaning:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> name<span class="op">+</span><span class="st">" says </span><span class="ch">\"</span><span class="st">"</span><span class="op">+</span>quote<span class="op">+</span><span class="st">"</span><span class="ch">\"</span><span class="st">"</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> name<span class="op">+</span><span class="st">" says </span><span class="ch">\"</span><span class="st">"</span><span class="op">+</span>quote<span class="op">+</span><span class="st">"</span><span class="ch">\"</span><span class="st">"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Finally, we can use triple-quotes (““” “““) to mark the beginning and end of the string, which allows ’ and” to appear within the string without difficulties:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>difficult <span class="op">=</span> <span class="st">""" Apparently "we can't just use single quotes" around this string """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>difficult <span class="op">=</span> <span class="st">""" Apparently "we can't just use single quotes" around this string """</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>We already encountered triple-quoted strings, in the context of docstrings at the start of a function.</p>
 <p>We can also use the multiplication operator to repeat a string multiple times:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">3</span><span class="op">*</span>name</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">3</span><span class="op">*</span>name</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>However, most other ‘mathematical’ operators (such as subtraction and division) have no meaning with strings.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 1 - familiarisation
+<span class="screen-reader-only">Tip</span>Exercise 1 - familiarisation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -432,40 +435,40 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiXG5uYW1lID0gXCJIYW1sZXRc
 <section id="string-conversion" class="level3">
 <h3 class="anchored" data-anchor-id="string-conversion">String conversion</h3>
 <p>Note that string variables containing numbers are not the same as integer or float variables containing the same numbers:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">'6'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">'6'</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">'3'</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">+</span> y) <span class="co"># prints '63'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">+</span> y) <span class="co"># prints '63'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>However, we can obtain an integer or float variable by using the <code>int</code> and <code>float</code> functions to convert them:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">int</span>(x) <span class="op">+</span> <span class="bu">int</span>(y)) <span class="co"># prints '9'</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">float</span>(x) <span class="op">+</span> <span class="bu">float</span>(y)) <span class="co"># prints '9.0'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">int</span>(x) <span class="op">+</span> <span class="bu">int</span>(y)) <span class="co"># prints '9'</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">float</span>(x) <span class="op">+</span> <span class="bu">float</span>(y)) <span class="co"># prints '9.0'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This only works if the string is a plausible representation of a single number. <code>int('3 6')</code> is assumed to correspond to two distinct numbers, and so they cannot be converted to a single integer and python does not automatically return a tuple such as <code>(3,6)</code>. Similarly, while numbers containing a decimal point can be converted to floating-point form, they cannot be interpreted as an integer.</p>
 </section>
 <section id="substrings" class="level3">
 <h3 class="anchored" data-anchor-id="substrings">Substrings</h3>
 <p>If we want to extract a ‘substring’ - a letter, or sequence of letters, from the middle of the string - we can use syntax similar to that for extracting a subset of a list:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>quote <span class="op">=</span> <span class="st">'To be or not to be: that is the question.'</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quote[<span class="dv">2</span>:<span class="dv">35</span>:<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>quote <span class="op">=</span> <span class="st">'To be or not to be: that is the question.'</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quote[<span class="dv">2</span>:<span class="dv">35</span>:<span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will print every 3rd character, starting from the character at position 2. Remember, Python counts from 0:</p>
 <pre class="text"><code>0123456789...
 To be or n...</code></pre>
 <p>We can see that the character at position 2 is a space, ’ ’. In general, a substring specification takes the form:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>variable[istart:istop:istep]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>variable[istart:istop:istep]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Omitting <code>istart</code> means the substring should begin from the start of <code>variable</code>; omitting <code>istep</code> means it should go to the end of <code>variable</code>; and omitting <code>istep</code> implies that all intervening characters should be printed:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quote[:<span class="dv">35</span>:<span class="dv">3</span>])</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quote[:<span class="dv">35</span>:<span class="dv">3</span>])</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quote[<span class="dv">2</span>::<span class="dv">3</span>])</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quote[<span class="dv">2</span>:<span class="dv">35</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quote[<span class="dv">2</span>:<span class="dv">35</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If we wish to extract only a single character, we simply provide its index:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quote[<span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(quote[<span class="dv">4</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>We can also iterate over the letters in a string:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> quote:</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(letter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> quote:</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(letter)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 2 - string iterations
+<span class="screen-reader-only">Tip</span>Exercise 2 - string iterations
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -487,8 +490,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiXG5xdW90ZSA9IFwiVG8gYmUg
 <section id="special-characters" class="level3">
 <h3 class="anchored" data-anchor-id="special-characters">Special characters</h3>
 <p>A new-line (carriage return) can be represented within a string by entering <code>'\n'</code>, for example:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>multiline <span class="op">=</span> <span class="st">'This</span><span class="ch">\n</span><span class="st">string</span><span class="ch">\n</span><span class="st">occupies</span><span class="ch">\n</span><span class="st">five</span><span class="ch">\n</span><span class="st">lines.'</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(multiline)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>multiline <span class="op">=</span> <span class="st">'This</span><span class="ch">\n</span><span class="st">string</span><span class="ch">\n</span><span class="st">occupies</span><span class="ch">\n</span><span class="st">five</span><span class="ch">\n</span><span class="st">lines.'</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(multiline)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Similarly, <code>\t</code> can be used to enter a Tab character. Spaces and tab characters are collectively known as ‘whitespace’.</p>
 </section>
 <section id="string-functions-methods" class="level3">
@@ -510,12 +513,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiXG5xdW90ZSA9IFwiVG8gYmUg
 <li><code>s.strip()</code> - Return a copy of <code>s</code> with all whitespace removed. <code>s.lstrip()</code> and <code>s.rstrip()</code> are variants removing whitespace only at the start or end of the string, respectively. For example, <code>'elephant'.strip('e')</code> returns <code>'lephant'</code>.</li>
 </ul>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 3 - Do you really understand strings ?
+<span class="screen-reader-only">Tip</span>Exercise 3 - Do you really understand strings ?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -544,12 +547,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiXG5oZWxwKHN0cmluZy5jYXBp
 </div>
 <hr>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 4 - Application: tables
+<span class="screen-reader-only">Tip</span>Exercise 4 - Application: tables
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -623,12 +626,12 @@ We know from *the first fundamental theorem of calculus* that for $x$ in $[a, b]
 $$\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).$$
 ::: -->
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 5 - Tables using f-strings
+<span class="screen-reader-only">Tip</span>Exercise 5 - Tables using f-strings
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -653,12 +656,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiXG4jIEV4ZXJjaXNlIDUifQ==
 <p>As we have already discussed, every piece of information within a computer must be organised and represented in binary form. This implies that the sequence of letters in the alphabet can be mapped onto the set of integers, and this is usually done via the ‘ASCII’ code sequence.</p>
 <p>Python provides the function <code>chr(integer)</code> to convert integers into their ASCII alphanumeric equivalent.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 6 - Character manipulation
+<span class="screen-reader-only">Tip</span>Exercise 6 - Character manipulation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -682,12 +685,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFeGVyY2lzZSA2In0=
 <pre class="text"><code>J mjlf Qzuipm</code></pre>
 <p>because ‘J’ is one letter after ‘I’, ‘m’ is one after ‘l’, and so on.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 7 - Hail Caesar !
+<span class="screen-reader-only">Tip</span>Exercise 7 - Hail Caesar !
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -711,23 +714,23 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFeGVyY2lzZSA3In0=
 <section id="sec-older-strings" class="level3">
 <h3 class="anchored" data-anchor-id="sec-older-strings">Older approaches to string formatting</h3>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Older format - examples
+<span class="screen-reader-only">Warning</span>Older format - examples
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This is best illustrated by an example, using the first (older) formatting framework:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">11</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">11</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"One eleventh is approximately </span><span class="sc">%.3f</span><span class="st">"</span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s<span class="op">%</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s<span class="op">%</span>x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Here, the string <code>s</code> contains the text we wish to produce, and the entry <code>%.3f</code> is a placeholder representing a floating point number with three decimal places. <code>x</code> is a floating point variable, calculated to many decimal places. The code <code>s%x</code> combines the two, resulting in the contents of <code>x</code> being inserted into the string <code>s</code>, formatted as required.</p>
 <p>All placeholders begin with the ‘%’ symbol. Integer placeholders end with the letter ‘i’, floating-point placeholders end with the letter ‘f’, and string placeholders end with the letter ‘s’. Between the ‘%’ and the letter, one can specify various options controlling the exact form of output:</p>
 <table class="caption-top table">
@@ -809,14 +812,14 @@ Older format - examples
 </tbody>
 </table>
 <p>Where a string contains more than one placeholder, we can pass the required information as a tuple:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>phrase <span class="op">=</span> <span class="st">'</span><span class="sc">%i</span><span class="st"> litres of </span><span class="sc">%s</span><span class="st"> at $</span><span class="sc">%.2f</span><span class="st">/L costs a total of $</span><span class="sc">%.2f</span><span class="st">'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>phrase <span class="op">=</span> <span class="st">'</span><span class="sc">%i</span><span class="st"> litres of </span><span class="sc">%s</span><span class="st"> at $</span><span class="sc">%.2f</span><span class="st">/L costs a total of $</span><span class="sc">%.2f</span><span class="st">'</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(phrase<span class="op">%</span>(<span class="dv">2</span>, <span class="st">'milk'</span>, <span class="fl">1.29</span>, <span class="dv">2</span><span class="op">*</span><span class="fl">1.29</span>))</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(phrase<span class="op">%</span>(<span class="dv">40</span>, <span class="st">'petrol'</span>, <span class="fl">1.53</span>, <span class="dv">40</span><span class="op">*</span><span class="fl">1.53</span>))</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(phrase<span class="op">%</span>(<span class="fl">7.5</span>, <span class="st">'water'</span>, <span class="fl">0.17</span>, <span class="fl">7.5</span><span class="op">*</span><span class="fl">0.17</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(phrase<span class="op">%</span>(<span class="fl">7.5</span>, <span class="st">'water'</span>, <span class="fl">0.17</span>, <span class="fl">7.5</span><span class="op">*</span><span class="fl">0.17</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Sometimes, it may be necessary to use string formatting to write the placeholders, allowing the style of output to be set at runtime:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_result(result,number_of_decimal_places):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_result(result,number_of_decimal_places):</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    fmt <span class="op">=</span> <span class="st">"The result is </span><span class="sc">%%</span><span class="st">.</span><span class="sc">%i</span><span class="st">f"</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>((fmt<span class="op">%</span>number_of_decimal_places)<span class="op">%</span>result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>((fmt<span class="op">%</span>number_of_decimal_places)<span class="op">%</span>result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>However, this is best avoided if possible.</p>
 <div>
 <div id="pyodide-12" class="exercise-cell">
@@ -827,24 +830,24 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBUcnkgdGhlICUgZm9ybWF0
 </script>
 </div>
 <p>A second, newer approach to formatting uses braces <code>{}</code> instead of <code>%...</code> to represent a placeholder, and a <code>.format()</code> function that can act on any string. The syntax of the format specifiers is also different. Our example would become:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">11</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">11</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"One eleventh is approximately </span><span class="sc">{:.2f}</span><span class="st">"</span></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s.<span class="bu">format</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s.<span class="bu">format</span>(x))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Similarly,</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>phrase <span class="op">=</span> <span class="st">'</span><span class="sc">{}</span><span class="st"> litres of </span><span class="sc">{}</span><span class="st"> at $</span><span class="sc">{:.2f}</span><span class="st">/L costs a total of $</span><span class="sc">{:.2f}</span><span class="st">'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>phrase <span class="op">=</span> <span class="st">'</span><span class="sc">{}</span><span class="st"> litres of </span><span class="sc">{}</span><span class="st"> at $</span><span class="sc">{:.2f}</span><span class="st">/L costs a total of $</span><span class="sc">{:.2f}</span><span class="st">'</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(phrase.<span class="bu">format</span>(<span class="dv">2</span>, <span class="st">'milk'</span>, <span class="fl">1.29</span>, <span class="dv">2</span><span class="op">*</span><span class="fl">1.29</span>))</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(phrase,<span class="bu">format</span>(<span class="dv">40</span>, <span class="st">'petrol'</span>, <span class="fl">1.53</span>, <span class="dv">40</span><span class="op">*</span><span class="fl">1.53</span>))</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(phrase.<span class="bu">format</span>(<span class="fl">7.5</span>, <span class="st">'water'</span>, <span class="fl">0.17</span>, <span class="fl">7.5</span><span class="op">*</span><span class="fl">0.17</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(phrase.<span class="bu">format</span>(<span class="fl">7.5</span>, <span class="st">'water'</span>, <span class="fl">0.17</span>, <span class="fl">7.5</span><span class="op">*</span><span class="fl">0.17</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The new approach provides a much richer set of formatting options, described in full <a href="https://docs.python.org/3.4/library/string.html#format-string-syntax">in the online documentation</a>. One benefit of the new style is that it is no longer necessary to pass information to format in the same order as it is used: we can number the placeholders. For example,</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>phrase <span class="op">=</span> <span class="st">'</span><span class="sc">{3}</span><span class="st"> litres of </span><span class="sc">{0}</span><span class="st"> at $</span><span class="sc">{1:.2f}</span><span class="st">/L costs a total of $</span><span class="sc">{2:.2f}</span><span class="st">'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>phrase <span class="op">=</span> <span class="st">'</span><span class="sc">{3}</span><span class="st"> litres of </span><span class="sc">{0}</span><span class="st"> at $</span><span class="sc">{1:.2f}</span><span class="st">/L costs a total of $</span><span class="sc">{2:.2f}</span><span class="st">'</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(phrase.<span class="bu">format</span>(<span class="st">'milk'</span>, <span class="fl">1.29</span>, <span class="dv">2</span><span class="op">*</span><span class="fl">1.29</span>, <span class="dv">2</span>))</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(phrase,<span class="bu">format</span>(<span class="st">'petrol'</span>, <span class="fl">1.53</span>, <span class="dv">40</span><span class="op">*</span><span class="fl">1.53</span>, <span class="dv">40</span>))</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(phrase.<span class="bu">format</span>(<span class="st">'water'</span>, <span class="fl">0.17</span>, <span class="fl">7.5</span><span class="op">*</span><span class="fl">0.17</span>, <span class="fl">7.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(phrase.<span class="bu">format</span>(<span class="st">'water'</span>, <span class="fl">0.17</span>, <span class="fl">7.5</span><span class="op">*</span><span class="fl">0.17</span>, <span class="fl">7.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This is particularly useful if you need to repeat the same information several times in a string:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>phrase <span class="op">=</span> <span class="st">"This sentence has the word </span><span class="sc">{0}</span><span class="st"> </span><span class="sc">{0}</span><span class="st"> </span><span class="sc">{0}</span><span class="st"> repeated three times and the word </span><span class="sc">{1}</span><span class="st"> </span><span class="sc">{1}</span><span class="st"> repeated twice."</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(phrase.<span class="bu">format</span>(<span class="st">'cat'</span>, <span class="st">'dog'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>phrase <span class="op">=</span> <span class="st">"This sentence has the word </span><span class="sc">{0}</span><span class="st"> </span><span class="sc">{0}</span><span class="st"> </span><span class="sc">{0}</span><span class="st"> repeated three times and the word </span><span class="sc">{1}</span><span class="st"> </span><span class="sc">{1}</span><span class="st"> repeated twice."</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(phrase.<span class="bu">format</span>(<span class="st">'cat'</span>, <span class="st">'dog'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -856,13 +859,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBUcnkgdGhlICUgZm9ybWF0
 eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBUcnkgdGhlIHt9IGZvcm1hdCBmb3Igc3RyaW5nIGZvcm1hdHRpbmdcblxuLi4uIn0=
 </script>
 </div>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout callout-style-default callout-warning no-icon callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Coding scratch space
+<span class="screen-reader-only">Warning</span>Coding scratch space
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -962,13 +965,14 @@ window._ojs.runtime.interpretFromScriptTags();
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
