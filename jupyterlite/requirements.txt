@@ -44,7 +44,8 @@ ipyleaflet
 plotly>=5,<6
 bqplot
 
-# Earth science libraries not requested above (likely this should match the content of _quarto.yml in the WebBook)
+# Earth science libraries (matches pyodide packages in WebBook/_quarto.yml)
+# These are the domain-specific packages for Earth/Marine science courses
 xarray
 pydap
 owslib
