@@ -177,33 +177,56 @@ elif git remote | grep -q "template"; then
     echo "   Fetching latest template changes..."
     git fetch template
 
-    # Find the common ancestor (merge-base) between current branch and template
-    MERGE_BASE=$(git merge-base HEAD template/main 2>/dev/null || echo "")
+    # Try to find the last template sync commit
+    # Template-sync PRs have format: "chore/template_sync_<hash>"
+    LAST_SYNC=$(git log --all --grep="template_sync" --oneline | head -1 | grep -oE '[a-f0-9]{7}$' || echo "")
 
-    if [ -n "$MERGE_BASE" ]; then
-        # Count commits in template/main since the merge-base
-        NEW_COMMITS=$(git rev-list --count ${MERGE_BASE}..template/main 2>/dev/null || echo "0")
+    if [ -n "$LAST_SYNC" ]; then
+        # Check if this commit exists in template/main
+        if git cat-file -e template/main 2>/dev/null; then
+            # Find this commit in template history
+            SYNC_IN_TEMPLATE=$(git log template/main --oneline | grep "^${LAST_SYNC}" | head -1 || echo "")
 
-        if [ "$NEW_COMMITS" -gt 0 ]; then
-            print_warning "Template has $NEW_COMMITS new commit(s) since last sync"
-            echo ""
-            echo "   New template changes:"
-            git log --oneline --no-decorate ${MERGE_BASE}..template/main | head -5 | sed 's/^/   - /'
-            if [ "$NEW_COMMITS" -gt 5 ]; then
-                echo "   ... and $((NEW_COMMITS - 5)) more"
+            if [ -n "$SYNC_IN_TEMPLATE" ]; then
+                # Count new commits since last sync
+                NEW_COMMITS=$(git rev-list --count ${LAST_SYNC}..template/main 2>/dev/null || echo "0")
+
+                if [ "$NEW_COMMITS" -gt 0 ]; then
+                    print_warning "Template has $NEW_COMMITS new commit(s) since last sync"
+                    echo ""
+                    echo "   New template changes:"
+                    git log --oneline --no-decorate ${LAST_SYNC}..template/main | head -5 | sed 's/^/   - /'
+                    if [ "$NEW_COMMITS" -gt 5 ]; then
+                        echo "   ... and $((NEW_COMMITS - 5)) more"
+                    fi
+                    echo ""
+                    echo "   To see detailed changes:"
+                    echo "   git log ${LAST_SYNC}..template/main"
+                    echo "   git diff ${LAST_SYNC}..template/main"
+                    echo ""
+                    echo "   The template-sync workflow will create a PR with these changes"
+                else
+                    print_status "Template is up to date"
+                    echo "   (Last synced at commit: ${LAST_SYNC:0:7})"
+                fi
+            else
+                print_warning "Last sync commit not found in template history"
             fi
-            echo ""
-            echo "   To see detailed changes:"
-            echo "   git log ${MERGE_BASE}..template/main"
-            echo "   git diff ${MERGE_BASE}..template/main"
-            echo ""
-            echo "   The template-sync workflow will create a PR with these changes"
-        else
-            print_status "Template is up to date"
-            echo "   (Last synced at commit: ${MERGE_BASE:0:7})"
         fi
     else
-        print_warning "Could not determine merge-base with template"
+        # No template sync found, fall back to simple comparison
+        BEHIND=$(git rev-list --count HEAD..template/main 2>/dev/null || echo "0")
+
+        if [ "$BEHIND" -gt 0 ]; then
+            print_warning "Template has changes (no sync history detected)"
+            echo ""
+            echo "   To see template commits:"
+            echo "   git log template/main | head -20"
+            echo ""
+            echo "   The template-sync workflow will create PRs automatically"
+        else
+            print_status "No new template commits detected"
+        fi
     fi
 else
     print_warning "Template remote not configured"
