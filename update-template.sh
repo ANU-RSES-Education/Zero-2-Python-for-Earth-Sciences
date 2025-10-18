@@ -195,8 +195,34 @@ elif git remote | grep -q "template"; then
     fi
 else
     print_warning "Template remote not configured"
-    echo "   To add template remote:"
-    echo "   git remote add template https://github.com/ANU-RSES-Education/EMSC-QuartoBook-Course.git"
+    echo ""
+    read -p "   Add template remote now? (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        git remote add template https://github.com/ANU-RSES-Education/EMSC-QuartoBook-Course.git
+        print_status "Template remote added"
+        echo "   Fetching latest template changes..."
+        git fetch template
+
+        BEHIND=$(git rev-list --count HEAD..template/main 2>/dev/null || echo "0")
+
+        if [ "$BEHIND" -gt 0 ]; then
+            print_warning "Template is $BEHIND commits ahead"
+            echo ""
+            echo "   Recent template changes:"
+            git log --oneline --no-decorate HEAD..template/main | head -5 | sed 's/^/   - /'
+            echo ""
+            echo "   To see detailed changes:"
+            echo "   git diff HEAD template/main"
+            echo "   git log HEAD..template/main"
+        else
+            print_status "Template is up to date"
+        fi
+    else
+        echo ""
+        echo "   You can add it later with:"
+        echo "   git remote add template https://github.com/ANU-RSES-Education/EMSC-QuartoBook-Course.git"
+    fi
 fi
 
 # 5. Test build
