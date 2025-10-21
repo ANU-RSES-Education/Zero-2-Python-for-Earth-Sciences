@@ -1,0 +1,533 @@
+---
+title: Exception Handling
+author:
+    - Andrew Valentine
+    - Louis Moresi
+jupyter: python3
+format:
+  html:
+    code-links: false
+---
+
+::: {.callout-note icon="false"}
+# Summary
+
+In this section we learn how to handle **exceptions** - errors that occur during program execution. We'll learn how to catch and handle errors gracefully using `try...except...` blocks, and how to raise our own exceptions to signal problems in our code.
+
+:::
+
+## Understanding Exceptions
+
+By now, you will almost certainly have encountered exceptions - error messages that appear when Python doesn't like what you've asked it to do. For example:
+
+```{pyodide}
+a = [1, 2, 3]
+print(a[4])  # This will raise an IndexError
+```
+
+Attempting to access the 5th element (index 4, remember we start counting from 0!) of a list with only 3 elements raises an `IndexError`.
+
+Another common example:
+
+```{pyodide}
+a = 1 + 'hello'  # This will raise a TypeError
+```
+
+Notice these have different error types: `IndexError` and `TypeError`. Python has many different exception types to describe different problems.
+
+## The Try-Except Construct
+
+If errors are simply coding mistakes, it's useful to have the program terminate immediately so we can fix them. However, in real code, problems may arise for reasons beyond the programmer's control - perhaps the user provided incorrect input. We can **catch** and **handle** exceptions gracefully using `try...except...`:
+
+```python
+try:
+    [code that may fail]
+except:
+    [code to handle the error]
+```
+
+When Python encounters a `try...except...` block:
+1. It attempts to execute the code in the `try` block
+2. If successful, the `except` block is never executed
+3. If an error occurs, Python immediately jumps to the `except` block
+4. After handling the error, execution continues after the `try...except...`
+
+Example:
+
+```{pyodide}
+#| exercise: ex_1
+try:
+    x = float(input('Please enter a number: '))
+    print("The next number is:", x + 1)
+except:
+    print("Sorry, that is not a valid number")
+```
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 1 - Basic exception handling
+
+**Try the code above.** Enter various inputs:
+- A valid number (e.g., 42)
+- Text that isn't a number (e.g., "hello")
+- An empty input
+
+Notice how the `except` block handles invalid inputs gracefully.
+
+:::
+
+## The EAFP Model
+
+This error handling approach is called **EAFP**: "Easier to Ask Forgiveness than Permission". Rather than verifying everything is correct *before* an operation (which can be tedious and inefficient), we assume everything will work and deal with any problems that arise.
+
+## Catching Specific Exceptions
+
+A bare `except:` catches *all* errors, which can hide bugs. Consider this code with a typo:
+
+```{pyodide}
+try:
+    x = float(input('Please enter a number: '))
+    print("The next number is:", z + 1)  # Typo: z instead of x!
+except:
+    print("Sorry, that is not a valid number")
+```
+
+This will always say "not a valid number" even when the real problem is the undefined variable `z`. This is a `NameError`, not the `ValueError` we intended to catch.
+
+**Better approach: Specify the exception type:**
+
+```{pyodide}
+try:
+    x = float(input('Please enter a number: '))
+    print("The next number is:", x + 1)
+except ValueError:
+    print("Sorry, that is not a valid number")
+```
+
+Now our typo would be immediately obvious, but valid user input errors are handled gracefully.
+
+## Multiple Exception Handlers
+
+You can catch multiple exception types:
+
+```python
+# Catch multiple types in one block
+try:
+    [code]
+except (ValueError, TypeError):
+    [code]
+```
+
+Or handle different exceptions differently:
+
+```python
+try:
+    [code]
+except ValueError:
+    [handle ValueError]
+except TypeError:
+    [handle TypeError]
+except:
+    [handle any other exception]
+```
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 2 - Multiple exception types
+
+**Write code that:**
+1. Asks the user for two numbers
+2. Divides the first by the second
+3. Catches `ValueError` (invalid input) separately from `ZeroDivisionError` (division by zero)
+4. Provides appropriate messages for each error type
+
+```{pyodide}
+#| exercise: ex_2
+
+try:
+    num1 = float(input("Enter first number: "))
+    num2 = float(input("Enter second number: "))
+    result = ______
+    print(f"Result: {result}")
+except ______:
+    ______
+except ______:
+    ______
+
+```
+
+::: { .solution exercise="ex_2"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```{python}
+try:
+    num1 = float(input("Enter first number: "))
+    num2 = float(input("Enter second number: "))
+    result = num1 / num2
+    print(f"Result: {result}")
+except ValueError:
+    print("Please enter valid numbers!")
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+```
+:::
+:::
+
+:::
+
+## Exceptions for Control Flow
+
+Exception handling can be a central part of code design. Here's an example using exceptions to control loop termination:
+
+```{pyodide}
+# Sum elements of a list using exception handling
+a = [1, 3, 6, 9, 2]
+i = 0
+s = 0
+
+while True:
+    try:
+        s += a[i]
+        i += 1
+    except IndexError:
+        break
+
+print(f"Sum: {s}")
+```
+
+This works, but a regular `for` loop would be cleaner:
+
+```{pyodide}
+a = [1, 3, 6, 9, 2]
+s = sum(a)  # Or: s = 0; for x in a: s += x
+print(f"Sum: {s}")
+```
+
+::: {.callout-important}
+## Don't Overuse Exceptions
+
+It's tempting to use `try...except...` everywhere to suppress error messages. This usually makes bugs harder to find. Only use exception handling for:
+- Predictable error cases (like user input)
+- Production code that must be robust
+- Situations where the error is expected and meaningful
+:::
+
+## Accessing Error Information
+
+Sometimes you need details about the error that occurred:
+
+```python
+try:
+    [code]
+except <ErrorType> as <variable>:
+    [code using variable]
+```
+
+Example:
+
+```{pyodide}
+try:
+    x = 1 + 'hello'
+except TypeError as err:
+    print("A TypeError occurred:")
+    print(err)
+    print(f"Error type: {type(err)}")
+```
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 3 - Error details
+
+**Write code that tries to open a file that doesn't exist, catches the `FileNotFoundError`, and prints the error message.**
+
+```{pyodide}
+#| exercise: ex_3
+
+try:
+    with open("nonexistent_file.txt", "r") as f:
+        contents = f.read()
+except ______ as ______:
+    print(f"Error: {______}")
+
+```
+
+::: { .solution exercise="ex_3"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```{python}
+try:
+    with open("nonexistent_file.txt", "r") as f:
+        contents = f.read()
+except FileNotFoundError as err:
+    print(f"Error: {err}")
+    print("The file does not exist!")
+```
+:::
+:::
+
+:::
+
+## The Finally Block
+
+Sometimes you want code to execute regardless of whether an error occurred. Use `finally`:
+
+```python
+try:
+    [code]
+finally:
+    [always executed]
+```
+
+The `finally` block executes:
+- After successful completion of `try`, OR
+- Before an error is propagated
+
+```{pyodide}
+try:
+    s = 0
+    for x in [1, 2, 3, 'x']:
+        s += x
+finally:
+    print("This prints before the error is raised...")
+    print(f"Sum so far: {s}")
+```
+
+Common uses for `finally`:
+- Close files
+- Save state
+- Clean up temporary resources
+- Log progress
+
+## Raising Exceptions
+
+You can raise your own exceptions using `raise`:
+
+```python
+raise <ErrorType>
+raise <ErrorType>(<message>)
+```
+
+Example:
+
+```{pyodide}
+def check_positive(x):
+    if x <= 0:
+        raise ValueError("Number must be positive!")
+    return x ** 2
+
+try:
+    result = check_positive(-5)
+except ValueError as err:
+    print(f"Error: {err}")
+```
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 4 - Raising exceptions
+
+**Write a function that validates a temperature in Celsius:**
+- If below absolute zero (-273.15°C), raise a `ValueError`
+- If above 100°C, print a warning but continue
+- Return the temperature in Kelvin (Celsius + 273.15)
+
+```{pyodide}
+#| exercise: ex_4
+
+def celsius_to_kelvin(temp_c):
+    """Convert Celsius to Kelvin with validation.
+
+    Parameters
+    ----------
+    temp_c : float
+        Temperature in Celsius
+
+    Returns
+    -------
+    float
+        Temperature in Kelvin
+
+    Raises
+    ------
+    ValueError
+        If temperature is below absolute zero
+    """
+    if ______:
+        raise ValueError("Temperature below absolute zero!")
+
+    if temp_c > 100:
+        print("Warning: Temperature above boiling point of water")
+
+    return ______
+
+# Test it
+try:
+    print(celsius_to_kelvin(25))
+    print(celsius_to_kelvin(-300))  # This should raise an error
+except ValueError as err:
+    print(f"Error: {err}")
+```
+
+::: { .solution exercise="ex_4"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```{python}
+def celsius_to_kelvin(temp_c):
+    """Convert Celsius to Kelvin with validation."""
+    if temp_c < -273.15:
+        raise ValueError("Temperature below absolute zero!")
+
+    if temp_c > 100:
+        print("Warning: Temperature above boiling point of water")
+
+    return temp_c + 273.15
+
+# Test it
+try:
+    print(celsius_to_kelvin(25))    # Should work
+    print(celsius_to_kelvin(150))   # Should warn
+    print(celsius_to_kelvin(-300))  # Should raise error
+except ValueError as err:
+    print(f"Error: {err}")
+```
+:::
+:::
+
+:::
+
+## Practical Example: Robust Data Loading
+
+Here's how exceptions enable clean control flow for robust data loading:
+
+```{pyodide}
+import numpy as np
+
+def load_data_safe(filename, default_data=None):
+    """Load data from file, use default if file doesn't exist.
+
+    Parameters
+    ----------
+    filename : str
+        Name of file to load
+    default_data : array-like, optional
+        Data to use if file doesn't exist
+
+    Returns
+    -------
+    array
+        Loaded or default data
+    """
+    try:
+        data = np.loadtxt(filename)
+        print(f"Loaded data from {filename}")
+        return data
+    except FileNotFoundError:
+        if default_data is not None:
+            print(f"File not found, using default data")
+            return np.array(default_data)
+        else:
+            raise  # Re-raise the exception if no default
+
+# Try to load data
+default = [[1, 2], [3, 4], [5, 6]]
+data = load_data_safe("my_missing_file.txt", default_data=default)
+print("Data:\n", data)
+```
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 5 - Data validation with exceptions
+
+**Write a function that loads a 2-column data file and validates that each row sums to 100.** If any row doesn't sum to 100, raise a `ValueError` with the row number.
+
+```{pyodide}
+#| exercise: ex_5
+import numpy as np
+
+# First, create test data
+test_data = np.array([[30, 70], [40, 60], [25, 74]])  # Third row doesn't sum to 100!
+np.savetxt("test_data.txt", test_data)
+
+def load_and_validate(filename):
+    """Load data and validate row sums."""
+    data = np.loadtxt(filename)
+
+    for i, row in enumerate(data):
+        row_sum = ______
+        if ______:
+            raise ValueError(f"Row {i} sums to {row_sum}, expected 100")
+
+    return data
+
+# Test it
+try:
+    data = load_and_validate("test_data.txt")
+    print("Data is valid!")
+except ValueError as err:
+    print(f"Validation error: {err}")
+```
+
+::: { .solution exercise="ex_5"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```{python}
+import numpy as np
+
+test_data = np.array([[30, 70], [40, 60], [25, 74]])
+np.savetxt("test_data.txt", test_data)
+
+def load_and_validate(filename):
+    """Load data and validate row sums."""
+    data = np.loadtxt(filename)
+
+    for i, row in enumerate(data):
+        row_sum = sum(row)
+        if row_sum != 100:
+            raise ValueError(f"Row {i} sums to {row_sum}, expected 100")
+
+    return data
+
+try:
+    data = load_and_validate("test_data.txt")
+    print("Data is valid!")
+except ValueError as err:
+    print(f"Validation error: {err}")
+```
+:::
+:::
+
+:::
+
+## Common Exception Types
+
+Here are some common exceptions you'll encounter:
+
+- `ValueError` - Invalid value (e.g., `int("hello")`)
+- `TypeError` - Wrong type (e.g., `1 + "hello"`)
+- `IndexError` - Index out of range
+- `KeyError` - Dictionary key doesn't exist
+- `FileNotFoundError` - File doesn't exist
+- `ZeroDivisionError` - Division by zero
+- `NameError` - Variable doesn't exist
+- `AttributeError` - Object doesn't have that attribute
+
+## Summary
+
+Key concepts from this section:
+
+- Use `try...except...` to handle errors gracefully
+- Catch specific exception types, not all exceptions
+- Access error details with `except ErrorType as variable:`
+- Use `finally` for cleanup code
+- Raise exceptions with `raise ErrorType(message)`
+- Follow EAFP: Easier to Ask Forgiveness than Permission
+
+Exception handling makes code robust and user-friendly, but don't overuse it - let genuine bugs show themselves!
+
+::: {.callout-warning icon="false"}
+## Coding scratch space
+
+```{pyodide}
+## Scratch space / notepad
+
+
+```
+:::

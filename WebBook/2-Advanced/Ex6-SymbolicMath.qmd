@@ -1,0 +1,506 @@
+---
+title: Symbolic Mathematics with SymPy
+author:
+    - Louis Moresi
+    - Andrew Valentine
+jupyter: python3
+format:
+  html:
+    code-links: false
+---
+
+::: {.callout-note icon="false"}
+# Summary
+
+SymPy brings symbolic mathematics to Python - allowing you to manipulate equations, simplify expressions, differentiate and integrate symbolically, and solve equations analytically. It's like having Mathematica or Maple built into Python!
+
+:::
+
+## What is Symbolic Math?
+
+Most Python computations are **numerical** - we work with specific numbers. **Symbolic** computation works with variables and expressions themselves, without assigning numeric values.
+
+```{pyodide}
+#| autorun: true
+import sympy
+import numpy as np
+
+print(f"SymPy version: {sympy.__version__}")
+
+# Numerical: √2 as a number
+print(f"NumPy sqrt(2) = {np.sqrt(2)}")
+
+# Symbolic: √2 as an exact expression
+print(f"SymPy sqrt(2) = {sympy.sqrt(2)}")
+print(f"Simplified: {sympy.sqrt(8)}")  # Keeps it symbolic!
+```
+
+## Creating Symbols
+
+Symbols are the building blocks of symbolic expressions:
+
+```{pyodide}
+import sympy
+
+# Create symbols
+x = sympy.Symbol('x')
+y = sympy.Symbol('y')
+theta = sympy.Symbol('theta')
+
+# Build an expression
+expr = x**2 + 2*x*y + y**2
+
+print(expr)
+print(type(expr))
+```
+
+Shorthand for multiple symbols:
+
+```{pyodide}
+import sympy
+
+x, y, z = sympy.symbols('x y z')
+expr = x + y + z
+print(expr)
+```
+
+## Symbolic Expressions
+
+You can build expressions using standard mathematical operations:
+
+```{pyodide}
+import sympy
+
+x = sympy.Symbol('x')
+
+# Various expressions
+print("Square root:", sympy.sqrt(x))
+print("Exponential:", sympy.exp(x))
+print("Logarithm:", sympy.log(x))
+print("Trig:", sympy.sin(x)**2 + sympy.cos(x)**2)
+```
+
+::: {.callout-warning}
+## Use SymPy Functions, Not NumPy!
+
+NumPy functions expect numbers. SymPy functions work with symbols:
+
+```{pyodide}
+import sympy
+import numpy as np
+
+x = sympy.Symbol('x')
+
+# This works:
+print("SymPy sin:", sympy.sin(x))
+
+# This would fail:
+# np.sin(x)  # TypeError!
+```
+:::
+
+## Simplification
+
+SymPy can simplify expressions symbolically:
+
+```{pyodide}
+import sympy
+
+x = sympy.Symbol('x')
+
+# Trig identity
+expr = sympy.sin(x)**2 + sympy.cos(x)**2
+print("Original:", expr)
+print("Simplified:", expr.simplify())
+
+# Algebraic simplification
+expr2 = (x**2 - 1)/(x - 1)
+print("\nOriginal:", expr2)
+print("Simplified:", expr2.simplify())
+```
+
+### Expansion and Factoring
+
+```{pyodide}
+import sympy
+
+x, y = sympy.symbols('x y')
+
+# Expand
+expr = (x + y)**3
+print("Expanded:", expr.expand())
+
+# Factor
+expr2 = x**2 - y**2
+print("Factored:", expr2.factor())
+```
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 1 - Symbolic algebra
+
+**Simplify and manipulate these expressions:**
+
+1. (x² + 2xy + y²) - Expand and factor
+2. sin²(x) + cos²(x) - Simplify
+3. (x³ - 1)/(x - 1) - Simplify
+
+```{pyodide}
+#| exercise: ex_1
+import sympy
+
+x, y = sympy.symbols('x y')
+
+# 1. Algebraic expression
+expr1 = (x + y)**2
+expanded = ______
+factored = ______
+
+print("Expanded:", expanded)
+print("Factored:", factored)
+
+# 2. Trig identity
+expr2 = ______
+simplified = ______
+print("\nTrig identity simplified:", simplified)
+
+# 3. Rational expression
+expr3 = ______
+simplified3 = ______
+print("\nRational simplified:", simplified3)
+```
+
+::: { .solution exercise="ex_1"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```{python}
+import sympy
+
+x, y = sympy.symbols('x y')
+
+# 1.
+expr1 = (x + y)**2
+expanded = expr1.expand()
+factored = expanded.factor()
+print("Expanded:", expanded)
+print("Factored:", factored)
+
+# 2.
+expr2 = sympy.sin(x)**2 + sympy.cos(x)**2
+simplified = expr2.simplify()
+print("\nTrig identity:", simplified)
+
+# 3.
+expr3 = (x**3 - 1)/(x - 1)
+simplified3 = expr3.simplify()
+print("\nRational:", simplified3)
+```
+:::
+:::
+
+:::
+
+## Substitution
+
+Evaluate expressions by substituting values:
+
+```{pyodide}
+import sympy
+
+x = sympy.Symbol('x')
+expr = x**2 + 2*x + 1
+
+# Substitute a number
+print("At x=3:", expr.subs(x, 3))
+
+# Substitute another expression
+y = sympy.Symbol('y')
+print("Substitute x=2y:", expr.subs(x, 2*y))
+```
+
+SymPy can handle complex numbers:
+
+```{pyodide}
+import sympy
+
+x = sympy.Symbol('x')
+expr = sympy.sqrt(x)
+
+print("√8 =", expr.subs(x, 8))
+print("√(-1) =", expr.subs(x, -1))  # Imaginary!
+```
+
+## Differentiation
+
+SymPy can compute derivatives symbolically:
+
+```{pyodide}
+import sympy
+
+x = sympy.Symbol('x')
+
+# First derivative
+f = x**3 + 2*x**2 - 5*x + 1
+df = sympy.diff(f, x)
+
+print("f(x) =", f)
+print("f'(x) =", df)
+
+# Second derivative
+d2f = sympy.diff(f, x, 2)  # or sympy.diff(df, x)
+print("f''(x) =", d2f)
+```
+
+### Partial Derivatives
+
+```{pyodide}
+import sympy
+
+x, y = sympy.symbols('x y')
+
+# Function of two variables
+f = x**2 * y + y**3
+
+print("f(x,y) =", f)
+print("∂f/∂x =", sympy.diff(f, x))
+print("∂f/∂y =", sympy.diff(f, y))
+
+# Second partial
+print("∂²f/∂x∂y =", sympy.diff(f, x, y))
+```
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 2 - Heat equation
+
+**The 1D heat equation is:**
+
+∂T/∂t = α ∂²T/∂x²
+
+where α is thermal diffusivity.
+
+Given T(x,t) = A×e^(-αk²t)×sin(kx), verify it satisfies the heat equation:
+
+```{pyodide}
+#| exercise: ex_2
+import sympy
+
+x, t, alpha, k, A = sympy.symbols('x t alpha k A', real=True, positive=True)
+
+# Temperature function
+T = A * sympy.exp(-alpha * k**2 * t) * sympy.sin(k * x)
+
+# Compute derivatives
+dT_dt = ______  # ∂T/∂t
+d2T_dx2 = ______  # ∂²T/∂x²
+
+# Check if dT/dt = α * d2T/dx2
+LHS = dT_dt
+RHS = alpha * d2T_dx2
+
+print("∂T/∂t =", LHS)
+print("α∂²T/∂x² =", RHS)
+print("\nDifference:", (LHS - RHS).simplify())
+print("Solution satisfies heat equation:", (LHS - RHS).simplify() == 0)
+```
+
+::: { .solution exercise="ex_2"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```{python}
+import sympy
+
+x, t, alpha, k, A = sympy.symbols('x t alpha k A', real=True, positive=True)
+
+T = A * sympy.exp(-alpha * k**2 * t) * sympy.sin(k * x)
+
+dT_dt = sympy.diff(T, t)
+d2T_dx2 = sympy.diff(T, x, 2)
+
+LHS = dT_dt
+RHS = alpha * d2T_dx2
+
+print("∂T/∂t =", LHS)
+print("α∂²T/∂x² =", RHS)
+print("\nDifference:", (LHS - RHS).simplify())
+```
+:::
+:::
+
+:::
+
+## Integration
+
+Symbolic integration (both indefinite and definite):
+
+```{pyodide}
+import sympy
+
+x = sympy.Symbol('x')
+
+# Indefinite integral
+f = x**2 + 2*x
+F = sympy.integrate(f, x)
+print("∫(x² + 2x)dx =", F)
+
+# Definite integral
+result = sympy.integrate(f, (x, 0, 2))
+print("∫₀²(x² + 2x)dx =", result)
+```
+
+### Multiple Integration
+
+```{pyodide}
+import sympy
+
+x, y = sympy.symbols('x y')
+
+# Double integral
+f = x * y
+result = sympy.integrate(f, (x, 0, 1), (y, 0, 2))
+print("∫₀¹∫₀² xy dy dx =", result)
+```
+
+## Solving Equations
+
+Solve equations symbolically:
+
+```{pyodide}
+import sympy
+
+x = sympy.Symbol('x')
+
+# Solve x² - 4 = 0
+solutions = sympy.solve(x**2 - 4, x)
+print("Solutions to x² - 4 = 0:", solutions)
+
+# Solve quadratic formula symbolically
+a, b, c = sympy.symbols('a b c')
+solutions = sympy.solve(a*x**2 + b*x + c, x)
+print("\nQuadratic formula:")
+for sol in solutions:
+    print(f"  x = {sol}")
+```
+
+### Systems of Equations
+
+```{pyodide}
+import sympy
+
+x, y = sympy.symbols('x y')
+
+# Solve system:
+# x + y = 5
+# x - y = 1
+eq1 = sympy.Eq(x + y, 5)
+eq2 = sympy.Eq(x - y, 1)
+
+solution = sympy.solve([eq1, eq2], [x, y])
+print("Solution:", solution)
+```
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 3 - Geochemistry problem
+
+**Radioactive decay chain:** Parent P decays to daughter D with decay constant λ.
+
+The equation is:
+dD/dt = λP₀e^(-λt) - μD
+
+where μ is daughter's decay constant.
+
+Solve for D(t) assuming D(0) = 0:
+
+```{pyodide}
+#| exercise: ex_3
+import sympy
+
+t, lam, mu, P0 = sympy.symbols('t lambda mu P_0', positive=True, real=True)
+D = sympy.Function('D')
+
+# Differential equation
+eq = sympy.Eq(D(t).diff(t), lam * P0 * sympy.exp(-lam*t) - mu * D(t))
+
+# Solve with initial condition D(0) = 0
+solution = sympy.dsolve(eq, D(t), ics={D(0): 0})
+print("Solution:")
+sympy.pprint(solution)
+```
+
+:::
+
+## Pretty Printing
+
+SymPy can display equations beautifully:
+
+```{pyodide}
+import sympy
+
+sympy.init_printing()  # Enable pretty printing
+
+x, y = sympy.symbols('x y')
+
+# Quadratic formula
+expr = sympy.sqrt(x**2 + y**2)
+print("Standard:", expr)
+
+# LaTeX output
+print("\nLaTeX:", sympy.latex(expr))
+
+# Integrals look nice
+integral = sympy.Integral(x**2, x)
+print("\nBefore eval:", integral)
+print("After eval:", integral.doit())
+```
+
+## Practical Example: Wave Equation
+
+```{pyodide}
+import sympy
+
+# Define symbols
+x, t, c, omega, k = sympy.symbols('x t c omega k', real=True)
+
+# Wave solution: u(x,t) = A×sin(kx - ωt)
+A = sympy.Symbol('A', real=True)
+u = A * sympy.sin(k*x - omega*t)
+
+# Wave equation: ∂²u/∂t² = c²∂²u/∂x²
+d2u_dt2 = sympy.diff(u, t, 2)
+d2u_dx2 = sympy.diff(u, x, 2)
+
+print("u(x,t) =", u)
+print("\n∂²u/∂t² =", d2u_dt2)
+print("c²∂²u/∂x² =", c**2 * d2u_dx2)
+
+# For wave equation to be satisfied:
+# ω² = c²k²
+relation = sympy.solve(d2u_dt2 - c**2 * d2u_dx2, omega)
+print("\nDispersion relation ω =", relation)
+```
+
+## Summary
+
+SymPy provides symbolic mathematics in Python:
+
+- **Symbols and expressions** - Work with variables algebraically
+- **Simplification** - Simplify, expand, factor expressions
+- **Calculus** - Differentiate and integrate symbolically
+- **Equation solving** - Solve equations and systems analytically
+- **Pretty printing** - Display equations beautifully
+
+SymPy is perfect for:
+- Deriving equations
+- Checking analytical solutions
+- Teaching mathematics
+- Code generation (convert symbolic → numeric code)
+
+::: {.callout-warning icon="false"}
+## Coding scratch space
+
+```{pyodide}
+## Scratch space / notepad
+
+
+```
+:::

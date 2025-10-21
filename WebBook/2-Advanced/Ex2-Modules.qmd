@@ -1,0 +1,531 @@
+---
+title: Modules and Packages
+author:
+    - Andrew Valentine
+    - Louis Moresi
+jupyter: python3
+format:
+  html:
+    code-links: false
+---
+
+::: {.callout-note icon="false"}
+# Summary
+
+In this section we learn how to use **modules** - ready-to-use collections of functions that provide good-quality code for common tasks. We'll also learn how to create our own modules to package up reusable code. One of Python's great strengths is the ready availability of modules for scientific computing.
+
+:::
+
+## Why Use Modules?
+
+So far, almost everything we have used has been a core element of the Python language. While we now know enough to accomplish almost any computational task, writing all the code from scratch is time-consuming. One of Python's great attractions for scientific development is the ready availability of **modules** - collections of functions that provide tested code for common tasks.
+
+## Importing Modules
+
+To use code from a module, you need to import it. This is conventionally done at the start of your Python file. The simplest form is:
+
+```python
+import <modulename>
+```
+
+Once imported, you access functions within the module by typing `<modulename>.<function>()`. For example, the `datetime` module provides functions to work with date and time information:
+
+```{pyodide}
+import datetime
+
+a = datetime.datetime(2018, 9, 24, 10, 0, 0)  # Year/Month/Day/Hour/Min/Sec
+b = datetime.datetime(2018, 10, 5, 16, 0, 0)
+print(b - a)
+```
+
+Here we're using the `datetime()` function within the `datetime` module to calculate the time elapsed between two dates.
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 1 - Using datetime
+
+**Try calculating different time intervals.** Create datetime objects for:
+- Your birthday this year and your birthday next year
+- The start and end of this month
+- Any two significant dates you're interested in
+
+```{pyodide}
+#| exercise: ex_1
+import datetime
+
+# Your code here
+start_date = ______
+end_date = ______
+
+print("Time difference:", end_date - start_date)
+```
+:::
+
+## Import Shortcuts
+
+Sometimes modules have long names and we expect to use them heavily. Python allows us to assign a shorthand name using `as`:
+
+```python
+import matplotlib.animation as anim
+a = anim.FuncAnimation(...)
+```
+
+Without `as anim`, we'd have to type the full `matplotlib.animation.FuncAnimation(...)` every time.
+
+```{pyodide}
+# Common shorthand imports
+import datetime as dt
+
+now = dt.datetime.now()
+print("Current time:", now)
+```
+
+## Selective Imports
+
+Sometimes we only need one or two functions from a module. We can import specific functions using:
+
+```python
+from <module> import <function1>, <function2>
+```
+
+This makes the functions available without needing to preface them with the module name:
+
+```{pyodide}
+from math import exp, sin
+
+a = exp(3) * sin(1.6)
+print(a)
+```
+
+Notice we don't need to write `math.exp()` or `math.sin()` - the functions are directly available.
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 2 - Selective imports
+
+**Import specific functions from the `math` module** and use them to calculate:
+- The square root of 144 (use `sqrt`)
+- The value of π squared (use `pi`)
+- sin(π/2)
+
+```{pyodide}
+#| exercise: ex_2
+from math import sqrt, pi, sin
+
+result1 = ______
+result2 = ______
+result3 = ______
+
+print(f"sqrt(144) = {result1}")
+print(f"π² = {result2}")
+print(f"sin(π/2) = {result3}")
+```
+
+::: { .solution exercise="ex_2"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```{python}
+from math import sqrt, pi, sin
+
+result1 = sqrt(144)
+result2 = pi ** 2
+result3 = sin(pi/2)
+
+print(f"sqrt(144) = {result1}")
+print(f"π² = {result2}")
+print(f"sin(π/2) = {result3}")
+```
+:::
+:::
+
+:::
+
+## Namespace Management
+
+Python requires you to preface function calls with the module name (or import specific functions) to avoid **namespace clashes** - situations where two functions have the same name. For example, many modules might provide a function called `save()`, each doing something different.
+
+However, if you really want to expose all functions in a module, Python allows:
+
+```python
+from <module> import *
+```
+
+This uses the wildcard `*` to indicate that everything should be made available. **This is generally best avoided** unless you have a specific reason, as it can lead to confusing bugs.
+
+## Working with Documentation
+
+An important skill is to work out what a module does and how to use it without being taught. Let's practice with the `datetime` module.
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 3 - Birthday calculator
+
+**Write a program that calculates how many days until your next birthday.**
+
+You'll need to:
+1. Get today's date using `datetime.datetime.now()`
+2. Create a date for your next birthday
+3. Calculate the difference
+4. Check if your birthday has already passed this year
+
+```{pyodide}
+#| exercise: ex_3
+import datetime
+
+today = datetime.datetime.now()
+
+# Set your birth month and day
+birth_month = 3
+birth_day = 15
+
+# Calculate birthday this year
+birthday_this_year = datetime.datetime(today.year, birth_month, birth_day)
+
+# Your code here to handle if birthday has passed
+______
+
+```
+
+::: { .hint exercise="ex_3"}
+::: { .callout-note collapse="false"}
+## Hint
+
+If your birthday has already passed this year, you'll need to calculate for next year. You can check if `birthday_this_year < today` and if so, add 1 to the year.
+:::
+:::
+
+::: { .solution exercise="ex_3"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```{python}
+import datetime
+
+today = datetime.datetime.now()
+birth_month = 3
+birth_day = 15
+
+birthday_this_year = datetime.datetime(today.year, birth_month, birth_day)
+
+if birthday_this_year < today:
+    next_birthday = datetime.datetime(today.year + 1, birth_month, birth_day)
+else:
+    next_birthday = birthday_this_year
+
+days_until = (next_birthday - today).days
+print(f"Days until next birthday: {days_until}")
+```
+:::
+:::
+
+:::
+
+## NumPy: The Foundation of Scientific Python
+
+An essential module for scientists is **NumPy** (Numerical Python). It provides tools and data structures for working with numerical data and implementing matrix-vector calculations.
+
+It's conventional to use `import numpy as np`:
+
+```{pyodide}
+#| autorun: true
+import numpy as np
+
+# NumPy provides mathematical functions
+x = np.sin(np.pi / 2)
+print(f"sin(π/2) = {x}")
+
+# And mathematical constants
+print(f"π = {np.pi}")
+print(f"e = {np.e}")
+```
+
+NumPy includes comprehensive mathematical functions:
+
+- **Trigonometric**: `np.sin()`, `np.cos()`, `np.tan()`
+- **Inverse trig**: `np.arcsin()`, `np.arccos()`, `np.arctan()`, `np.arctan2()`
+- **Hyperbolic**: `np.sinh()`, `np.cosh()`, `np.tanh()`
+- **Exponential/Log**: `np.exp()`, `np.log()`, `np.log10()`
+
+## NumPy Arrays: The Core Data Structure
+
+The core feature of NumPy is the **array** data type, which allows structured grids of data to be accessed, transformed, and used efficiently. NumPy arrays are the standard for numerical data in Python.
+
+### Creating Arrays from Lists
+
+```{pyodide}
+import numpy as np
+
+a = np.array([1, 2, 3])
+b = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+print("1D array:", a)
+print("2D array:\n", b)
+```
+
+### Creating Standard Arrays
+
+```{pyodide}
+import numpy as np
+
+# Array of ones
+ones = np.ones([3, 3])
+print("Ones:\n", ones)
+
+# Array of zeros
+zeros = np.zeros([2, 4])
+print("\nZeros:\n", zeros)
+
+# Identity matrix
+identity = np.eye(3)
+print("\nIdentity:\n", identity)
+```
+
+### Creating Sequences
+
+```{pyodide}
+import numpy as np
+
+# Sequence with arange (like range, but for arrays)
+sequence = np.arange(0, 10, 2)  # start, stop, step
+print("Sequence:", sequence)
+
+# Evenly spaced points with linspace
+points = np.linspace(0, 1, 5)  # start, stop, number of points
+print("Evenly spaced:", points)
+```
+
+Key array creation functions:
+
+- `np.ones(dims)` - Array filled with 1s
+- `np.zeros(dims)` - Array filled with 0s
+- `np.eye(N)` - N×N identity matrix
+- `np.arange(start, stop, step)` - Sequence like `range()`
+- `np.linspace(start, stop, N)` - N evenly-spaced points
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 4 - Creating arrays
+
+**Create the following arrays:**
+
+1. A 5×5 array of zeros
+2. An array of numbers from 10 to 50 in steps of 5
+3. An array of 11 evenly spaced points between 0 and 2π
+4. A 3×3 identity matrix
+
+```{pyodide}
+#| exercise: ex_4
+import numpy as np
+
+zeros_array = ______
+sequence = ______
+points = ______
+identity = ______
+
+print("Zeros shape:", zeros_array.shape)
+print("Sequence:", sequence)
+print("Identity:\n", identity)
+```
+
+::: { .solution exercise="ex_4"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```{python}
+import numpy as np
+
+zeros_array = np.zeros([5, 5])
+sequence = np.arange(10, 55, 5)
+points = np.linspace(0, 2*np.pi, 11)
+identity = np.eye(3)
+
+print("Zeros shape:", zeros_array.shape)
+print("Sequence:", sequence)
+print("Identity:\n", identity)
+```
+:::
+:::
+
+:::
+
+## Accessing Array Elements
+
+Array elements are accessed using `[...]` with zero-based indices. Use `:` for all elements in a dimension:
+
+```{pyodide}
+import numpy as np
+
+a = np.array([3, 4, 5])
+print("Element at index 2:", a[2])  # Prints 5
+
+# Multi-dimensional array
+b = np.ones([3, 4, 2])
+print("Shape of b:", b.shape)
+
+# Slice - all rows, column 1, all depths
+print("Slice b[:, 1, :]:\n", b[:, 1, :])
+```
+
+## Array Operations
+
+NumPy operations work element-wise on arrays:
+
+```{pyodide}
+import numpy as np
+
+a = np.array([1, 2, 3, 4])
+b = np.array([10, 20, 30, 40])
+
+print("a + b =", a + b)
+print("a * b =", a * b)
+print("a ** 2 =", a ** 2)
+```
+
+## Reading and Writing Data Files
+
+NumPy provides convenient functions for file I/O:
+
+```{pyodide}
+import numpy as np
+
+# Create some data
+data = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+# Save it
+np.savetxt('my_data.txt', data)
+print("Data saved!")
+
+# Load it back
+loaded = np.loadtxt('my_data.txt')
+print("Loaded data:\n", loaded)
+
+# Check they match
+print("Arrays match:", np.allclose(data, loaded))
+```
+
+If your file has header rows, use `skiprows=n`:
+
+```python
+data = np.loadtxt('datafile.txt', skiprows=2)
+```
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 5 - Array file I/O
+
+**Create a 2D array of your choice, save it to a file, and load it back. Verify they match.**
+
+```{pyodide}
+#| exercise: ex_5
+import numpy as np
+
+# Create your array
+my_array = ______
+
+# Save to file
+______
+
+# Load from file
+loaded_array = ______
+
+# Verify
+print("Arrays match:", ______)
+```
+
+::: { .solution exercise="ex_5"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```{python}
+import numpy as np
+
+my_array = np.array([[1, 2], [3, 4], [5, 6]])
+np.savetxt('test_array.txt', my_array)
+loaded_array = np.loadtxt('test_array.txt')
+
+print("Arrays match:", np.allclose(my_array, loaded_array))
+print("Original:\n", my_array)
+print("Loaded:\n", loaded_array)
+```
+:::
+:::
+
+:::
+
+## Creating Your Own Modules
+
+You can create your own modules to package up functions you use regularly. This is much better than copying code between files.
+
+To create a module:
+
+1. Create a file named `<module_name>.py`
+2. Add your function definitions
+3. Save it in your working directory
+4. Import with `import <module_name>`
+
+Example: Create a file called `birthday_utils.py`:
+
+```python
+# birthday_utils.py
+import datetime
+
+def days_until_birthday(birth_month, birth_day):
+    """Calculate days until next birthday.
+
+    Parameters
+    ----------
+    birth_month : int
+        Month of birth (1-12)
+    birth_day : int
+        Day of birth (1-31)
+
+    Returns
+    -------
+    int
+        Number of days until next birthday
+    """
+    today = datetime.datetime.now()
+    birthday_this_year = datetime.datetime(today.year, birth_month, birth_day)
+
+    if birthday_this_year < today:
+        next_birthday = datetime.datetime(today.year + 1, birth_month, birth_day)
+    else:
+        next_birthday = birthday_this_year
+
+    return (next_birthday - today).days
+```
+
+Then in your main code:
+
+```python
+import birthday_utils
+
+days = birthday_utils.days_until_birthday(3, 15)
+print(f"Days until birthday: {days}")
+```
+
+::: {.callout-note}
+## Contributing to Python
+
+If you create a significant module, you can contribute to the community through [PyPI (Python Package Index)](https://pypi.org/). Python thrives on open-source contributions!
+
+Further information: [Python modules documentation](https://docs.python.org/3/tutorial/modules.html)
+:::
+
+## Summary
+
+In this section we learned:
+
+- How to import modules with `import`
+- Using aliases with `import ... as`
+- Selective imports with `from ... import`
+- Working with NumPy arrays
+- Creating our own modules
+
+Modules are fundamental to Python programming. The next exercises will explore NumPy and SciPy in much more detail!
+
+::: {.callout-warning icon="false"}
+## Coding scratch space
+
+```{pyodide}
+## Scratch space / notepad
+
+
+```
+:::

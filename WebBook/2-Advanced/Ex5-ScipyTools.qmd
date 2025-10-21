@@ -1,0 +1,487 @@
+---
+title: Scientific Computing with SciPy
+author:
+    - Louis Moresi
+    - Andrew Valentine
+jupyter: python3
+format:
+  html:
+    code-links: false
+---
+
+::: {.callout-note icon="false"}
+# Summary
+
+SciPy is a collection of scientific computing tools built on NumPy. It provides robust implementations of common scientific algorithms for interpolation, optimization, integration, signal processing, statistics, and much more.
+
+:::
+
+## What is SciPy?
+
+SciPy builds on NumPy to provide a comprehensive ecosystem for scientific computing. It's organized into submodules, each addressing specific scientific domains:
+
+- `scipy.constants` - Physical and mathematical constants
+- `scipy.integrate` - Integration and differential equations
+- `scipy.interpolate` - Data interpolation
+- `scipy.optimize` - Optimization and root finding
+- `scipy.signal` - Signal processing
+- `scipy.spatial` - Spatial algorithms and data structures
+- `scipy.stats` - Statistical functions
+- `scipy.linalg` - Linear algebra (extends NumPy)
+- `scipy.fft` - Fast Fourier transforms
+- `scipy.ndimage` - N-dimensional image processing
+
+```{pyodide}
+#| autorun: true
+import scipy
+import numpy as np
+
+print(f"SciPy version: {scipy.__version__}")
+```
+
+## Physical Constants
+
+The `scipy.constants` module provides precise physical constants:
+
+```{pyodide}
+from scipy import constants
+
+print(f"Speed of light: {constants.c} m/s")
+print(f"Gravitational constant: {constants.G} m³/kg/s²")
+print(f"Electron mass: {constants.electron_mass} kg")
+print(f"Avogadro: {constants.Avogadro} /mol")
+```
+
+You can search for constants:
+
+```{pyodide}
+from scipy import constants
+
+# Find constants related to electrons
+print(constants.find("electron mass"))
+print()
+
+# Get value and unit
+print(f"Value: {constants.value('electron mass')}")
+print(f"Unit: {constants.unit('electron mass')}")
+```
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 1 - Earth science constants
+
+**Find and print constants relevant to Earth sciences:**
+- Gravitational acceleration (standard)
+- Stefan-Boltzmann constant
+- Gas constant (R)
+
+Then calculate Earth's blackbody temperature using Stefan-Boltzmann law:
+F = σT⁴, where solar constant F ≈ 1361 W/m²
+
+```{pyodide}
+#| exercise: ex_1
+from scipy import constants
+import numpy as np
+
+# Find constants
+g = constants.g
+sigma = constants.Stefan_Boltzmann
+R = constants.R
+
+print(f"g = {g} m/s²")
+print(f"σ = {sigma} W/m²/K⁴")
+print(f"R = {R} J/mol/K")
+
+# Earth's effective temperature (assuming perfect absorption)
+F = 1361 / 4  # Solar constant divided by 4 (geometry)
+T_earth = ______  # Use Stefan-Boltzmann law
+
+print(f"\nEarth's blackbody temperature: {T_earth:.1f} K ({T_earth-273.15:.1f}°C)")
+```
+
+::: { .solution exercise="ex_1"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```{python}
+from scipy import constants
+import numpy as np
+
+g = constants.g
+sigma = constants.Stefan_Boltzmann
+R = constants.R
+
+print(f"g = {g} m/s²")
+print(f"σ = {sigma} W/m²/K⁴")
+print(f"R = {R} J/mol/K")
+
+F = 1361 / 4
+T_earth = (F / sigma) ** 0.25
+
+print(f"\nEarth's blackbody temperature: {T_earth:.1f} K ({T_earth-273.15:.1f}°C)")
+```
+:::
+:::
+
+:::
+
+## Interpolation
+
+Interpolation fills in values between known data points. This is crucial for working with scattered or sparse data.
+
+```{pyodide}
+from scipy import interpolate
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Sample data points
+x = np.array([0, 1, 2, 3, 4, 5])
+y = np.array([0, 1, 4, 2, 3, 5])
+
+# Create interpolation function
+f_linear = interpolate.interp1d(x, y, kind='linear')
+f_cubic = interpolate.interp1d(x, y, kind='cubic')
+
+# Dense points for plotting
+x_dense = np.linspace(0, 5, 100)
+
+# Plot
+plt.figure(figsize=(8, 4))
+plt.plot(x, y, 'o', label='Data points')
+plt.plot(x_dense, f_linear(x_dense), '-', label='Linear')
+plt.plot(x_dense, f_cubic(x_dense), '--', label='Cubic')
+plt.legend()
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Interpolation Methods')
+plt.grid(True)
+plt.show()
+```
+
+### 2D Interpolation
+
+For gridded data:
+
+```{pyodide}
+from scipy import interpolate
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Create a coarse grid
+x = np.linspace(0, 4, 5)
+y = np.linspace(0, 4, 5)
+X, Y = np.meshgrid(x, y)
+Z = np.sin(X) * np.cos(Y)
+
+# Interpolate to fine grid
+f = interpolate.interp2d(x, y, Z, kind='cubic')
+
+x_fine = np.linspace(0, 4, 50)
+y_fine = np.linspace(0, 4, 50)
+Z_fine = f(x_fine, y_fine)
+
+# Plot
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
+ax1.contourf(X, Y, Z, levels=10)
+ax1.set_title('Original (5x5)')
+ax1.set_aspect('equal')
+
+ax2.contourf(x_fine, y_fine, Z_fine, levels=10)
+ax2.set_title('Interpolated (50x50)')
+ax2.set_aspect('equal')
+
+plt.tight_layout()
+plt.show()
+```
+
+## Optimization
+
+Find minima, maxima, and zeros of functions:
+
+```{pyodide}
+from scipy import optimize
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Function to minimize
+def f(x):
+    return (x - 3)**2 + 5
+
+# Find minimum
+result = optimize.minimize_scalar(f)
+print(f"Minimum at x = {result.x:.4f}, f(x) = {result.fun:.4f}")
+
+# Plot
+x = np.linspace(0, 6, 100)
+plt.figure(figsize=(8, 4))
+plt.plot(x, f(x), label='f(x) = (x-3)² + 5')
+plt.plot(result.x, result.fun, 'ro', label=f'Minimum: ({result.x:.2f}, {result.fun:.2f})')
+plt.legend()
+plt.grid(True)
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.title('Function Optimization')
+plt.show()
+```
+
+### Finding Roots
+
+```{pyodide}
+from scipy import optimize
+import numpy as np
+
+# Find where function equals zero
+def g(x):
+    return x**3 - 2*x - 5
+
+# Find root starting from x=2
+root = optimize.fsolve(g, 2)[0]
+
+print(f"Root at x = {root:.6f}")
+print(f"Verification: g({root:.6f}) = {g(root):.2e}")
+```
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 2 - Isostatic equilibrium
+
+**Model isostatic balance:** A continental crust of density ρc = 2700 kg/m³ and thickness h floats on mantle of density ρm = 3300 kg/m³.
+
+Find the crustal thickness h that results in 1 km of topographic elevation using the isostatic balance equation:
+
+ρc × h = ρm × (h - elevation)
+
+```{pyodide}
+#| exercise: ex_2
+from scipy import optimize
+import numpy as np
+
+rho_crust = 2700  # kg/m³
+rho_mantle = 3300  # kg/m³
+elevation = 1000  # m
+
+# Define equation to solve
+def isostasy(h):
+    """Returns 0 when isostatic balance is achieved."""
+    return ______  # Fill in the isostasy equation
+
+# Solve for h
+h_solution = optimize.fsolve(isostasy, 30000)[0]  # Start guess: 30 km
+
+print(f"Crustal thickness: {h_solution/1000:.2f} km")
+print(f"Elevation: {elevation/1000:.2f} km")
+print(f"Root depth: {(h_solution-elevation)/1000:.2f} km")
+```
+
+::: { .solution exercise="ex_2"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```{python}
+from scipy import optimize
+
+rho_crust = 2700
+rho_mantle = 3300
+elevation = 1000
+
+def isostasy(h):
+    return rho_crust * h - rho_mantle * (h - elevation)
+
+h_solution = optimize.fsolve(isostasy, 30000)[0]
+
+print(f"Crustal thickness: {h_solution/1000:.2f} km")
+print(f"Elevation: {elevation/1000:.2f} km")
+print(f"Root depth: {(h_solution-elevation)/1000:.2f} km")
+```
+:::
+:::
+
+:::
+
+## Integration
+
+Numerical integration for definite integrals:
+
+```{pyodide}
+from scipy import integrate
+import numpy as np
+
+# Integrate x² from 0 to 2
+result, error = integrate.quad(lambda x: x**2, 0, 2)
+
+print(f"∫₀² x² dx = {result:.6f}")
+print(f"Analytical result: {(2**3)/3:.6f}")
+print(f"Error estimate: {error:.2e}")
+```
+
+### Double Integrals
+
+```{pyodide}
+from scipy import integrate
+import numpy as np
+
+# Integrate over a 2D region
+def integrand(y, x):
+    return x * y**2
+
+result, error = integrate.dblquad(
+    integrand,
+    0, 2,  # x bounds
+    0, 1   # y bounds
+)
+
+print(f"∫∫ xy² dxdy = {result:.6f}")
+```
+
+## Statistics
+
+The `scipy.stats` module provides probability distributions and statistical tests:
+
+```{pyodide}
+from scipy import stats
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Normal distribution
+mu, sigma = 100, 15  # Mean and std
+x = np.linspace(50, 150, 1000)
+pdf = stats.norm.pdf(x, mu, sigma)
+
+plt.figure(figsize=(8, 4))
+plt.plot(x, pdf, label=f'Normal(μ={mu}, σ={sigma})')
+plt.fill_between(x, pdf, alpha=0.3)
+plt.xlabel('Value')
+plt.ylabel('Probability Density')
+plt.title('Normal Distribution')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Generate random samples
+samples = stats.norm.rvs(mu, sigma, size=1000)
+print(f"Sample mean: {np.mean(samples):.2f}")
+print(f"Sample std: {np.std(samples):.2f}")
+```
+
+### Statistical Tests
+
+```{pyodide}
+from scipy import stats
+import numpy as np
+
+# Generate two samples
+sample1 = np.random.normal(100, 15, 100)
+sample2 = np.random.normal(105, 15, 100)
+
+# T-test: are the means significantly different?
+t_stat, p_value = stats.ttest_ind(sample1, sample2)
+
+print(f"T-statistic: {t_stat:.4f}")
+print(f"P-value: {p_value:.4f}")
+
+if p_value < 0.05:
+    print("Samples have significantly different means (p < 0.05)")
+else:
+    print("No significant difference between means")
+```
+
+::: {.callout-tip collapse="true" icon="false"}
+## Exercise 3 - Earthquake magnitude distribution
+
+**The Gutenberg-Richter law** says earthquake frequency follows:
+log₁₀(N) = a - b×M
+
+Where N is number of earthquakes ≥ magnitude M, and typically b ≈ 1.
+
+Generate synthetic earthquake data and fit the distribution:
+
+```{pyodide}
+#| exercise: ex_3
+from scipy import stats
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate synthetic magnitudes (exponential distribution)
+np.random.seed(42)
+magnitudes = stats.expon.rvs(scale=1.0, size=1000) + 2.0  # Magnitudes 2-7
+
+# Count earthquakes above each magnitude
+mag_bins = np.arange(2, 7, 0.2)
+counts = [np.sum(magnitudes >= m) for m in mag_bins]
+
+# Log plot
+plt.figure(figsize=(8, 4))
+plt.semilogy(mag_bins, counts, 'o-', label='Synthetic data')
+plt.xlabel('Magnitude (M)')
+plt.ylabel('Number of events (N ≥ M)')
+plt.title('Gutenberg-Richter Distribution')
+plt.grid(True, alpha=0.3)
+plt.legend()
+plt.show()
+
+# Fit line to log data
+log_counts = np.log10(counts)
+slope, intercept = np.polyfit(mag_bins, log_counts, 1)
+print(f"b-value: {-slope:.2f}")
+print(f"a-value: {intercept:.2f}")
+```
+
+:::
+
+## Signal Processing with FFT
+
+Fast Fourier Transform for frequency analysis:
+
+```{pyodide}
+from scipy.fft import fft, fftfreq
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Create signal: sum of two sine waves
+t = np.linspace(0, 1, 500)
+signal = np.sin(2 * np.pi * 5 * t) + 0.5 * np.sin(2 * np.pi * 10 * t)
+
+# Compute FFT
+fft_values = fft(signal)
+frequencies = fftfreq(len(t), t[1] - t[0])
+
+# Plot
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(8, 6))
+
+ax1.plot(t, signal)
+ax1.set_xlabel('Time (s)')
+ax1.set_ylabel('Amplitude')
+ax1.set_title('Time Domain Signal')
+ax1.grid(True)
+
+ax2.plot(frequencies[:len(frequencies)//2],
+         np.abs(fft_values[:len(fft_values)//2]))
+ax2.set_xlabel('Frequency (Hz)')
+ax2.set_ylabel('Magnitude')
+ax2.set_title('Frequency Domain (FFT)')
+ax2.grid(True)
+
+plt.tight_layout()
+plt.show()
+```
+
+## Summary
+
+SciPy provides essential scientific computing tools:
+
+- **Constants** - Physical and mathematical values
+- **Interpolation** - Fill in missing data points
+- **Optimization** - Find minima/maxima and roots
+- **Integration** - Numerical integration
+- **Statistics** - Distributions and hypothesis tests
+- **Signal processing** - FFT and filtering
+
+SciPy builds on NumPy to provide the algorithms that power scientific Python!
+
+::: {.callout-warning icon="false"}
+## Coding scratch space
+
+```{pyodide}
+## Scratch space / notepad
+
+
+```
+:::
