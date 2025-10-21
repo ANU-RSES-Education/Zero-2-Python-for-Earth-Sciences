@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Zero 2 Programmer for Earth Scientists",
     "section": "",
-    "text": "Computational Geosciences\nLouis Moresi, Australian National University; Andrew Valentine, Durham University (formerly ANU); Navid Constantinou, Australian National University. Other authors have contributed material to this document (thank you !), see {ref}section:acknowledgements for a list.\nIn this course, we are first going to touch on some basic principles of programming, discuss what it even means to program a computer, and then move on to get a feel for what a program looks like using the python programming language for all of our examples. We are going to work mostly online using the jupyter literate computing interface to python as our electronic lab notebook and we are going to learn by example.\nWe are also trying to learn good programming habits - like writing a plan for our software before leaping in, using reliable version control (especially when working in teams), writing tests, adopting a helpful, clear programming style.\nThere is a step-by-step guide to learning python programming and also a number of deeper-dives into topics of relevance to Earth Science.",
+    "text": "Computational Geosciences\nLouis Moresi, Australian National University; Andrew Valentine, Durham University (formerly ANU); Navid Constantinou, Australian National University. Other authors have contributed material to this document (thank you !), see {ref}section:acknowledgements for a list.\nIn this course, we are first going to touch on some basic principles of programming, discuss what it even means to program a computer, and then move on to get a feel for what a program looks like using the python programming language for all of our examples. We are going to work mostly online using the jupyter literate computing interface to python as our electronic lab notebook and we are going to learn by example.\nWe are also trying to learn good programming habits - like writing a plan for our software before leaping in, using reliable version control (especially when working in teams), writing tests, adopting a helpful, clear programming style.",
     "crumbs": [
       "**Introduction**",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>About This Course</span>"
@@ -411,7 +411,7 @@
     "href": "1-Basics/Ex5-ListsEtc.html#sets",
     "title": "Lists, tuples and dictionaries",
     "section": "Sets",
-    "text": "Sets\nFinally, we briefly mention the set data type. This is not commonly encountered, but can be very useful. It implements the mathematical concept of a set, an unordered collection of unique objects. A set can be created from a tuple or list:\na = [3, 4, 5]\ns = set(a)\nprint(s) # prints {3, 4, 5}\nDuplicates are ignored:\na = [3, 3, 5]\ns = set(a)\nprint(s) # prints {3, 5}\nWe can test whether one set is a subset of another set (that is, whether every element of the first set is also in the second) using the &lt;,&gt;, &lt;= and &gt;= operators:\nset([3, 4]) &lt; set([3, 4, 5]) # True\nset([3, 4, 5]) &lt; set([3, 4, 5]) # False\nset([3, 4, 5]) &lt;= set([3, 4, 5]) # True\nWe can find the union of two sets - the set of all elements in either set - using the | operator, and the intersection - all elements shared between the sets - using the & operator:\na = set([3, 4])\nb = set([4, 5, 6])\n\nprint(a | b) # prints {3, 4, 5, 6}\nprint(a & b) # prints {4}\nWe can also use the operator - to remove the elements of one set from another set.\na = set([3, 4])\nb = set([4, 5, 6])\n\nprint(b - a) # prints {5, 6}\nprint(b^a) # prints {3, 5, 6}\nThere is also a ^ operator, which is defined such that a^b is equivalent to (a|b) - (a&b).\n\n\n\n\n\n\nTipExercise 8 - Do you understand sets ?\n\n\n\n\n\nCheck the examples given above to make sure you have some experience of what the set construct is within python.\n\n\n\n\n\n\n\n\nSandbox\n\n\n\n\n\n\nWarningCoding scratch space",
+    "text": "Sets\nFinally, we briefly mention the set data type. This is not commonly encountered, but can be very useful. It implements the mathematical concept of a set, an unordered collection of unique objects. A set can be created from a tuple or list:\na = [3, 4, 5]\ns = set(a)\nprint(s) # prints {3, 4, 5}\nDuplicates are ignored:\na = [3, 3, 5]\ns = set(a)\nprint(s) # prints {3, 5}\nWe can test whether one set is a subset of another set (that is, whether every element of the first set is also in the second) using the &lt;,&gt;, &lt;= and &gt;= operators:\nset([3, 4]) &lt; set([3, 4, 5]) # True\nset([3, 4, 5]) &lt; set([3, 4, 5]) # False\nset([3, 4, 5]) &lt;= set([3, 4, 5]) # True\nWe can find the union of two sets - the set of all elements in either set - using the | operator, and the intersection - all elements shared between the sets - using the & operator:\na = set([3, 4])\nb = set([4, 5, 6])\n\nprint(a | b) # prints {3, 4, 5, 6}\nprint(a & b) # prints {4}\nWe can also use the operator - to remove the elements of one set from another set.\na = set([3, 4])\nb = set([4, 5, 6])\n\nprint(b - a) # prints {5, 6}\nprint(b^a) # prints {3, 5, 6}\nThere is also a ^ operator, which is defined such that a^b is equivalent to (a|b) - (a&b).\n\n\n\n\n\n\nTipExercise 8 - Do you understand sets ?\n\n\n\n\n\nCheck the examples given above to make sure you have some experience of what the set construct is within python.\n\n\n\n\n\n\n\n\n\n\n\nSandbox\n\n\n\n\n\n\nWarningCoding scratch space",
     "crumbs": [
       "**Basic Language Skills**",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Lists, tuples and dictionaries</span>"
@@ -495,6 +495,611 @@
     ]
   },
   {
+    "objectID": "2-Advanced/Ex2-Modules.html",
+    "href": "2-Advanced/Ex2-Modules.html",
+    "title": "Modules and Packages",
+    "section": "",
+    "text": "Why Use Modules?\nSo far, almost everything we have used has been a core element of the Python language. While we now know enough to accomplish almost any computational task, writing all the code from scratch is time-consuming. One of Python’s great attractions for scientific development is the ready availability of modules - collections of functions that provide tested code for common tasks.",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Modules and Packages</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex2-Modules.html#importing-modules",
+    "href": "2-Advanced/Ex2-Modules.html#importing-modules",
+    "title": "Modules and Packages",
+    "section": "Importing Modules",
+    "text": "Importing Modules\nTo use code from a module, you need to import it. This is conventionally done at the start of your Python file. The simplest form is:\nimport &lt;modulename&gt;\nOnce imported, you access functions within the module by typing &lt;modulename&gt;.&lt;function&gt;(). For example, the datetime module provides functions to work with date and time information:\n\n\n\n\n\n\nHere we’re using the datetime() function within the datetime module to calculate the time elapsed between two dates.\n\n\n\n\n\n\nTipExercise 1 - Using datetime\n\n\n\n\n\nTry calculating different time intervals. Create datetime objects for: - Your birthday this year and your birthday next year - The start and end of this month - Any two significant dates you’re interested in",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Modules and Packages</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex2-Modules.html#import-shortcuts",
+    "href": "2-Advanced/Ex2-Modules.html#import-shortcuts",
+    "title": "Modules and Packages",
+    "section": "Import Shortcuts",
+    "text": "Import Shortcuts\nSometimes modules have long names and we expect to use them heavily. Python allows us to assign a shorthand name using as:\nimport matplotlib.animation as anim\na = anim.FuncAnimation(...)\nWithout as anim, we’d have to type the full matplotlib.animation.FuncAnimation(...) every time.",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Modules and Packages</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex2-Modules.html#selective-imports",
+    "href": "2-Advanced/Ex2-Modules.html#selective-imports",
+    "title": "Modules and Packages",
+    "section": "Selective Imports",
+    "text": "Selective Imports\nSometimes we only need one or two functions from a module. We can import specific functions using:\nfrom &lt;module&gt; import &lt;function1&gt;, &lt;function2&gt;\nThis makes the functions available without needing to preface them with the module name:\n\n\n\n\n\n\nNotice we don’t need to write math.exp() or math.sin() - the functions are directly available.\n\n\n\n\n\n\nTipExercise 2 - Selective imports\n\n\n\n\n\nImport specific functions from the math module and use them to calculate: - The square root of 144 (use sqrt) - The value of π squared (use pi) - sin(π/2)\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nfrom math import sqrt, pi, sin\n\nresult1 = sqrt(144)\nresult2 = pi ** 2\nresult3 = sin(pi/2)\n\nprint(f\"sqrt(144) = {result1}\")\nprint(f\"π² = {result2}\")\nprint(f\"sin(π/2) = {result3}\")",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Modules and Packages</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex2-Modules.html#namespace-management",
+    "href": "2-Advanced/Ex2-Modules.html#namespace-management",
+    "title": "Modules and Packages",
+    "section": "Namespace Management",
+    "text": "Namespace Management\nPython requires you to preface function calls with the module name (or import specific functions) to avoid namespace clashes - situations where two functions have the same name. For example, many modules might provide a function called save(), each doing something different.\nHowever, if you really want to expose all functions in a module, Python allows:\nfrom &lt;module&gt; import *\nThis uses the wildcard * to indicate that everything should be made available. This is generally best avoided unless you have a specific reason, as it can lead to confusing bugs.",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Modules and Packages</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex2-Modules.html#working-with-documentation",
+    "href": "2-Advanced/Ex2-Modules.html#working-with-documentation",
+    "title": "Modules and Packages",
+    "section": "Working with Documentation",
+    "text": "Working with Documentation\nAn important skill is to work out what a module does and how to use it without being taught. Let’s practice with the datetime module.\n\n\n\n\n\n\nTipExercise 3 - Birthday calculator\n\n\n\n\n\nWrite a program that calculates how many days until your next birthday.\nYou’ll need to: 1. Get today’s date using datetime.datetime.now() 2. Create a date for your next birthday 3. Calculate the difference 4. Check if your birthday has already passed this year\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nIf your birthday has already passed this year, you’ll need to calculate for next year. You can check if birthday_this_year &lt; today and if so, add 1 to the year.\n\n\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nimport datetime\n\ntoday = datetime.datetime.now()\nbirth_month = 3\nbirth_day = 15\n\nbirthday_this_year = datetime.datetime(today.year, birth_month, birth_day)\n\nif birthday_this_year &lt; today:\n    next_birthday = datetime.datetime(today.year + 1, birth_month, birth_day)\nelse:\n    next_birthday = birthday_this_year\n\ndays_until = (next_birthday - today).days\nprint(f\"Days until next birthday: {days_until}\")",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Modules and Packages</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex2-Modules.html#numpy-the-foundation-of-scientific-python",
+    "href": "2-Advanced/Ex2-Modules.html#numpy-the-foundation-of-scientific-python",
+    "title": "Modules and Packages",
+    "section": "NumPy: The Foundation of Scientific Python",
+    "text": "NumPy: The Foundation of Scientific Python\nAn essential module for scientists is NumPy (Numerical Python). It provides tools and data structures for working with numerical data and implementing matrix-vector calculations.\nIt’s conventional to use import numpy as np:\n\n\n\n\n\n\nNumPy includes comprehensive mathematical functions:\n\nTrigonometric: np.sin(), np.cos(), np.tan()\nInverse trig: np.arcsin(), np.arccos(), np.arctan(), np.arctan2()\nHyperbolic: np.sinh(), np.cosh(), np.tanh()\nExponential/Log: np.exp(), np.log(), np.log10()",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Modules and Packages</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex2-Modules.html#numpy-arrays-the-core-data-structure",
+    "href": "2-Advanced/Ex2-Modules.html#numpy-arrays-the-core-data-structure",
+    "title": "Modules and Packages",
+    "section": "NumPy Arrays: The Core Data Structure",
+    "text": "NumPy Arrays: The Core Data Structure\nThe core feature of NumPy is the array data type, which allows structured grids of data to be accessed, transformed, and used efficiently. NumPy arrays are the standard for numerical data in Python.\n\nCreating Arrays from Lists\n\n\n\n\n\n\n\n\nCreating Standard Arrays\n\n\n\n\n\n\n\n\nCreating Sequences\n\n\n\n\n\n\nKey array creation functions:\n\nnp.ones(dims) - Array filled with 1s\nnp.zeros(dims) - Array filled with 0s\nnp.eye(N) - N×N identity matrix\nnp.arange(start, stop, step) - Sequence like range()\nnp.linspace(start, stop, N) - N evenly-spaced points\n\n\n\n\n\n\n\nTipExercise 4 - Creating arrays\n\n\n\n\n\nCreate the following arrays:\n\nA 5×5 array of zeros\nAn array of numbers from 10 to 50 in steps of 5\nAn array of 11 evenly spaced points between 0 and 2π\nA 3×3 identity matrix\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nimport numpy as np\n\nzeros_array = np.zeros([5, 5])\nsequence = np.arange(10, 55, 5)\npoints = np.linspace(0, 2*np.pi, 11)\nidentity = np.eye(3)\n\nprint(\"Zeros shape:\", zeros_array.shape)\nprint(\"Sequence:\", sequence)\nprint(\"Identity:\\n\", identity)",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Modules and Packages</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex2-Modules.html#accessing-array-elements",
+    "href": "2-Advanced/Ex2-Modules.html#accessing-array-elements",
+    "title": "Modules and Packages",
+    "section": "Accessing Array Elements",
+    "text": "Accessing Array Elements\nArray elements are accessed using [...] with zero-based indices. Use : for all elements in a dimension:",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Modules and Packages</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex2-Modules.html#array-operations",
+    "href": "2-Advanced/Ex2-Modules.html#array-operations",
+    "title": "Modules and Packages",
+    "section": "Array Operations",
+    "text": "Array Operations\nNumPy operations work element-wise on arrays:",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Modules and Packages</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex2-Modules.html#reading-and-writing-data-files",
+    "href": "2-Advanced/Ex2-Modules.html#reading-and-writing-data-files",
+    "title": "Modules and Packages",
+    "section": "Reading and Writing Data Files",
+    "text": "Reading and Writing Data Files\nNumPy provides convenient functions for file I/O:\n\n\n\n\n\n\nIf your file has header rows, use skiprows=n:\ndata = np.loadtxt('datafile.txt', skiprows=2)\n\n\n\n\n\n\nTipExercise 5 - Array file I/O\n\n\n\n\n\nCreate a 2D array of your choice, save it to a file, and load it back. Verify they match.\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nimport numpy as np\n\nmy_array = np.array([[1, 2], [3, 4], [5, 6]])\nnp.savetxt('test_array.txt', my_array)\nloaded_array = np.loadtxt('test_array.txt')\n\nprint(\"Arrays match:\", np.allclose(my_array, loaded_array))\nprint(\"Original:\\n\", my_array)\nprint(\"Loaded:\\n\", loaded_array)",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Modules and Packages</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex2-Modules.html#creating-your-own-modules",
+    "href": "2-Advanced/Ex2-Modules.html#creating-your-own-modules",
+    "title": "Modules and Packages",
+    "section": "Creating Your Own Modules",
+    "text": "Creating Your Own Modules\nYou can create your own modules to package up functions you use regularly. This is much better than copying code between files.\nTo create a module:\n\nCreate a file named &lt;module_name&gt;.py\nAdd your function definitions\nSave it in your working directory\nImport with import &lt;module_name&gt;\n\nExample: Create a file called birthday_utils.py:\n# birthday_utils.py\nimport datetime\n\ndef days_until_birthday(birth_month, birth_day):\n    \"\"\"Calculate days until next birthday.\n\n    Parameters\n    ----------\n    birth_month : int\n        Month of birth (1-12)\n    birth_day : int\n        Day of birth (1-31)\n\n    Returns\n    -------\n    int\n        Number of days until next birthday\n    \"\"\"\n    today = datetime.datetime.now()\n    birthday_this_year = datetime.datetime(today.year, birth_month, birth_day)\n\n    if birthday_this_year &lt; today:\n        next_birthday = datetime.datetime(today.year + 1, birth_month, birth_day)\n    else:\n        next_birthday = birthday_this_year\n\n    return (next_birthday - today).days\nThen in your main code:\nimport birthday_utils\n\ndays = birthday_utils.days_until_birthday(3, 15)\nprint(f\"Days until birthday: {days}\")\n\n\n\n\n\n\nNoteContributing to Python\n\n\n\nIf you create a significant module, you can contribute to the community through PyPI (Python Package Index). Python thrives on open-source contributions!\nFurther information: Python modules documentation",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Modules and Packages</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex2-Modules.html#summary-1",
+    "href": "2-Advanced/Ex2-Modules.html#summary-1",
+    "title": "Modules and Packages",
+    "section": "Summary",
+    "text": "Summary\nIn this section we learned:\n\nHow to import modules with import\nUsing aliases with import ... as\nSelective imports with from ... import\nWorking with NumPy arrays\nCreating our own modules\n\nModules are fundamental to Python programming. The next exercises will explore NumPy and SciPy in much more detail!\n\n\n\n\n\n\nWarningCoding scratch space",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Modules and Packages</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex3-Exceptions.html",
+    "href": "2-Advanced/Ex3-Exceptions.html",
+    "title": "Exception Handling",
+    "section": "",
+    "text": "Understanding Exceptions\nBy now, you will almost certainly have encountered exceptions - error messages that appear when Python doesn’t like what you’ve asked it to do. For example:\nAttempting to access the 5th element (index 4, remember we start counting from 0!) of a list with only 3 elements raises an IndexError.\nAnother common example:\nNotice these have different error types: IndexError and TypeError. Python has many different exception types to describe different problems.",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exception Handling</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex3-Exceptions.html#the-try-except-construct",
+    "href": "2-Advanced/Ex3-Exceptions.html#the-try-except-construct",
+    "title": "Exception Handling",
+    "section": "The Try-Except Construct",
+    "text": "The Try-Except Construct\nIf errors are simply coding mistakes, it’s useful to have the program terminate immediately so we can fix them. However, in real code, problems may arise for reasons beyond the programmer’s control - perhaps the user provided incorrect input. We can catch and handle exceptions gracefully using try...except...:\ntry:\n    [code that may fail]\nexcept:\n    [code to handle the error]\nWhen Python encounters a try...except... block: 1. It attempts to execute the code in the try block 2. If successful, the except block is never executed 3. If an error occurs, Python immediately jumps to the except block 4. After handling the error, execution continues after the try...except...\nExample:\n\n\n\n\n\n\n\n\n\n\n\n\nTipExercise 1 - Basic exception handling\n\n\n\n\n\nTry the code above. Enter various inputs: - A valid number (e.g., 42) - Text that isn’t a number (e.g., “hello”) - An empty input\nNotice how the except block handles invalid inputs gracefully.",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exception Handling</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex3-Exceptions.html#the-eafp-model",
+    "href": "2-Advanced/Ex3-Exceptions.html#the-eafp-model",
+    "title": "Exception Handling",
+    "section": "The EAFP Model",
+    "text": "The EAFP Model\nThis error handling approach is called EAFP: “Easier to Ask Forgiveness than Permission”. Rather than verifying everything is correct before an operation (which can be tedious and inefficient), we assume everything will work and deal with any problems that arise.",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exception Handling</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex3-Exceptions.html#catching-specific-exceptions",
+    "href": "2-Advanced/Ex3-Exceptions.html#catching-specific-exceptions",
+    "title": "Exception Handling",
+    "section": "Catching Specific Exceptions",
+    "text": "Catching Specific Exceptions\nA bare except: catches all errors, which can hide bugs. Consider this code with a typo:\n\n\n\n\n\n\nThis will always say “not a valid number” even when the real problem is the undefined variable z. This is a NameError, not the ValueError we intended to catch.\nBetter approach: Specify the exception type:\n\n\n\n\n\n\nNow our typo would be immediately obvious, but valid user input errors are handled gracefully.",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exception Handling</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex3-Exceptions.html#multiple-exception-handlers",
+    "href": "2-Advanced/Ex3-Exceptions.html#multiple-exception-handlers",
+    "title": "Exception Handling",
+    "section": "Multiple Exception Handlers",
+    "text": "Multiple Exception Handlers\nYou can catch multiple exception types:\n# Catch multiple types in one block\ntry:\n    [code]\nexcept (ValueError, TypeError):\n    [code]\nOr handle different exceptions differently:\ntry:\n    [code]\nexcept ValueError:\n    [handle ValueError]\nexcept TypeError:\n    [handle TypeError]\nexcept:\n    [handle any other exception]\n\n\n\n\n\n\nTipExercise 2 - Multiple exception types\n\n\n\n\n\nWrite code that: 1. Asks the user for two numbers 2. Divides the first by the second 3. Catches ValueError (invalid input) separately from ZeroDivisionError (division by zero) 4. Provides appropriate messages for each error type\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\ntry:\n    num1 = float(input(\"Enter first number: \"))\n    num2 = float(input(\"Enter second number: \"))\n    result = num1 / num2\n    print(f\"Result: {result}\")\nexcept ValueError:\n    print(\"Please enter valid numbers!\")\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exception Handling</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex3-Exceptions.html#exceptions-for-control-flow",
+    "href": "2-Advanced/Ex3-Exceptions.html#exceptions-for-control-flow",
+    "title": "Exception Handling",
+    "section": "Exceptions for Control Flow",
+    "text": "Exceptions for Control Flow\nException handling can be a central part of code design. Here’s an example using exceptions to control loop termination:\n\n\n\n\n\n\nThis works, but a regular for loop would be cleaner:\n\n\n\n\n\n\n\n\n\n\n\n\nImportantDon’t Overuse Exceptions\n\n\n\nIt’s tempting to use try...except... everywhere to suppress error messages. This usually makes bugs harder to find. Only use exception handling for: - Predictable error cases (like user input) - Production code that must be robust - Situations where the error is expected and meaningful",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exception Handling</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex3-Exceptions.html#accessing-error-information",
+    "href": "2-Advanced/Ex3-Exceptions.html#accessing-error-information",
+    "title": "Exception Handling",
+    "section": "Accessing Error Information",
+    "text": "Accessing Error Information\nSometimes you need details about the error that occurred:\ntry:\n    [code]\nexcept &lt;ErrorType&gt; as &lt;variable&gt;:\n    [code using variable]\nExample:\n\n\n\n\n\n\n\n\n\n\n\n\nTipExercise 3 - Error details\n\n\n\n\n\nWrite code that tries to open a file that doesn’t exist, catches the FileNotFoundError, and prints the error message.\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\ntry:\n    with open(\"nonexistent_file.txt\", \"r\") as f:\n        contents = f.read()\nexcept FileNotFoundError as err:\n    print(f\"Error: {err}\")\n    print(\"The file does not exist!\")",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exception Handling</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex3-Exceptions.html#the-finally-block",
+    "href": "2-Advanced/Ex3-Exceptions.html#the-finally-block",
+    "title": "Exception Handling",
+    "section": "The Finally Block",
+    "text": "The Finally Block\nSometimes you want code to execute regardless of whether an error occurred. Use finally:\ntry:\n    [code]\nfinally:\n    [always executed]\nThe finally block executes: - After successful completion of try, OR - Before an error is propagated\n\n\n\n\n\n\nCommon uses for finally: - Close files - Save state - Clean up temporary resources - Log progress",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exception Handling</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex3-Exceptions.html#raising-exceptions",
+    "href": "2-Advanced/Ex3-Exceptions.html#raising-exceptions",
+    "title": "Exception Handling",
+    "section": "Raising Exceptions",
+    "text": "Raising Exceptions\nYou can raise your own exceptions using raise:\nraise &lt;ErrorType&gt;\nraise &lt;ErrorType&gt;(&lt;message&gt;)\nExample:\n\n\n\n\n\n\n\n\n\n\n\n\nTipExercise 4 - Raising exceptions\n\n\n\n\n\nWrite a function that validates a temperature in Celsius: - If below absolute zero (-273.15°C), raise a ValueError - If above 100°C, print a warning but continue - Return the temperature in Kelvin (Celsius + 273.15)\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\ndef celsius_to_kelvin(temp_c):\n    \"\"\"Convert Celsius to Kelvin with validation.\"\"\"\n    if temp_c &lt; -273.15:\n        raise ValueError(\"Temperature below absolute zero!\")\n\n    if temp_c &gt; 100:\n        print(\"Warning: Temperature above boiling point of water\")\n\n    return temp_c + 273.15\n\n# Test it\ntry:\n    print(celsius_to_kelvin(25))    # Should work\n    print(celsius_to_kelvin(150))   # Should warn\n    print(celsius_to_kelvin(-300))  # Should raise error\nexcept ValueError as err:\n    print(f\"Error: {err}\")",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exception Handling</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex3-Exceptions.html#practical-example-robust-data-loading",
+    "href": "2-Advanced/Ex3-Exceptions.html#practical-example-robust-data-loading",
+    "title": "Exception Handling",
+    "section": "Practical Example: Robust Data Loading",
+    "text": "Practical Example: Robust Data Loading\nHere’s how exceptions enable clean control flow for robust data loading:\n\n\n\n\n\n\n\n\n\n\n\n\nTipExercise 5 - Data validation with exceptions\n\n\n\n\n\nWrite a function that loads a 2-column data file and validates that each row sums to 100. If any row doesn’t sum to 100, raise a ValueError with the row number.\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nimport numpy as np\n\ntest_data = np.array([[30, 70], [40, 60], [25, 74]])\nnp.savetxt(\"test_data.txt\", test_data)\n\ndef load_and_validate(filename):\n    \"\"\"Load data and validate row sums.\"\"\"\n    data = np.loadtxt(filename)\n\n    for i, row in enumerate(data):\n        row_sum = sum(row)\n        if row_sum != 100:\n            raise ValueError(f\"Row {i} sums to {row_sum}, expected 100\")\n\n    return data\n\ntry:\n    data = load_and_validate(\"test_data.txt\")\n    print(\"Data is valid!\")\nexcept ValueError as err:\n    print(f\"Validation error: {err}\")",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exception Handling</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex3-Exceptions.html#common-exception-types",
+    "href": "2-Advanced/Ex3-Exceptions.html#common-exception-types",
+    "title": "Exception Handling",
+    "section": "Common Exception Types",
+    "text": "Common Exception Types\nHere are some common exceptions you’ll encounter:\n\nValueError - Invalid value (e.g., int(\"hello\"))\nTypeError - Wrong type (e.g., 1 + \"hello\")\nIndexError - Index out of range\nKeyError - Dictionary key doesn’t exist\nFileNotFoundError - File doesn’t exist\nZeroDivisionError - Division by zero\nNameError - Variable doesn’t exist\nAttributeError - Object doesn’t have that attribute",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exception Handling</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex3-Exceptions.html#summary-1",
+    "href": "2-Advanced/Ex3-Exceptions.html#summary-1",
+    "title": "Exception Handling",
+    "section": "Summary",
+    "text": "Summary\nKey concepts from this section:\n\nUse try...except... to handle errors gracefully\nCatch specific exception types, not all exceptions\nAccess error details with except ErrorType as variable:\nUse finally for cleanup code\nRaise exceptions with raise ErrorType(message)\nFollow EAFP: Easier to Ask Forgiveness than Permission\n\nException handling makes code robust and user-friendly, but don’t overuse it - let genuine bugs show themselves!\n\n\n\n\n\n\nWarningCoding scratch space",
+    "crumbs": [
+      "**Advanced Language Skills**",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exception Handling</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex4-NumpyArrays.html",
+    "href": "2-Advanced/Ex4-NumpyArrays.html",
+    "title": "Numerical Computing with NumPy",
+    "section": "",
+    "text": "Why NumPy?\nWhen we looked at Python data structures, the only way to work with arrays of values (matrices, vectors, etc.) was through lists and lists of lists. This approach is:\nNumPy solves these problems by providing fast,contiguous array storage and vectorized operations.",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Numerical Computing with NumPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex4-NumpyArrays.html#why-numpy",
+    "href": "2-Advanced/Ex4-NumpyArrays.html#why-numpy",
+    "title": "Numerical Computing with NumPy",
+    "section": "",
+    "text": "Slow - Python lists aren’t optimized for numerical operations\nInefficient - Looping over elements wastes time and memory\nVerbose - Simple operations require lots of code",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Numerical Computing with NumPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex4-NumpyArrays.html#creating-arrays",
+    "href": "2-Advanced/Ex4-NumpyArrays.html#creating-arrays",
+    "title": "Numerical Computing with NumPy",
+    "section": "Creating Arrays",
+    "text": "Creating Arrays\nThe fundamental NumPy data type is the ndarray (N-dimensional array):\n\n\n\n\n\n\nArrays have important attributes: - dtype - the data type of elements - shape - dimensions of the array - ndim - number of dimensions - size - total number of elements\n\nMulti-dimensional Arrays",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Numerical Computing with NumPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex4-NumpyArrays.html#array-indexing-and-slicing",
+    "href": "2-Advanced/Ex4-NumpyArrays.html#array-indexing-and-slicing",
+    "title": "Numerical Computing with NumPy",
+    "section": "Array Indexing and Slicing",
+    "text": "Array Indexing and Slicing\nNumPy arrays support powerful indexing:\n\n\n\n\n\n\n\nSlicing Operations\n\n\n\n\n\n\nThe colon : notation is powerful: - A[i, :] - entire row i - A[:, j] - entire column j - A[::2, ::2] - every 2nd element in both dimensions - A[::-1, ::-1] - reverse both dimensions\n\n\n\n\n\n\n\n\n\n\n\n\nTipExercise 1 - Array slicing\n\n\n\n\n\nCreate a 5×5 array with values from 0 to 24, then: 1. Extract the middle 3×3 subarray 2. Extract every other row 3. Reverse the array (both dimensions)\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nimport numpy as np\n\nA = np.arange(25).reshape((5, 5))\nprint(\"Original:\")\nprint(A)\n\nmiddle = A[1:4, 1:4]  # Rows 1-3, columns 1-3\nevery_other = A[::2, :]  # Every 2nd row\nreversed_array = A[::-1, ::-1]  # Reverse both\n\nprint(\"\\nMiddle 3x3:\")\nprint(middle)\nprint(\"\\nEvery other row:\")\nprint(every_other)\nprint(\"\\nReversed:\")\nprint(reversed_array)",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Numerical Computing with NumPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex4-NumpyArrays.html#why-numpy-is-fast-vectorized-operations",
+    "href": "2-Advanced/Ex4-NumpyArrays.html#why-numpy-is-fast-vectorized-operations",
+    "title": "Numerical Computing with NumPy",
+    "section": "Why NumPy is Fast: Vectorized Operations",
+    "text": "Why NumPy is Fast: Vectorized Operations\nThe real power of NumPy comes from vectorized operations - operations on entire arrays without explicit loops:\n\n\n\n\n\n\n\nElement-wise Operations\nNumPy operations work element-by-element:",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Numerical Computing with NumPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex4-NumpyArrays.html#array-reshaping-and-views",
+    "href": "2-Advanced/Ex4-NumpyArrays.html#array-reshaping-and-views",
+    "title": "Numerical Computing with NumPy",
+    "section": "Array Reshaping and Views",
+    "text": "Array Reshaping and Views\nNumPy can show you the same data in different shapes without copying:\n\n\n\n\n\n\nThe -1 in reshape means “figure out this dimension automatically”:\n\n\n\n\n\n\n\n\n\n\n\n\nWarningViews vs. Copies\n\n\n\nMost NumPy operations create views (references to the same data), not copies. This is efficient but can be surprising:\n\n\n\n\n\n\nTo make an independent copy, use .copy():\nB = A.copy()",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Numerical Computing with NumPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex4-NumpyArrays.html#broadcasting",
+    "href": "2-Advanced/Ex4-NumpyArrays.html#broadcasting",
+    "title": "Numerical Computing with NumPy",
+    "section": "Broadcasting",
+    "text": "Broadcasting\nBroadcasting allows operations between arrays of different shapes:\n\n\n\n\n\n\nBroadcasting rules: 1. Arrays don’t need the same shape 2. Dimensions are compared element-wise from right to left 3. Dimensions are compatible if they’re equal or one of them is 1\n\n\n\n\n\n\n\n\n\n\n\n\nTipExercise 2 - Broadcasting\n\n\n\n\n\nUse broadcasting to: 1. Create a 5×5 multiplication table (outer product of [1,2,3,4,5] with itself) 2. Add [10, 20, 30] to each column of a 4×3 array\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nimport numpy as np\n\n# Multiplication table\nx = np.arange(1, 6)\nmult_table = x.reshape((5, 1)) * x  # (5,1) * (5,) broadcasts to (5,5)\n\nprint(\"Multiplication table:\")\nprint(mult_table)\n\n# Add to columns\nA = np.ones((4, 3))\ncolumn_add = np.array([10, 20, 30])\nresult = A + column_add  # (4,3) + (3,) broadcasts\n\nprint(\"\\nArray with column additions:\")\nprint(result)",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Numerical Computing with NumPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex4-NumpyArrays.html#useful-array-creation-functions",
+    "href": "2-Advanced/Ex4-NumpyArrays.html#useful-array-creation-functions",
+    "title": "Numerical Computing with NumPy",
+    "section": "Useful Array Creation Functions",
+    "text": "Useful Array Creation Functions",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Numerical Computing with NumPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex4-NumpyArrays.html#array-mathematics",
+    "href": "2-Advanced/Ex4-NumpyArrays.html#array-mathematics",
+    "title": "Numerical Computing with NumPy",
+    "section": "Array Mathematics",
+    "text": "Array Mathematics\nNumPy provides comprehensive mathematical functions:\n\n\n\n\n\n\n\nLinear Algebra\n\n\n\n\n\n\n\n\n\n\n\n\nTipExercise 3 - Earth Science application\n\n\n\n\n\nModel exponential decay (like radioactive isotopes):\nThe equation is: N(t) = N₀ × e^(-λt)\nWhere: - N₀ = initial amount - λ = decay constant - t = time\nCalculate the decay of ²³⁸U (λ = 1.55×10⁻¹⁰ yr⁻¹) over 0 to 10 billion years.\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nN0 = 100\nlambda_decay = 1.55e-10\n\nt = np.linspace(0, 1e10, 1000)\nN = N0 * np.exp(-lambda_decay * t)\n\nplt.figure(figsize=(8, 4))\nplt.plot(t / 1e9, N)\nplt.xlabel('Time (Gyr)')\nplt.ylabel('Amount remaining')\nplt.title('Radioactive Decay of ²³⁸U')\nplt.grid(True)\nplt.show()\n\n# Earth's age is ~4.5 Gyr\nearth_age_idx = 450\nprint(f\"After 4.5 Gyr: {N[earth_age_idx]:.1f}% remains\")",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Numerical Computing with NumPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex4-NumpyArrays.html#summary-1",
+    "href": "2-Advanced/Ex4-NumpyArrays.html#summary-1",
+    "title": "Numerical Computing with NumPy",
+    "section": "Summary",
+    "text": "Summary\nNumPy provides: - Fast arrays - Contiguous memory, optimized operations - Vectorization - Operations on entire arrays - Broadcasting - Automatic dimension matching - Mathematical functions - Comprehensive library - Linear algebra - Matrix operations built-in\nNumPy is the foundation of scientific Python. Almost every scientific package (SciPy, matplotlib, pandas) builds on NumPy arrays.\n\n\n\n\n\n\nWarningCoding scratch space",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Numerical Computing with NumPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex5-ScipyTools.html",
+    "href": "2-Advanced/Ex5-ScipyTools.html",
+    "title": "Scientific Computing with SciPy",
+    "section": "",
+    "text": "What is SciPy?\nSciPy builds on NumPy to provide a comprehensive ecosystem for scientific computing. It’s organized into submodules, each addressing specific scientific domains:",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Scientific Computing with SciPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex5-ScipyTools.html#what-is-scipy",
+    "href": "2-Advanced/Ex5-ScipyTools.html#what-is-scipy",
+    "title": "Scientific Computing with SciPy",
+    "section": "",
+    "text": "scipy.constants - Physical and mathematical constants\nscipy.integrate - Integration and differential equations\nscipy.interpolate - Data interpolation\nscipy.optimize - Optimization and root finding\nscipy.signal - Signal processing\nscipy.spatial - Spatial algorithms and data structures\nscipy.stats - Statistical functions\nscipy.linalg - Linear algebra (extends NumPy)\nscipy.fft - Fast Fourier transforms\nscipy.ndimage - N-dimensional image processing",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Scientific Computing with SciPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex5-ScipyTools.html#physical-constants",
+    "href": "2-Advanced/Ex5-ScipyTools.html#physical-constants",
+    "title": "Scientific Computing with SciPy",
+    "section": "Physical Constants",
+    "text": "Physical Constants\nThe scipy.constants module provides precise physical constants:\n\n\n\n\n\n\nYou can search for constants:\n\n\n\n\n\n\n\n\n\n\n\n\nTipExercise 1 - Earth science constants\n\n\n\n\n\nFind and print constants relevant to Earth sciences: - Gravitational acceleration (standard) - Stefan-Boltzmann constant - Gas constant (R)\nThen calculate Earth’s blackbody temperature using Stefan-Boltzmann law: F = σT⁴, where solar constant F ≈ 1361 W/m²\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nfrom scipy import constants\nimport numpy as np\n\ng = constants.g\nsigma = constants.Stefan_Boltzmann\nR = constants.R\n\nprint(f\"g = {g} m/s²\")\nprint(f\"σ = {sigma} W/m²/K⁴\")\nprint(f\"R = {R} J/mol/K\")\n\nF = 1361 / 4\nT_earth = (F / sigma) ** 0.25\n\nprint(f\"\\nEarth's blackbody temperature: {T_earth:.1f} K ({T_earth-273.15:.1f}°C)\")",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Scientific Computing with SciPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex5-ScipyTools.html#interpolation",
+    "href": "2-Advanced/Ex5-ScipyTools.html#interpolation",
+    "title": "Scientific Computing with SciPy",
+    "section": "Interpolation",
+    "text": "Interpolation\nInterpolation fills in values between known data points. This is crucial for working with scattered or sparse data.\n\n\n\n\n\n\n\n2D Interpolation\nFor gridded data:",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Scientific Computing with SciPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex5-ScipyTools.html#optimization",
+    "href": "2-Advanced/Ex5-ScipyTools.html#optimization",
+    "title": "Scientific Computing with SciPy",
+    "section": "Optimization",
+    "text": "Optimization\nFind minima, maxima, and zeros of functions:\n\n\n\n\n\n\n\nFinding Roots\n\n\n\n\n\n\n\n\n\n\n\n\nTipExercise 2 - Isostatic equilibrium\n\n\n\n\n\nModel isostatic balance: A continental crust of density ρc = 2700 kg/m³ and thickness h floats on mantle of density ρm = 3300 kg/m³.\nFind the crustal thickness h that results in 1 km of topographic elevation using the isostatic balance equation:\nρc × h = ρm × (h - elevation)\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nfrom scipy import optimize\n\nrho_crust = 2700\nrho_mantle = 3300\nelevation = 1000\n\ndef isostasy(h):\n    return rho_crust * h - rho_mantle * (h - elevation)\n\nh_solution = optimize.fsolve(isostasy, 30000)[0]\n\nprint(f\"Crustal thickness: {h_solution/1000:.2f} km\")\nprint(f\"Elevation: {elevation/1000:.2f} km\")\nprint(f\"Root depth: {(h_solution-elevation)/1000:.2f} km\")",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Scientific Computing with SciPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex5-ScipyTools.html#integration",
+    "href": "2-Advanced/Ex5-ScipyTools.html#integration",
+    "title": "Scientific Computing with SciPy",
+    "section": "Integration",
+    "text": "Integration\nNumerical integration for definite integrals:\n\n\n\n\n\n\n\nDouble Integrals",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Scientific Computing with SciPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex5-ScipyTools.html#statistics",
+    "href": "2-Advanced/Ex5-ScipyTools.html#statistics",
+    "title": "Scientific Computing with SciPy",
+    "section": "Statistics",
+    "text": "Statistics\nThe scipy.stats module provides probability distributions and statistical tests:\n\n\n\n\n\n\n\nStatistical Tests\n\n\n\n\n\n\n\n\n\n\n\n\nTipExercise 3 - Earthquake magnitude distribution\n\n\n\n\n\nThe Gutenberg-Richter law says earthquake frequency follows: log₁₀(N) = a - b×M\nWhere N is number of earthquakes ≥ magnitude M, and typically b ≈ 1.\nGenerate synthetic earthquake data and fit the distribution:",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Scientific Computing with SciPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex5-ScipyTools.html#signal-processing-with-fft",
+    "href": "2-Advanced/Ex5-ScipyTools.html#signal-processing-with-fft",
+    "title": "Scientific Computing with SciPy",
+    "section": "Signal Processing with FFT",
+    "text": "Signal Processing with FFT\nFast Fourier Transform for frequency analysis:",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Scientific Computing with SciPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex5-ScipyTools.html#summary-1",
+    "href": "2-Advanced/Ex5-ScipyTools.html#summary-1",
+    "title": "Scientific Computing with SciPy",
+    "section": "Summary",
+    "text": "Summary\nSciPy provides essential scientific computing tools:\n\nConstants - Physical and mathematical values\nInterpolation - Fill in missing data points\nOptimization - Find minima/maxima and roots\nIntegration - Numerical integration\nStatistics - Distributions and hypothesis tests\nSignal processing - FFT and filtering\n\nSciPy builds on NumPy to provide the algorithms that power scientific Python!\n\n\n\n\n\n\nWarningCoding scratch space",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Scientific Computing with SciPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex6-SymbolicMath.html",
+    "href": "2-Advanced/Ex6-SymbolicMath.html",
+    "title": "Symbolic Mathematics with SymPy",
+    "section": "",
+    "text": "What is Symbolic Math?\nMost Python computations are numerical - we work with specific numbers. Symbolic computation works with variables and expressions themselves, without assigning numeric values.",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Symbolic Mathematics with SymPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex6-SymbolicMath.html#creating-symbols",
+    "href": "2-Advanced/Ex6-SymbolicMath.html#creating-symbols",
+    "title": "Symbolic Mathematics with SymPy",
+    "section": "Creating Symbols",
+    "text": "Creating Symbols\nSymbols are the building blocks of symbolic expressions:\n\n\n\n\n\n\nShorthand for multiple symbols:",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Symbolic Mathematics with SymPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex6-SymbolicMath.html#symbolic-expressions",
+    "href": "2-Advanced/Ex6-SymbolicMath.html#symbolic-expressions",
+    "title": "Symbolic Mathematics with SymPy",
+    "section": "Symbolic Expressions",
+    "text": "Symbolic Expressions\nYou can build expressions using standard mathematical operations:\n\n\n\n\n\n\n\n\n\n\n\n\nWarningUse SymPy Functions, Not NumPy!\n\n\n\nNumPy functions expect numbers. SymPy functions work with symbols:",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Symbolic Mathematics with SymPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex6-SymbolicMath.html#simplification",
+    "href": "2-Advanced/Ex6-SymbolicMath.html#simplification",
+    "title": "Symbolic Mathematics with SymPy",
+    "section": "Simplification",
+    "text": "Simplification\nSymPy can simplify expressions symbolically:\n\n\n\n\n\n\n\nExpansion and Factoring\n\n\n\n\n\n\n\n\n\n\n\n\nTipExercise 1 - Symbolic algebra\n\n\n\n\n\nSimplify and manipulate these expressions:\n\n(x² + 2xy + y²) - Expand and factor\nsin²(x) + cos²(x) - Simplify\n(x³ - 1)/(x - 1) - Simplify\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nimport sympy\n\nx, y = sympy.symbols('x y')\n\n# 1.\nexpr1 = (x + y)**2\nexpanded = expr1.expand()\nfactored = expanded.factor()\nprint(\"Expanded:\", expanded)\nprint(\"Factored:\", factored)\n\n# 2.\nexpr2 = sympy.sin(x)**2 + sympy.cos(x)**2\nsimplified = expr2.simplify()\nprint(\"\\nTrig identity:\", simplified)\n\n# 3.\nexpr3 = (x**3 - 1)/(x - 1)\nsimplified3 = expr3.simplify()\nprint(\"\\nRational:\", simplified3)",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Symbolic Mathematics with SymPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex6-SymbolicMath.html#substitution",
+    "href": "2-Advanced/Ex6-SymbolicMath.html#substitution",
+    "title": "Symbolic Mathematics with SymPy",
+    "section": "Substitution",
+    "text": "Substitution\nEvaluate expressions by substituting values:\n\n\n\n\n\n\nSymPy can handle complex numbers:",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Symbolic Mathematics with SymPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex6-SymbolicMath.html#differentiation",
+    "href": "2-Advanced/Ex6-SymbolicMath.html#differentiation",
+    "title": "Symbolic Mathematics with SymPy",
+    "section": "Differentiation",
+    "text": "Differentiation\nSymPy can compute derivatives symbolically:\n\n\n\n\n\n\n\nPartial Derivatives\n\n\n\n\n\n\n\n\n\n\n\n\nTipExercise 2 - Heat equation\n\n\n\n\n\nThe 1D heat equation is:\n∂T/∂t = α ∂²T/∂x²\nwhere α is thermal diffusivity.\nGiven T(x,t) = A×e^(-αk²t)×sin(kx), verify it satisfies the heat equation:\n\n\n\n\n\n\n\n\n\n\n\n\n\nTipSolution\n\n\n\n\n\n\nimport sympy\n\nx, t, alpha, k, A = sympy.symbols('x t alpha k A', real=True, positive=True)\n\nT = A * sympy.exp(-alpha * k**2 * t) * sympy.sin(k * x)\n\ndT_dt = sympy.diff(T, t)\nd2T_dx2 = sympy.diff(T, x, 2)\n\nLHS = dT_dt\nRHS = alpha * d2T_dx2\n\nprint(\"∂T/∂t =\", LHS)\nprint(\"α∂²T/∂x² =\", RHS)\nprint(\"\\nDifference:\", (LHS - RHS).simplify())",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Symbolic Mathematics with SymPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex6-SymbolicMath.html#integration",
+    "href": "2-Advanced/Ex6-SymbolicMath.html#integration",
+    "title": "Symbolic Mathematics with SymPy",
+    "section": "Integration",
+    "text": "Integration\nSymbolic integration (both indefinite and definite):\n\n\n\n\n\n\n\nMultiple Integration",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Symbolic Mathematics with SymPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex6-SymbolicMath.html#solving-equations",
+    "href": "2-Advanced/Ex6-SymbolicMath.html#solving-equations",
+    "title": "Symbolic Mathematics with SymPy",
+    "section": "Solving Equations",
+    "text": "Solving Equations\nSolve equations symbolically:\n\n\n\n\n\n\n\nSystems of Equations\n\n\n\n\n\n\n\n\n\n\n\n\nTipExercise 3 - Geochemistry problem\n\n\n\n\n\nRadioactive decay chain: Parent P decays to daughter D with decay constant λ.\nThe equation is: dD/dt = λP₀e^(-λt) - μD\nwhere μ is daughter’s decay constant.\nSolve for D(t) assuming D(0) = 0:",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Symbolic Mathematics with SymPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex6-SymbolicMath.html#pretty-printing",
+    "href": "2-Advanced/Ex6-SymbolicMath.html#pretty-printing",
+    "title": "Symbolic Mathematics with SymPy",
+    "section": "Pretty Printing",
+    "text": "Pretty Printing\nSymPy can display equations beautifully:",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Symbolic Mathematics with SymPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex6-SymbolicMath.html#practical-example-wave-equation",
+    "href": "2-Advanced/Ex6-SymbolicMath.html#practical-example-wave-equation",
+    "title": "Symbolic Mathematics with SymPy",
+    "section": "Practical Example: Wave Equation",
+    "text": "Practical Example: Wave Equation",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Symbolic Mathematics with SymPy</span>"
+    ]
+  },
+  {
+    "objectID": "2-Advanced/Ex6-SymbolicMath.html#summary-1",
+    "href": "2-Advanced/Ex6-SymbolicMath.html#summary-1",
+    "title": "Symbolic Mathematics with SymPy",
+    "section": "Summary",
+    "text": "Summary\nSymPy provides symbolic mathematics in Python:\n\nSymbols and expressions - Work with variables algebraically\nSimplification - Simplify, expand, factor expressions\nCalculus - Differentiate and integrate symbolically\nEquation solving - Solve equations and systems analytically\nPretty printing - Display equations beautifully\n\nSymPy is perfect for: - Deriving equations - Checking analytical solutions - Teaching mathematics - Code generation (convert symbolic → numeric code)\n\n\n\n\n\n\nWarningCoding scratch space",
+    "crumbs": [
+      "**Scientific Computing**",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Symbolic Mathematics with SymPy</span>"
+    ]
+  },
+  {
     "objectID": "3-Applications/Ex1-IntroductionToMatplotlib.html",
     "href": "3-Applications/Ex1-IntroductionToMatplotlib.html",
     "title": "Plotting graphs with Matplotlib",
@@ -502,7 +1107,7 @@
     "text": "Introduction to matplotlib\nMatplotlib will help you to plot graphs from your data, and is a great starting point when you need to see if something is working or not. It can be used for complicated plots and figures for publication of your results. The default interface makes simple tasks trivial but is hard to extend when you need a more refined graph.\nMatplotlib fully embraces the python object-oriented model, but for some tasks the design of the object hierarchy is a little bit counter-intuitive. It’s best to find a common pattern for building plots and stick to it.\nIn matplotlib, the figure is the top-level container for all the plot elements but it does little more than hold onto sets of axes which are the primary objects you will interact with.\nTo look at the rendered image we can either browse with the jupyterlab file browser or, if we are running in the browser, we can use the display function from the IPython.display module to display the image.",
     "crumbs": [
       "**Applications for Earth Sciences**",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Plotting graphs with Matplotlib</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Plotting graphs with Matplotlib</span>"
     ]
   },
   {
@@ -513,7 +1118,7 @@
     "text": "Online gallery / cookbook\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExamples\nThe figure is just used once in a typical, simple plotting routine. The axis / axes are used as a container for all of an individual graph’s information. The subplot arguments are rather typical of matplotlib - a 1960s, fortran-like parsing of a three digit integer (above) or three separate arguments that imply the same thing (below). Which of these is the better choice to use, and why ?\n\n\n\n\n\n\nIt’s not just plot that can add data to an axis, the style of the plot is largely controlled by the routine that add the data to a given axis. You can add multiple data to an axis and you can do this in multiple formats.\n\n\n\n\n\n\nHere are some more examples that you can explore.\n\n\n\n\n\n\n\n\nMatplotlib Gallery\nThe gallery is a collection of examples that demonstrate the range ofcapabilities of matplotlib. Source code is provided for each example and they should all work here.\nIt is worth using the gallery as a starting point for the plots you want to create. The interface to matplotlib objects is powerful but not designed for everyday use - to do slightly complicated things may require very complicated code. But lots can be done and here are some cool examples.\n\n\n\n\n\n\nWarningGallery 1 - Line plots with Error Bars\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWarningGallery 2 - Triangulation, Contours\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWarningGallery 3 - Hillshading\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWarningGallery 4 - Statistical Plots",
     "crumbs": [
       "**Applications for Earth Sciences**",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Plotting graphs with Matplotlib</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Plotting graphs with Matplotlib</span>"
     ]
   },
   {
@@ -524,7 +1129,7 @@
     "text": "Let’s get started\nWe are going to work through a number of the examples and try to extend them to do the kinds of things you might find interesting and useful in the future. The examples are in the form of a gallery\nYou might also want to look at the list of map projections from time to time. Not all maps can be plotted in every projection (sometimes because of bugs and sometimes because they are not supposed to work for the data you have) but you can try them and see what happens.\nCartopy is built on top of a lot of the matplotlib graphing tools. It works by introducing a series of projections associated with the axes of a graph. On top of that there is a big toolkit for reading in images, finding data from standard web feeds, and manipulating geographical objects. Many, many libraries are involved and sometimes things break. Luckily the installation that is built for this course is about as reliable as we can ever get. I’m just warning you, though, that it can be quite tough if you want to put this on your laptop from scratch.\nWe have a number of imports that we will need almost every time.\nIf we are going to plot anything then we need to include matplotlib.\nThe simplest plot: global map using the default image built into the package and adding coastlines\nTry changing the projection - look at the list in the link I gave you above to see what ccrs has available. In the notebook, many of the projections will time out because they are so computationally intensive but these work: EckartI, EckartV, Stereographic, Orthographic, LambertConformal, Miller, `Mollweide.\nHere is how you can plot a region instead of the globe:",
     "crumbs": [
       "**Applications for Earth Sciences**",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Introduction to Cartopy for Map-making</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Introduction to Cartopy for Map-making</span>"
     ]
   },
   {
@@ -535,7 +1140,7 @@
     "text": "Let’s get started\nWe have a number of imports that we will need almost every time.\nIf we are going to plot anything then we need to include matplotlib.\nHow to find out what layers there are:",
     "crumbs": [
       "**Applications for Earth Sciences**",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>IntroducingWeb Mapping Services</span>"
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>IntroducingWeb Mapping Services</span>"
     ]
   }
 ]
