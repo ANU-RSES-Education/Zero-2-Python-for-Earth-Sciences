@@ -38,9 +38,15 @@ book:
       chapters:
         - 2-Advanced/Intro.qmd
         - 2-Advanced/Ex1-PythonClasses.qmd
+        - 2-Advanced/Ex2-Modules.qmd
+        - 2-Advanced/Ex3-Exceptions.qmd
 
-      # Modules
-      # Exceptions
+    - part: "**Scientific Computing**"
+      chapters:
+        - 2-Advanced/Ex4-NumpyArrays.qmd
+        - 2-Advanced/Ex5-ScipyTools.qmd
+        - 2-Advanced/Ex6-SymbolicMath.qmd
+
       # Decorators
       # Properties
 
@@ -87,10 +93,12 @@ execute:
 
 format:
   live-html:
-    theme: [united, "assets/theme.scss"] # united / simplex / flatly
-    mainfont: "Jost"
-    fontsize: 0.9em
-    linestretch: 1.7
+    theme: [cosmo, "assets/theme.scss"]
+    css: assets/styles.css
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-fold: false
     linkcolor: "#C58812"
     number-sections: false
     number-depth: 1
