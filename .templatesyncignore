@@ -1,0 +1,26 @@
+# Ignore course-specific content files during template sync
+# Only sync infrastructure/theme files, not course content
+
+# Course content - these are specific to this course
+WebBook/_quarto.yml
+WebBook/index.qmd
+WebBook/0-*.qmd
+WebBook/1-Basics/**
+WebBook/2-Advanced/**
+WebBook/3-Applications/**
+WebBook/Introduction2VersionControl/**
+WebBook/DevSkills/**
+WebBook/Notebooks/**
+WebBook/LectureSlides/**
+
+# Course-specific assets
+WebBook/assets/AuWorldEQ.jpg
+
+# Keep these synced from template:
+# WebBook/assets/theme.scss
+# WebBook/assets/styles.css
+# WebBook/assets/font_button.js
+# .github/workflows/
+# update-template.sh
+# pixi.toml
+# pixi.lock
