@@ -1,21 +1,42 @@
 /*-- scss:defaults --*/
 
-// Fonts 
-
-/* Fonts: "Open Sans", "Roboto", "Yanone Kaffeesatz" */
+// Fonts
 @import url("https://indestructibletype.com/fonts/Jost.css");
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&family=Open+Sans:wght@300&family=Oswald:wght@300&family=Roboto:wght@300&family=Yanone+Kaffeesatz:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Cormorant:wght@300&family=Lobster+Two&family=Noticia+Text&display=swap');
-
-
-// Base document colors
-// $body-bg: #181818;
-// $body-color: white;
-// $link-color: #75AADB;
 
 // Code blocks
 $code-block-bg-alpha: -.66;
 $code-block-bg-padding: 1em;
-// $code-block-bg: white;
 $code-block-border-left: true;
+
+/*-- scss:rules --*/
+
+// Navbar styling to match documentation
+.navbar {
+  border-bottom: 3px solid #C58812;
+}
+
+// Sidebar logo sizing - 60% of original
+.sidebar-logo {
+  max-width: 60%;
+  margin: 1rem auto;
+  display: block;
+}
+
+.sidebar .sidebar-logo img {
+  max-width: 60%;
+  margin: 0 auto;
+  display: block;
+}
+
+// Ensure good contrast on ANU gold navbar
+.navbar-brand {
+  color: white !important;
+}
+
+.navbar .navbar-nav .nav-link {
+  color: white !important;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
