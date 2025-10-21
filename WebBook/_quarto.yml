@@ -76,15 +76,14 @@ book:
 
   navbar:
     search: true
-    logo: assets/ANU-logo.jpg
-    background: "white"
-    foreground: "#C58812" # ANU honey colour
+    logo: assets/ANU-logo.png
+    background: "#C58812"  # ANU honey colour
+    foreground: white
 
   sidebar:
-    # logo: Images/COS-EarthSciences-800.jpg
     logo: assets/AuWorldEQ.jpg
-    background: "white"
-    # foreground: "#C58812" # ANU honey colour
+    style: "docked"
+    background: light
 
 bibliography: references.bib
 
