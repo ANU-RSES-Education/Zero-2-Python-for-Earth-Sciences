@@ -466,7 +466,7 @@
     "href": "2-Advanced/Intro.html",
     "title": "Introduction",
     "section": "",
-    "text": "In this section …",
+    "text": "In this section we move beyond the basic language constructs to explore more sophisticated features of Python that will help you write better, more maintainable code. We’ll learn about:\n\nClasses and Objects - How to create your own data types and bundle data with the operations that work on them\nModules - How to organize code into reusable packages and leverage Python’s extensive ecosystem\nAdvanced data structures - Working with NumPy arrays and other efficient data containers\nScientific computing - Using powerful libraries like SciPy for numerical analysis\n\nThese tools will allow you to move from writing simple scripts to building robust, reusable software for scientific computing. You’ll learn to think like a software developer while solving Earth Science problems.",
     "crumbs": [
       "**Advanced Language Skills**",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Introduction</span>"
