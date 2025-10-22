@@ -179,7 +179,7 @@ elif git remote | grep -q "template"; then
 
     # Try to find the last template sync commit
     # Template-sync PRs have format: "chore/template_sync_<hash>"
-    LAST_SYNC=$(git log --all --grep="template_sync" --oneline | head -1 | grep -oE '[a-f0-9]{7}$' || echo "")
+    LAST_SYNC=$(git log --all --oneline | grep "template_sync_[a-f0-9]" | head -1 | grep -oE 'template_sync_[a-f0-9]{7}' | sed 's/template_sync_//' || echo "")
 
     if [ -n "$LAST_SYNC" ]; then
         # Check if this commit exists in template/main

@@ -13,5 +13,12 @@ format:
 
 ---
 
-In this section ... 
+In this section we move beyond the basic language constructs to explore more sophisticated features of Python that will help you write better, more maintainable code. We'll learn about:
+
+- **Classes and Objects** - How to create your own data types and bundle data with the operations that work on them
+- **Modules** - How to organize code into reusable packages and leverage Python's extensive ecosystem
+- **Advanced data structures** - Working with NumPy arrays and other efficient data containers
+- **Scientific computing** - Using powerful libraries like SciPy for numerical analysis
+
+These tools will allow you to move from writing simple scripts to building robust, reusable software for scientific computing. You'll learn to think like a software developer while solving Earth Science problems. 
 
